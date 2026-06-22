@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-06-18       # initial setup
-trading_days_elapsed: 0
+last_updated: 2026-06-22
+trading_days_elapsed: 1
 
 trades:
   total: 0
@@ -24,16 +24,16 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: null
-  stand_aside_count: 0
-  stand_aside_correct: 0
-  stand_aside_missed: 0
+  stand_aside_correctness_pct: 22.22
+  stand_aside_count: 9
+  stand_aside_correct: 2
+  stand_aside_missed: 7
 
 benchmark:
-  spy_close_at_system_start: null    # to be captured 2026-06-22 open
-  spy_close_today: null
-  spy_pct_change_since_start: null
-  system_alpha_vs_spy_pct: null      # system_pct - spy_pct
+  spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
+  spy_close_today: 744.37
+  spy_pct_change_since_start: 0.00
+  system_alpha_vs_spy_pct: 0.00      # system_pct - spy_pct
 ```
 
 ## Reading the table
