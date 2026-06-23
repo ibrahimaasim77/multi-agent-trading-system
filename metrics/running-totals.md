@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-06-22
-trading_days_elapsed: 1
+last_updated: 2026-06-23
+trading_days_elapsed: 2
 
 trades:
   total: 0
@@ -28,12 +28,14 @@ decision_quality:
   stand_aside_count: 9
   stand_aside_correct: 2
   stand_aside_missed: 7
+  # note: 2026-06-23 contributed zero stand-aside records — no Gmail evidence
+  # the routines ran; see trades/2026-06-23.md. Not folded into the counts above.
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 744.37
-  spy_pct_change_since_start: 0.00
-  system_alpha_vs_spy_pct: 0.00      # system_pct - spy_pct
+  spy_close_today: 733.67
+  spy_pct_change_since_start: -1.44
+  system_alpha_vs_spy_pct: 1.44      # system_pct - spy_pct (flat account vs down SPY; not a skill signal — no trades were made to compare)
 ```
 
 ## Reading the table
