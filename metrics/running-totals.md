@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-06-23
-trading_days_elapsed: 2
+last_updated: 2026-06-24
+trading_days_elapsed: 3
 
 trades:
   total: 0
@@ -24,18 +24,25 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 22.22
-  stand_aside_count: 9
-  stand_aside_correct: 2
-  stand_aside_missed: 7
-  # note: 2026-06-23 contributed zero stand-aside records — no Gmail evidence
-  # the routines ran; see trades/2026-06-23.md. Not folded into the counts above.
+  stand_aside_correctness_pct: 43.75
+  stand_aside_count: 16
+  stand_aside_correct: 7
+  stand_aside_missed: 9
+  # note (corrected 2026-06-24): the 2026-06-23 journal claimed zero stand-aside
+  # records existed due to a Gmail search bug (search_threads excludes drafts by
+  # default; both routines deliver via create_draft per ADR-005). list_drafts on
+  # 2026-06-24 confirmed 2026-06-23 DID produce full morning + intraday writeups
+  # (IBM, SMCI, VRNS, VKTX, QNT, INFQ, MU/SNDK/WDC premarket-data conflict).
+  # NOT yet backfilled into the counts above pending a full re-score of that
+  # day's candidates against settle prices — flagged as a follow-up for the next
+  # post-mortem run. Counts above include only 2026-06-22 (9, 2 correct) +
+  # 2026-06-24 (7, 5 correct).
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 733.67
-  spy_pct_change_since_start: -1.44
-  system_alpha_vs_spy_pct: 1.44      # system_pct - spy_pct (flat account vs down SPY; not a skill signal — no trades were made to compare)
+  spy_close_today: 733.07
+  spy_pct_change_since_start: -1.52
+  system_alpha_vs_spy_pct: 1.52      # system_pct - spy_pct (flat account vs down SPY; not a skill signal — no trades were made to compare)
 ```
 
 ## Reading the table
