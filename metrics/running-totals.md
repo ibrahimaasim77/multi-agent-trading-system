@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-06-25
-trading_days_elapsed: 4
+last_updated: 2026-06-26
+trading_days_elapsed: 5
 
 trades:
   total: 0
@@ -20,16 +20,18 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 2              # both 6/25 routines (morning + intraday) hard-aborted on cash < $50
-  # note (added 2026-06-25): account 912269602 (Agentic, ••••9602) showed
-  # $0.00 total_value / $0.00 cash on 2026-06-25, down from $217.19 cash_close
-  # recorded in the 2026-06-24 journal, with ZERO trades placed in between and
-  # ZERO orders ever recorded on this account (checked across all time). Both
-  # today's morning and intraday routines independently hit this and stood
-  # aside. Re-queried get_portfolio twice — not a transient glitch. No order,
-  # transfer, or withdrawal record is visible to any agent that explains the
-  # gap. This could be an unauthorized withdrawal, an ACH sweep, or a
-  # portfolio-endpoint data bug — cannot be determined from inside this
+  guardrail_aborts: 4              # 6/25 morning+intraday, plus 6/26 morning+intraday, all on cash < $50
+  # note (updated 2026-06-26): account 912269602 (Agentic, ••••9602) has now
+  # shown $0.00 total_value / $0.00 cash for TWO consecutive trading days
+  # (6/25 and 6/26), down from $217.19 cash_close recorded in the 2026-06-24
+  # journal, with ZERO trades placed in between and ZERO orders ever recorded
+  # on this account (checked across all time). All four routines across both
+  # days (6/25 morning+intraday, 6/26 morning+intraday) independently hit this
+  # and stood aside; on 6/26 neither routine even reached catalyst screening.
+  # Two full days of identical $0.00 readings rules out a one-off API glitch.
+  # No order, transfer, or withdrawal record is visible to any agent that
+  # explains the gap. This could be an unauthorized withdrawal, an ACH sweep,
+  # or a portfolio-endpoint data bug — cannot be determined from inside this
   # system. The pnl/account-value fields above are computed mechanically from
   # the reported $0.00 and should be treated as UNCONFIRMED until the user
   # verifies actual transfer/balance history in the Robinhood app directly.
@@ -57,9 +59,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 733.26
-  spy_pct_change_since_start: -1.49
-  system_alpha_vs_spy_pct: -98.51    # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 729.09
+  spy_pct_change_since_start: -2.05
+  system_alpha_vs_spy_pct: -97.95    # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
