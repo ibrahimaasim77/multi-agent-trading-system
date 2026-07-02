@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-01
-trading_days_elapsed: 8
+last_updated: 2026-07-02
+trading_days_elapsed: 9
 
 trades:
   total: 0
@@ -20,14 +20,14 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 10             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i
-  # note (updated 2026-07-01): account 912269602 (Agentic, ••••9602) has now
-  # shown $0.00 total_value / $0.00 cash for FIVE consecutive trading days
-  # (6/25, 6/26, 6/29, 6/30, 7/1), down from $217.19 cash_close recorded in
-  # the 2026-06-24 journal, with ZERO trades placed and ZERO orders ever
-  # recorded on this account (checked across all time). Ten independent live
-  # get_portfolio queries across five trading days (morning + intraday each
-  # day) and two full weekends have all returned identically $0.00.
+  guardrail_aborts: 12             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i
+  # note (updated 2026-07-02): account 912269602 (Agentic, ••••9602) has now
+  # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
+  # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
+  # in the 2026-06-24 journal, with ZERO trades placed and ZERO orders ever
+  # recorded on this account (checked across all time). Twelve independent live
+  # get_portfolio queries across six trading days (morning + intraday each
+  # day) and three full weekends have all returned identically $0.00.
   # No order, transfer, or withdrawal record is visible to any agent that
   # explains the drop from $217.19 to $0.00. This is a CONFIRMED, PERSISTENT
   # capital-layer failure — not a provisional anomaly. Could be an unauthorized
@@ -67,9 +67,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 745.69             # EOD 2026-07-01
-  spy_pct_change_since_start: +0.18
-  system_alpha_vs_spy_pct: -100.18   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 744.80             # EOD 2026-07-02 (early close day; last trade ~3:59 PM ET)
+  spy_pct_change_since_start: +0.06
+  system_alpha_vs_spy_pct: -100.06   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
