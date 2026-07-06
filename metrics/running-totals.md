@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-02
-trading_days_elapsed: 9
+last_updated: 2026-07-06
+trading_days_elapsed: 10
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 12             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i
+  guardrail_aborts: 14             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ••••9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -38,6 +38,9 @@ financial:
   # Robinhood app directly. Do not treat -100% as a performance verdict on the
   # trading logic — no trades have ever been placed on this account
   # (trades.total: 0 throughout).
+  # note (updated 2026-07-06): Day 10 elapsed, still $0.00. +2 guardrail_aborts
+  # (7/6 morning + intraday). No new stand-aside candidates — both routines
+  # aborted at Step 1 before any ticker evaluation.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
@@ -64,12 +67,14 @@ decision_quality:
   # whole shares — this was doubly structural (no cash AND price > cap); even
   # with cash restored, META cannot be traded under current rules. Counted as
   # "missed" per the close-change rule for completeness; not a judgment error.
+  # 2026-07-06: no new candidates — both routines aborted at cash gate before
+  # any ticker was evaluated. stand_aside_count unchanged at 18.
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 744.80             # EOD 2026-07-02 (early close day; last trade ~3:59 PM ET)
-  spy_pct_change_since_start: +0.06
-  system_alpha_vs_spy_pct: -100.06   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 751.31             # EOD 2026-07-06
+  spy_pct_change_since_start: +0.93   # (751.31 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -100.93   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
