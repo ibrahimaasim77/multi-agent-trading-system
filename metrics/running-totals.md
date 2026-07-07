@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-06
-trading_days_elapsed: 10
+last_updated: 2026-07-07
+trading_days_elapsed: 11
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 14             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i
+  guardrail_aborts: 16             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm
   # note (updated 2026-07-02): account 912269602 (Agentic, ••••9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -41,6 +41,12 @@ financial:
   # note (updated 2026-07-06): Day 10 elapsed, still $0.00. +2 guardrail_aborts
   # (7/6 morning + intraday). No new stand-aside candidates — both routines
   # aborted at Step 1 before any ticker evaluation.
+  # note (updated 2026-07-07): Day 11 elapsed (Day 8 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/7 morning + post-mortem). Global semi rout today:
+  # SMH -3.84%, AMD -6.43% (Samsung quarterly miss + DeepSeek AI-chip narrative).
+  # Correct stand-aside even hypothetically — no CORE long setup premarket.
+  # META +2.55%, NVDA +0.71% bucked the rout. No new stand-aside candidates —
+  # cash gate aborted before any ticker evaluation. Stand-aside stats unchanged.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
@@ -69,12 +75,16 @@ decision_quality:
   # "missed" per the close-change rule for completeness; not a judgment error.
   # 2026-07-06: no new candidates — both routines aborted at cash gate before
   # any ticker was evaluated. stand_aside_count unchanged at 18.
+  # 2026-07-07: no new formal candidates — cash gate aborted before any ticker
+  # evaluation. META ended +2.55% (above "missed" threshold) but only showed
+  # +0.44% premarket and never cleared the 2% premarket trigger that initiates
+  # formal candidate creation. Not counted. Metrics unchanged at 18/7/11.
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 751.31             # EOD 2026-07-06
-  spy_pct_change_since_start: +0.93   # (751.31 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -100.93   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 747.69             # EOD 2026-07-07
+  spy_pct_change_since_start: +0.45   # (747.69 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -100.45   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
