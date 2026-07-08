@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-07
-trading_days_elapsed: 11
+last_updated: 2026-07-08
+trading_days_elapsed: 12
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 16             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm
+  guardrail_aborts: 18             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ••••9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -47,13 +47,21 @@ financial:
   # Correct stand-aside even hypothetically — no CORE long setup premarket.
   # META +2.55%, NVDA +0.71% bucked the rout. No new stand-aside candidates —
   # cash gate aborted before any ticker evaluation. Stand-aside stats unchanged.
+  # note (updated 2026-07-08): Day 12 elapsed (Day 9 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/8 morning hard-abort + intraday cash-gate block).
+  # Intraday agent ran full watchlist scan and identified AVGO as Tier 1
+  # candidate (Apple-Broadcom $30B+ multiyear partnership announced at open;
+  # AVGO closed +4.82% vs prior close $370.78 → $388.67). Trade doubly blocked:
+  # no cash AND AVGO price ($387+) > $100 per-trade cap. Counted as 1 new
+  # "missed" stand-aside candidate. Email escalation at Day 9 — direct user
+  # phone call to Robinhood Support required.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 38.89
-  stand_aside_count: 18
+  stand_aside_correctness_pct: 36.84
+  stand_aside_count: 19
   stand_aside_correct: 7
-  stand_aside_missed: 11
+  stand_aside_missed: 12
   # note (corrected 2026-06-24): the 2026-06-23 journal claimed zero stand-aside
   # records existed due to a Gmail search bug (search_threads excludes drafts by
   # default; both routines deliver via create_draft per ADR-005). list_drafts on
@@ -79,12 +87,17 @@ decision_quality:
   # evaluation. META ended +2.55% (above "missed" threshold) but only showed
   # +0.44% premarket and never cleared the 2% premarket trigger that initiates
   # formal candidate creation. Not counted. Metrics unchanged at 18/7/11.
+  # 2026-07-08: +1 candidate: AVGO (intraday). Apple-Broadcom $30B+ partnership
+  # announced at open; AVGO closed +4.82% vs prior close of $370.78 → $388.67.
+  # Scored "missed" (>+2% threshold). Doubly structural blocker: no cash AND
+  # AVGO price ($387+) > $100 per-trade cap. stand_aside_count: 19,
+  # stand_aside_missed: 12, stand_aside_correctness_pct: 7/19 = 36.84.
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 747.69             # EOD 2026-07-07
-  spy_pct_change_since_start: +0.45   # (747.69 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -100.45   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 745.34             # EOD 2026-07-08
+  spy_pct_change_since_start: +0.13   # (745.34 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -100.13   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
