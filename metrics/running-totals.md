@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-08
-trading_days_elapsed: 12
+last_updated: 2026-07-09
+trading_days_elapsed: 13
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 18             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i
+  guardrail_aborts: 20             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ••••9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -55,6 +55,15 @@ financial:
   # no cash AND AVGO price ($387+) > $100 per-trade cap. Counted as 1 new
   # "missed" stand-aside candidate. Email escalation at Day 9 — direct user
   # phone call to Robinhood Support required.
+  # note (updated 2026-07-09): Day 13 elapsed (Day 10 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/9 morning + intraday). Market risk-on: QQQ +1.65%,
+  # SPY +0.84%. AI chip rally (SK Hynix US debut). AMD +5.65% (DeepSeek bounce),
+  # AVGO +3.20% (Apple-Broadcom Day 2 continuation; cumulative 2-day +8.18%
+  # from 7/7 close of $370.78 → today $401.12), META +4.67%, NVDA -0.67%
+  # (negative divergence, first in 2 sessions). No formal stand-aside candidates
+  # evaluated — both routines aborted at cash gate before any ticker screening.
+  # Morning draft escalated to include Robinhood Support phone number
+  # (1-800-279-1969) in subject. Email escalation chain exhausted at Day 10.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
@@ -95,9 +104,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 745.34             # EOD 2026-07-08
-  spy_pct_change_since_start: +0.13   # (745.34 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -100.13   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 751.69             # EOD 2026-07-09
+  spy_pct_change_since_start: +0.98   # (751.69 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -100.98   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
