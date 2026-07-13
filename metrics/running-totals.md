@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-10
-trading_days_elapsed: 14
+last_updated: 2026-07-13
+trading_days_elapsed: 15
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 22             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i
+  guardrail_aborts: 24             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ••••9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -73,6 +73,18 @@ financial:
   # of $552.05; recovery largely complete). AVGO -0.28% (Apple-Broadcom catalyst
   # fully exhausted Day 3, exactly as predicted). No formal stand-aside candidates
   # evaluated — both routines aborted at cash gate. Metrics unchanged.
+  # note (updated 2026-07-13): Day 15 elapsed (Day 12 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/13 morning + intraday). Risk-off on Iran weekend
+  # escalation: US strikes on Iranian targets, Iran retaliated on Gulf facilities,
+  # container ship struck in Strait of Hormuz. SPY -0.78%, QQQ -1.90%, IWM -0.86%.
+  # Semis worsened intraday vs premarket: NVDA -3.54% (vs -1.57% pm), AMD -4.21%
+  # (vs -2.81% pm), AVGO -4.03% (vs -1.77% pm). META -1.86% (marginal outperformance
+  # vs QQQ; Meta Compute thesis intact). TMUS +0.44% (BofA upgrade absorbed;
+  # first live analyst-upgrade data point — no 2%+ same-day trigger on risk-off day).
+  # No formal stand-aside candidates — cash gate aborted before evaluation.
+  # META catalyst now confirmed: Meta Compute AI cloud + Iris chip (Broadcom/TSMC).
+  # AMD reverted below pre-DeepSeek close ($552.05) — memory sector contagion
+  # (SNDK/WDC/MU -5% premarket) remains the primary driver. Macro accuracy: 15/15.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
@@ -110,12 +122,14 @@ decision_quality:
   # Scored "missed" (>+2% threshold). Doubly structural blocker: no cash AND
   # AVGO price ($387+) > $100 per-trade cap. stand_aside_count: 19,
   # stand_aside_missed: 12, stand_aside_correctness_pct: 7/19 = 36.84.
+  # 2026-07-09 through 2026-07-13: no new formal candidates — cash gate aborted
+  # before checklist reached on all days. Metrics frozen at 7/19 = 36.84%.
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 754.86             # EOD 2026-07-10
-  spy_pct_change_since_start: +1.41   # (754.86 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -101.41   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 749.10             # EOD 2026-07-13
+  spy_pct_change_since_start: +0.64   # (749.10 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -100.64   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
