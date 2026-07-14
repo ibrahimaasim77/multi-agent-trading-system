@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-13
-trading_days_elapsed: 15
+last_updated: 2026-07-14
+trading_days_elapsed: 16
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 24             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i
+  guardrail_aborts: 26             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ••••9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -73,6 +73,18 @@ financial:
   # of $552.05; recovery largely complete). AVGO -0.28% (Apple-Broadcom catalyst
   # fully exhausted Day 3, exactly as predicted). No formal stand-aside candidates
   # evaluated — both routines aborted at cash gate. Metrics unchanged.
+  # note (updated 2026-07-14): Day 16 elapsed (Day 13 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/14 morning + intraday). Risk-on: CPI June 3.5% vs 3.8%
+  # expected (cooler) drove tech rally: QQQ +1.11%, NVDA +4.06% (AI-infra resumed),
+  # AMD +2.48% (faded from +4.72% premarket — catalyst-less gapper, validates freshness
+  # filter). AVGO +1.30% (exhausted catalyst, correct call). SPY +0.36%. Bank earnings
+  # day (JPM/WFC/C/GS): mixed but non-disruptive. XLE +0.37% at close (intraday Iran
+  # spike to +3.2% fully reversed — 2nd consecutive intraday fade on Iran oil premium).
+  # Morning routine formally evaluated AMD (failed freshness) and AVGO (exhausted catalyst)
+  # before cash-gate abort. +2 stand_aside_candidates: AMD "missed" (+2.48% > 2%
+  # threshold, though filter correctly applied), AVGO "correct" (+1.30%). 
+  # stand_aside: 8/21 = 38.10% (up from 36.84%). Macro accuracy: 16/16.
+  # CRITICAL: Day 13 of $0 balance. Call Robinhood Support 1-800-279-1969.
   # note (updated 2026-07-13): Day 15 elapsed (Day 12 of $0 streak), still $0.00.
   # +2 guardrail_aborts (7/13 morning + intraday). Risk-off on Iran weekend
   # escalation: US strikes on Iranian targets, Iran retaliated on Gulf facilities,
@@ -88,10 +100,10 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 36.84
-  stand_aside_count: 19
-  stand_aside_correct: 7
-  stand_aside_missed: 12
+  stand_aside_correctness_pct: 38.10
+  stand_aside_count: 21
+  stand_aside_correct: 8
+  stand_aside_missed: 13
   # note (corrected 2026-06-24): the 2026-06-23 journal claimed zero stand-aside
   # records existed due to a Gmail search bug (search_threads excludes drafts by
   # default; both routines deliver via create_draft per ADR-005). list_drafts on
@@ -124,12 +136,18 @@ decision_quality:
   # stand_aside_missed: 12, stand_aside_correctness_pct: 7/19 = 36.84.
   # 2026-07-09 through 2026-07-13: no new formal candidates — cash gate aborted
   # before checklist reached on all days. Metrics frozen at 7/19 = 36.84%.
+  # 2026-07-14: +2 candidates (morning routine ran eligibility checks before abort):
+  #   AMD (+4.72% premarket) — INELIGIBLE (no fresh 24h catalyst); closed +2.48% →
+  #     "missed" mechanically (>+2%), but catalyst-freshness screen correctly applied;
+  #     AMD faded 47% of premarket gain by EOD, consistent with no-catalyst profile.
+  #   AVGO (+2.66% premarket) — INELIGIBLE (Apple-Broadcom 6 days old, exhausted);
+  #     closed +1.30% → "correct" (within -1% to +2% flat band). stand_aside: 8/21 = 38.10%.
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 749.10             # EOD 2026-07-13
-  spy_pct_change_since_start: +0.64   # (749.10 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -100.64   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 751.88             # EOD 2026-07-14
+  spy_pct_change_since_start: +1.01   # (751.88 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -101.01   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
