@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-14
-trading_days_elapsed: 16
+last_updated: 2026-07-15
+trading_days_elapsed: 17
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 26             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i
+  guardrail_aborts: 28             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ••••9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -73,6 +73,18 @@ financial:
   # of $552.05; recovery largely complete). AVGO -0.28% (Apple-Broadcom catalyst
   # fully exhausted Day 3, exactly as predicted). No formal stand-aside candidates
   # evaluated — both routines aborted at cash gate. Metrics unchanged.
+  # note (updated 2026-07-13): Day 15 elapsed (Day 12 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/13 morning + intraday). Risk-off on Iran weekend
+  # escalation: US strikes on Iranian targets, Iran retaliated on Gulf facilities,
+  # container ship struck in Strait of Hormuz. SPY -0.78%, QQQ -1.90%, IWM -0.86%.
+  # Semis worsened intraday vs premarket: NVDA -3.54% (vs -1.57% pm), AMD -4.21%
+  # (vs -2.81% pm), AVBO -4.03% (vs -1.77% pm). META -1.86% (marginal outperformance
+  # vs QQQ; Meta Compute thesis intact). TMUS +0.44% (BofA upgrade absorbed;
+  # first live analyst-upgrade data point — no 2%+ same-day trigger on risk-off day).
+  # No formal stand-aside candidates — cash gate aborted before evaluation.
+  # META catalyst now confirmed: Meta Compute AI cloud + Iris chip (Broadcom/TSMC).
+  # AMD reverted below pre-DeepSeek close ($552.05) — memory sector contagion
+  # (SNDK/WDC/MU -5% premarket) remains the primary driver. Macro accuracy: 15/15.
   # note (updated 2026-07-14): Day 16 elapsed (Day 13 of $0 streak), still $0.00.
   # +2 guardrail_aborts (7/14 morning + intraday). Risk-on: CPI June 3.5% vs 3.8%
   # expected (cooler) drove tech rally: QQQ +1.11%, NVDA +4.06% (AI-infra resumed),
@@ -83,27 +95,31 @@ financial:
   # Morning routine formally evaluated AMD (failed freshness) and AVGO (exhausted catalyst)
   # before cash-gate abort. +2 stand_aside_candidates: AMD "missed" (+2.48% > 2%
   # threshold, though filter correctly applied), AVGO "correct" (+1.30%). 
-  # stand_aside: 8/21 = 38.10% (up from 36.84%). Macro accuracy: 16/16.
+  # stand_aside: 8/21 = 38.10%. Macro accuracy: 16/16.
   # CRITICAL: Day 13 of $0 balance. Call Robinhood Support 1-800-279-1969.
-  # note (updated 2026-07-13): Day 15 elapsed (Day 12 of $0 streak), still $0.00.
-  # +2 guardrail_aborts (7/13 morning + intraday). Risk-off on Iran weekend
-  # escalation: US strikes on Iranian targets, Iran retaliated on Gulf facilities,
-  # container ship struck in Strait of Hormuz. SPY -0.78%, QQQ -1.90%, IWM -0.86%.
-  # Semis worsened intraday vs premarket: NVDA -3.54% (vs -1.57% pm), AMD -4.21%
-  # (vs -2.81% pm), AVGO -4.03% (vs -1.77% pm). META -1.86% (marginal outperformance
-  # vs QQQ; Meta Compute thesis intact). TMUS +0.44% (BofA upgrade absorbed;
-  # first live analyst-upgrade data point — no 2%+ same-day trigger on risk-off day).
-  # No formal stand-aside candidates — cash gate aborted before evaluation.
-  # META catalyst now confirmed: Meta Compute AI cloud + Iris chip (Broadcom/TSMC).
-  # AMD reverted below pre-DeepSeek close ($552.05) — memory sector contagion
-  # (SNDK/WDC/MU -5% premarket) remains the primary driver. Macro accuracy: 15/15.
+  # note (updated 2026-07-15): Day 17 elapsed (Day 14 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/15 morning + intraday). Mixed session, NOT the clean
+  # tech-led risk-on day the premarket suggested: SPY +0.39%, QQQ -0.28% (tech
+  # underperformed despite ASML Q2 beat). SpaceX fell below its IPO price for the
+  # first time — weighed on growth/Nasdaq sentiment. NVDA +0.33% (muted ASML halo).
+  # AMD -3.43% (dramatic reversal from +1.42% premarket — 3rd consecutive session
+  # validating catalyst-freshness filter; would have been a significant loss).
+  # ASML itself +3.00% (best CORE watchlist performer, untradeable at $1,818 price).
+  # PYPL +17.21% from prior close (Stripe/Advent unconfirmed M&A), but CLOSED
+  # at $55.52 vs premarket $56.51 — giving back nearly $1/share from the premarket
+  # peak; >15% premarket abort correctly applied. +2 stand-aside candidates both
+  # scored "missed" mechanically (ASML +3.00%, PYPL +17.21%), but neither
+  # represents a genuine judgment failure (hard structural ineligibility in both
+  # cases). stand_aside: 8/23 = 34.78%. Macro accuracy: 16/17 (94%) — first
+  # QQQ directional miss (predicted tech-led but QQQ -0.28%). CRITICAL: Day 14
+  # of $0 balance. Call Robinhood Support 1-800-279-1969. 28 total guardrail aborts.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 38.10
-  stand_aside_count: 21
+  stand_aside_correctness_pct: 34.78
+  stand_aside_count: 23
   stand_aside_correct: 8
-  stand_aside_missed: 13
+  stand_aside_missed: 15
   # note (corrected 2026-06-24): the 2026-06-23 journal claimed zero stand-aside
   # records existed due to a Gmail search bug (search_threads excludes drafts by
   # default; both routines deliver via create_draft per ADR-005). list_drafts on
@@ -142,12 +158,19 @@ decision_quality:
   #     AMD faded 47% of premarket gain by EOD, consistent with no-catalyst profile.
   #   AVGO (+2.66% premarket) — INELIGIBLE (Apple-Broadcom 6 days old, exhausted);
   #     closed +1.30% → "correct" (within -1% to +2% flat band). stand_aside: 8/21 = 38.10%.
+  # 2026-07-15: +2 candidates (morning routine):
+  #   ASML (+2.39% premarket) — INELIGIBLE (price $1,818 >> $100 cap, mandatory hard abort);
+  #     closed +3.00% → "missed" mechanically, but not a judgment failure. Untradeable by rule.
+  #   PYPL (+19.3% premarket) — INELIGIBLE (>15% premarket hard abort + unconfirmed catalyst);
+  #     closed +17.21% from prior close but actually DECLINED from premarket ($56.51 → $55.52).
+  #     Scored "missed" for consistency; >15% abort correctly applied — any premarket entry
+  #     would have lost money by close. stand_aside: 8/23 = 34.78%.
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 751.88             # EOD 2026-07-14
-  spy_pct_change_since_start: +1.01   # (751.88 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -101.01   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 754.78             # EOD 2026-07-15
+  spy_pct_change_since_start: +1.40   # (754.78 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -101.40   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
