@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-15
-trading_days_elapsed: 17
+last_updated: 2026-07-16
+trading_days_elapsed: 18
 
 trades:
   total: 0
@@ -20,8 +20,8 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 28             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i
-  # note (updated 2026-07-02): account 912269602 (Agentic, ••••9602) has now
+  guardrail_aborts: 30             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i
+  # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
   # in the 2026-06-24 journal, with ZERO trades placed and ZERO orders ever
@@ -113,13 +113,30 @@ financial:
   # cases). stand_aside: 8/23 = 34.78%. Macro accuracy: 16/17 (94%) — first
   # QQQ directional miss (predicted tech-led but QQQ -0.28%). CRITICAL: Day 14
   # of $0 balance. Call Robinhood Support 1-800-279-1969. 28 total guardrail aborts.
+  # note (updated 2026-07-16): Day 18 elapsed (Day 15 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/16 morning + intraday). Risk-off for chips; rotation into
+  # software/healthcare. TSM "sell the news" (77% EPS beat → shares -4%+) combined
+  # with Kospi -7% chip contagion (echo of 7/13 pattern): SPY -0.53%, QQQ -1.63%.
+  # Software/SaaS rotated INTO favor: CRM +3.40%, WDAY +2.55%, CTSH +3.17%,
+  # INTU +5.38% (morning agent dismissed as "data unreliable" — EOD confirmed real).
+  # ABT (Abbott Labs) +10.70% on confirmed Q2 earnings beat + raised FY2026 guidance
+  # — best within-cap opportunity in system history (close $98.82 < $100 cap; named
+  # catalyst; all eligibility filters passed; ONLY blocked by $0 buying power).
+  # +5 stand-aside candidates: INTU (missed +5.38%), CRM (missed +3.40%),
+  # WDAY (missed +2.55%), CTSH (missed +3.17%), ABT (missed +10.70%).
+  # All 5 missed → stand_aside: 8/28 = 28.57% (down from 34.78%).
+  # Structural misses: INTU (cap 2.95×), CRM (cap 1.67× + stale catalyst),
+  # WDAY (cap 1.42× + no catalyst). CTSH (no catalyst; cap-eligible; possible
+  # scan-depth gap). ABT: 100% cash-blocked, not a judgment failure.
+  # CRITICAL: Day 15 of $0 balance. 30 total guardrail aborts.
+  # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 34.78
-  stand_aside_count: 23
+  stand_aside_correctness_pct: 28.57   # 8/28
+  stand_aside_count: 28
   stand_aside_correct: 8
-  stand_aside_missed: 15
+  stand_aside_missed: 20
   # note (corrected 2026-06-24): the 2026-06-23 journal claimed zero stand-aside
   # records existed due to a Gmail search bug (search_threads excludes drafts by
   # default; both routines deliver via create_draft per ADR-005). list_drafts on
@@ -165,12 +182,27 @@ decision_quality:
   #     closed +17.21% from prior close but actually DECLINED from premarket ($56.51 → $55.52).
   #     Scored "missed" for consistency; >15% abort correctly applied — any premarket entry
   #     would have lost money by close. stand_aside: 8/23 = 34.78%.
+  # 2026-07-16: +5 candidates (morning opportunistic scan + intraday identification):
+  #   INTU (+5.38% premarket, flagged as data-unreliable) — cap 2.95× ($295); EOD
+  #     confirmed +5.38% — morning "data unreliable" call was a methodology gap;
+  #     structurally untradeable regardless. Scored "missed."
+  #   CRM (+4.84% premarket) — cap 1.67× ($167) + catalyst 3 days old; closed
+  #     +3.40% → "missed." Both disqualifiers structural; not a judgment failure.
+  #   WDAY (+4.26% premarket) — cap 1.42× ($142) + no named catalyst; closed
+  #     +2.55% (faded 40% of premarket move) → "missed." No-catalyst fade pattern.
+  #   CTSH (+3.74% premarket) — no named catalyst; cap-ELIGIBLE ($43); closed
+  #     +3.17% (held 85% of premarket move) → "missed." Possible scan-depth gap:
+  #     a catalyst may have been missed; requires CTSH-specific follow-up search.
+  #   ABT (intraday, +10.70% close) — FULLY ACTIONABLE (Q2 beat + raised guidance,
+  #     same-day catalyst, close $98.82 within $100 cap, Tier 3 eligible). Blocked
+  #     ONLY by $0 buying power. System's best opportunity in 18 days. "missed."
+  #   stand_aside: 8/28 = 28.57%.
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 754.78             # EOD 2026-07-15
-  spy_pct_change_since_start: +1.40   # (754.78 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -101.40   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 750.83             # EOD 2026-07-16
+  spy_pct_change_since_start: +0.87   # (750.83 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -100.87   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
