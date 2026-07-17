@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-16
-trading_days_elapsed: 18
+last_updated: 2026-07-17
+trading_days_elapsed: 19
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 30             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i
+  guardrail_aborts: 32             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -130,12 +130,27 @@ financial:
   # scan-depth gap). ABT: 100% cash-blocked, not a judgment failure.
   # CRITICAL: Day 15 of $0 balance. 30 total guardrail aborts.
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602.
+  # note (updated 2026-07-17): Day 19 elapsed (Day 16 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/17 morning + intraday). Broad risk-off: SPY -1.00%,
+  # QQQ ~-1.81%. Three converging bearish themes: (1) NFLX -7.39% on Q3 revenue
+  # guidance miss (reported after 7/15 close; -11% intraday low); (2) TSM -2.82%
+  # (Day 2 sell-the-news on 77% EPS beat; 2-day post-earnings total: -5.5%);
+  # (3) UAL -2.87% on Q2 earnings miss. Energy outperformed (oil spike on Middle
+  # East tensions). ABT +1.86% close (Day 2 of 7/16 earnings continuation; peaked
+  # +4% intraday at ~$102.78 at 11am then faded 54% by close; any 11am entry
+  # would have been a loss of ~$2.11/share by EOD). +4 stand-aside candidates
+  # today, all correct: NFLX (avoided, -7.39%), TSM (avoided, -2.82%), UAL
+  # (avoided, -2.87%), ABT (correct, +1.86%). First perfect-score stand-aside day.
+  # stand_aside: 12/32 = 37.50%. 2-session alpha window confirmed for earnings
+  # catalysts: ABT Day 1 +10.70%, Day 2 peak +4% fading to +1.86% close.
+  # CRITICAL: Day 16 of $0 balance. 32 total guardrail aborts.
+  # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 28.57   # 8/28
-  stand_aside_count: 28
-  stand_aside_correct: 8
+  stand_aside_correctness_pct: 37.50   # 12/32
+  stand_aside_count: 32
+  stand_aside_correct: 12
   stand_aside_missed: 20
   # note (corrected 2026-06-24): the 2026-06-23 journal claimed zero stand-aside
   # records existed due to a Gmail search bug (search_threads excludes drafts by
@@ -197,12 +212,27 @@ decision_quality:
   #     same-day catalyst, close $98.82 within $100 cap, Tier 3 eligible). Blocked
   #     ONLY by $0 buying power. System's best opportunity in 18 days. "missed."
   #   stand_aside: 8/28 = 28.57%.
+  # 2026-07-17: +4 candidates (morning negative scan + intraday identification):
+  #   NFLX (-7.39% close) — Q3 revenue guidance miss; negative premarket; not a
+  #     long candidate at any point; "avoided" → correct. Any long entry on NFLX
+  #     today would have been a major loss.
+  #   TSM (-2.82% close) — Day 2 sell-the-news continuation from 7/16 (-4%);
+  #     not a long candidate; "avoided" → correct. 2-day post-earnings total: -5.5%.
+  #   UAL (-2.87% close) — Q2 earnings miss; negative result + $118 above cap;
+  #     not a long candidate; "avoided" → correct.
+  #   ABT (+1.86% close) — intraday, Day 2 earnings continuation; peaked +4% at
+  #     11am (~$102.78) then faded 54% to $100.67 close. Only blocker: $0 cash.
+  #     Entry at 11am scan price would have been a loss of ~$2.11/share by EOD.
+  #     "correct" (within -1% to +2% flat band). 2-session alpha window for
+  #     earnings confirmed: ABT Day 1 +10.70%, Day 2 faded to +1.86%.
+  #   All 4 today correct → stand_aside: 12/32 = 37.50%.
+  #   First perfect-score stand-aside day in system history (4/4 correct/avoided).
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 750.83             # EOD 2026-07-16
-  spy_pct_change_since_start: +0.87   # (750.83 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -100.87   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 743.18             # EOD 2026-07-17
+  spy_pct_change_since_start: -0.16   # (743.18 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -99.84   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
@@ -219,4 +249,4 @@ After computing today's numbers, the post-mortem agent:
 2. Updates each numeric field
 3. Commits the change with the daily journal
 
-No history is kept here — only running totals. For per-day detail, see `../trades/`.
+No history is kept here — only running totals. For per-day detail, see `../trades/`
