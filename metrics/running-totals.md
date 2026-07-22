@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-17
-trading_days_elapsed: 19
+last_updated: 2026-07-22
+trading_days_elapsed: 22
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 32             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i
+  guardrail_aborts: 36             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -145,6 +145,31 @@ financial:
   # catalysts: ABT Day 1 +10.70%, Day 2 peak +4% fading to +1.86% close.
   # CRITICAL: Day 16 of $0 balance. 32 total guardrail aborts.
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602.
+  # note (updated 2026-07-21): Day 21 elapsed (Day 17 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/21 morning + intraday). Chip-led risk-on day: MU +10.1%
+  # (Morgan Stanley memory price recovery note; named, same-day, confirmed), NVDA
+  # +~2% (Nebius stake). SMH +4.0%, QQQ +1.85%, SPY +0.83%, IWM +1.43%.
+  # MU at ~$93-95 was within the $100 per-trade cap and passed all eligibility
+  # filters — second consecutive within-cap, >10% catalyst win blocked only by $0
+  # buying power (ABT 7/16 +10.70%, MU 7/21 +10.1%). No formal stand-aside
+  # candidates evaluated — both routines aborted at cash gate. trading_days_elapsed
+  # corrected to 21 (+1 for the 7/20 Monday that was incorrectly stubbed as
+  # "Market closed - no activity (Sunday)" in the 7/20 post-mortem).
+  # 34 total guardrail aborts. Stand-aside stats unchanged: 12/32 = 37.50%.
+  # GOOGL/TSLA earnings scheduled for after-close 7/22 — key macro event.
+  # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602.
+  # note (updated 2026-07-22): Day 22 elapsed (Day 18 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/22 morning + intraday). Mild risk-off pre-GOOGL/TSLA
+  # earnings: SPY -0.13%, QQQ -0.52%, IWM -0.94%. GOOGL -1.46% during session
+  # (pre-earnings de-risking; reports after close tonight). Chip sector diverged
+  # positive: NVDA +2.30% (Nebius Day 2), AMD +1.42% (premarket -2.36% → full
+  # intraday reversal, no fresh catalyst identified). XLE +1.17% on Iran/oil.
+  # No formal stand-aside candidates — no S&P 500/Nasdaq 100 member cleared
+  # 2%+ premarket threshold with named catalyst within $100 cap. Both routines
+  # aborted at cash gate before eligibility screening. Stand-aside stats unchanged:
+  # 12/32 = 37.50%. GOOGL after-hours $340.26 at 4:37 PM ET (ambiguous — possible
+  # early post-print or pre-call after-hours drift). 36 total guardrail aborts.
+  # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
@@ -227,12 +252,20 @@ decision_quality:
   #     earnings confirmed: ABT Day 1 +10.70%, Day 2 faded to +1.86%.
   #   All 4 today correct → stand_aside: 12/32 = 37.50%.
   #   First perfect-score stand-aside day in system history (4/4 correct/avoided).
+  # 2026-07-21: no new formal stand-aside candidates — both routines aborted at cash
+  #   gate before any ticker eligibility screening. MU (+10.1%) and NVDA (+~2%) noted
+  #   informally but not formally scored (MU: cash gate fired before evaluation; NVDA:
+  #   >cap at ~$212). stand_aside: 12/32 = 37.50% (unchanged).
+  # 2026-07-22: no new formal stand-aside candidates — no S&P 500/Nasdaq 100 member
+  #   cleared 2%+ premarket threshold with a named catalyst within $100 cap on this
+  #   session. AMD (-2.36% premarket) and XLE (+0.97% premarket) noted but did not
+  #   meet formal evaluation criteria. stand_aside: 12/32 = 37.50% (unchanged).
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 743.18             # EOD 2026-07-17
-  spy_pct_change_since_start: -0.16   # (743.18 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -99.84   # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 747.33             # EOD 2026-07-22
+  spy_pct_change_since_start: 0.40    # (747.33 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -100.40  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
