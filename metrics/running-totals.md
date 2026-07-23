@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-22
-trading_days_elapsed: 22
+last_updated: 2026-07-23
+trading_days_elapsed: 23
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 36             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i
+  guardrail_aborts: 38             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -158,6 +158,20 @@ financial:
   # 34 total guardrail aborts. Stand-aside stats unchanged: 12/32 = 37.50%.
   # GOOGL/TSLA earnings scheduled for after-close 7/22 — key macro event.
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602.
+  # note (updated 2026-07-23): Day 23 elapsed (Day 19 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/23 morning + intraday). Sharp risk-off: GOOGL -7.15%
+  # (Q2 revenue beat but FY capex raised to $195-205B + negative quarterly FCF for
+  # first time since IPO → "show-me AI ROI" sell-off); TSLA -14.62% (EPS miss);
+  # SPY -1.23%, QQQ -1.89%. Chips followed lower on AI ROI uncertainty despite
+  # GOOGL capex being structurally bullish: NVDA -1.58%, AMD -2.27%. XLE +0.33%
+  # (only positive; Iran/oil theme session 11; WTI +3.8% premarket on Houthi
+  # tanker attacks). NOW (ServiceNow) was formal stand-aside candidate: Q2 beat+raise
+  # (+4.76% premarket) but structural blocker (share price ~$100.25 > $75 tier cap
+  # = 0 whole shares). NOW closed -3.68% ($95.46 → $91.95) — "avoided" (bullet dodged;
+  # risk-off overwhelmed the earnings catalyst). +1 stand_aside candidate (avoided):
+  # stand_aside: 13/33 = 39.39%. 38 total guardrail aborts.
+  # SPY now -0.82% since system start (744.37 → 738.24).
+  # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 19.
   # note (updated 2026-07-22): Day 22 elapsed (Day 18 of $0 streak), still $0.00.
   # +2 guardrail_aborts (7/22 morning + intraday). Mild risk-off pre-GOOGL/TSLA
   # earnings: SPY -0.13%, QQQ -0.52%, IWM -0.94%. GOOGL -1.46% during session
@@ -173,9 +187,9 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 37.50   # 12/32
-  stand_aside_count: 32
-  stand_aside_correct: 12
+  stand_aside_correctness_pct: 39.39   # 13/33
+  stand_aside_count: 33
+  stand_aside_correct: 13
   stand_aside_missed: 20
   # note (corrected 2026-06-24): the 2026-06-23 journal claimed zero stand-aside
   # records existed due to a Gmail search bug (search_threads excludes drafts by
@@ -260,12 +274,22 @@ decision_quality:
   #   cleared 2%+ premarket threshold with a named catalyst within $100 cap on this
   #   session. AMD (-2.36% premarket) and XLE (+0.97% premarket) noted but did not
   #   meet formal evaluation criteria. stand_aside: 12/32 = 37.50% (unchanged).
+  # 2026-07-23: +1 candidate (morning opportunistic scan after cash-gate abort):
+  #   NOW (ServiceNow, +4.76% premarket): EVALUATED — Q2 beat+raise (revenue +24%
+  #   YoY, op margin 29.5% above guidance, FY guide raised). Named catalyst, last 24h,
+  #   all eligibility filters passed EXCEPT trade size math (~$100.25 share price >
+  #   $75 single-name tier cap = 0 whole shares for premarket limit order). Primary
+  #   block: $0 cash. NOW closed -3.68% ($95.46 → $91.95) → "avoided" (risk-off
+  #   tape overwhelmed strong earnings; bullet dodged). stand_aside: 13/33 = 39.39%.
+  #   XLE (+1.72% premarket on WTI +3.8%/Houthi attacks): noted, NOT a formal
+  #   candidate (below 2% premarket threshold). Closed +0.33% — threshold rule
+  #   protective (buying at $60.22 premarket vs $59.40 close = -0.87% loss).
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 747.33             # EOD 2026-07-22
-  spy_pct_change_since_start: 0.40    # (747.33 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -100.40  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 738.24             # EOD 2026-07-23
+  spy_pct_change_since_start: -0.82   # (738.24 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -99.18  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
