@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-23
-trading_days_elapsed: 23
+last_updated: 2026-07-24
+trading_days_elapsed: 24
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 38             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i
+  guardrail_aborts: 40             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -167,8 +167,8 @@ financial:
   # (only positive; Iran/oil theme session 11; WTI +3.8% premarket on Houthi
   # tanker attacks). NOW (ServiceNow) was formal stand-aside candidate: Q2 beat+raise
   # (+4.76% premarket) but structural blocker (share price ~$100.25 > $75 tier cap
-  # = 0 whole shares). NOW closed -3.68% ($95.46 → $91.95) — "avoided" (bullet dodged;
-  # risk-off overwhelmed the earnings catalyst). +1 stand_aside candidate (avoided):
+  # = 0 whole shares). NOW closed -3.68% ($95.46 → $91.95) — "avoided" (risk-off
+  # tape overwhelmed the earnings catalyst). +1 stand_aside candidate (avoided):
   # stand_aside: 13/33 = 39.39%. 38 total guardrail aborts.
   # SPY now -0.82% since system start (744.37 → 738.24).
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 19.
@@ -184,6 +184,23 @@ financial:
   # 12/32 = 37.50%. GOOGL after-hours $340.26 at 4:37 PM ET (ambiguous — possible
   # early post-print or pre-call after-hours drift). 36 total guardrail aborts.
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602.
+  # note (updated 2026-07-24): Day 24 elapsed (Day 20 of $0 streak), still $0.00.
+  # +2 guardrail_aborts estimated (7/24 morning + intraday — no Gmail Stand Aside
+  # drafts found for today's routines; aborts presumed per established 20-day pattern).
+  # Bifurcated tape: SPY +0.09% ($738.18 → $738.85; blue chips stabilized; Dow +0.5%),
+  # QQQ -1.12% ($691.96 → $684.22; Nasdaq 100 extended decline, Day 2 of GOOGL
+  # AI-capex sell-off; now -3.01% in 2 sessions from pre-GOOGL close of $705.35).
+  # IWM -0.31% ($292.09 → $291.19). XLE +0.38% ($59.38 → $59.605) — positive
+  # despite headline oil price plunge on Friday; possible geopolitical premium
+  # embedding or value-rotation bid (first documented XLE-positive/oil-down session).
+  # No formal stand-aside candidates — cash gate presumed to have fired before
+  # any ticker evaluation. No Gmail drafts confirming routine runs found (anomalous
+  # relative to 7/21–7/23 pattern; may indicate silent abort or non-standard subjects).
+  # Stand-aside stats unchanged: 13/33 = 39.39%. 40 total guardrail aborts.
+  # SPY -0.74% since system start (744.37 → 738.85). QQQ -3.01% in 2 sessions
+  # post-GOOGL earnings — most sustained tech drawdown in monitoring window.
+  # META earnings next pivotal binary event (expected late July).
+  # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 20.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
@@ -284,12 +301,17 @@ decision_quality:
   #   XLE (+1.72% premarket on WTI +3.8%/Houthi attacks): noted, NOT a formal
   #   candidate (below 2% premarket threshold). Closed +0.33% — threshold rule
   #   protective (buying at $60.22 premarket vs $59.40 close = -0.87% loss).
+  # 2026-07-24: no new formal stand-aside candidates — no Gmail drafts found for
+  #   today's routines (anomalous vs prior days). Both routines presumed to have
+  #   aborted at cash gate before eligibility screening per 20-day pattern. Market:
+  #   SPY +0.09%, QQQ -1.12%, IWM -0.31%, XLE +0.38%. No documented premarket
+  #   movers above 2% with named catalyst. stand_aside: 13/33 = 39.39% (unchanged).
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 738.24             # EOD 2026-07-23
-  spy_pct_change_since_start: -0.82   # (738.24 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -99.18  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 738.85             # EOD 2026-07-24
+  spy_pct_change_since_start: -0.74   # (738.85 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -99.26  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
