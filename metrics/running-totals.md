@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-24
-trading_days_elapsed: 24
+last_updated: 2026-07-27
+trading_days_elapsed: 25
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 40             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i
+  guardrail_aborts: 42             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -168,7 +168,7 @@ financial:
   # tanker attacks). NOW (ServiceNow) was formal stand-aside candidate: Q2 beat+raise
   # (+4.76% premarket) but structural blocker (share price ~$100.25 > $75 tier cap
   # = 0 whole shares). NOW closed -3.68% ($95.46 → $91.95) — "avoided" (risk-off
-  # tape overwhelmed the earnings catalyst). +1 stand_aside candidate (avoided):
+  # tape overwhelmed strong earnings; bullet dodged). +1 stand_aside candidate (avoided):
   # stand_aside: 13/33 = 39.39%. 38 total guardrail aborts.
   # SPY now -0.82% since system start (744.37 → 738.24).
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 19.
@@ -201,12 +201,30 @@ financial:
   # post-GOOGL earnings — most sustained tech drawdown in monitoring window.
   # META earnings next pivotal binary event (expected late July).
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 20.
+  # note (updated 2026-07-27): Day 25 elapsed (Day 21 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/27 morning + intraday). Split tape: risk-on open from
+  # Iran ceasefire (QQQ +1.35% premarket) BUT NVDA -4.99% ($206.84 → $196.52)
+  # dragged QQQ to close -0.32% — second macro directional miss in system history
+  # (first: 7/15). SPY essentially flat +0.01% ($738.93 → $739.02). AMD -5.15%
+  # ($521.95 → $495.07) from +2.22% premarket — -7.21% loss from premarket entry
+  # price; strongest AMD catalyst-freshness rule validation in system history.
+  # AVGO +0.37% ($381.92 → $383.35); META -0.21% ($595.19 → $593.93) pre-earnings;
+  # XLE -2.08% ($59.62 → $58.38) — Iran ceasefire deflated 10-session energy premium.
+  # PYPL -0.29% ($56.15 → $55.99) — deal unconfirmed (Day 12), removed from watchlist.
+  # +2 stand_aside candidates formally scored:
+  #   AMD (+2.22% premarket, close -5.15%) → "avoided" → +1 correct
+  #   AVGO (+2.24% premarket, close +0.37%) → "correct" → +1 correct
+  # stand_aside: 15/35 = 42.86% (from 13/33 = 39.39%).
+  # Binary event week: FOMC + META Q2 earnings both July 29.
+  # NVDA drop reason unconfirmed — investigate Tuesday morning.
+  # 42 total guardrail aborts. Macro accuracy: 20/22 = 91%.
+  # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 21.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 39.39   # 13/33
-  stand_aside_count: 33
-  stand_aside_correct: 13
+  stand_aside_correctness_pct: 42.86   # 15/35
+  stand_aside_count: 35
+  stand_aside_correct: 15
   stand_aside_missed: 20
   # note (corrected 2026-06-24): the 2026-06-23 journal claimed zero stand-aside
   # records existed due to a Gmail search bug (search_threads excludes drafts by
@@ -306,12 +324,22 @@ decision_quality:
   #   aborted at cash gate before eligibility screening per 20-day pattern. Market:
   #   SPY +0.09%, QQQ -1.12%, IWM -0.31%, XLE +0.38%. No documented premarket
   #   movers above 2% with named catalyst. stand_aside: 13/33 = 39.39% (unchanged).
+  # 2026-07-27: +2 candidates (morning opportunistic scan):
+  #   AMD (+2.22% premarket, $533.54 vs $521.95 prior close): EVALUATED — cleared 2%
+  #     threshold BUT (1) AMD catalyst-freshness rule: no fresh named catalyst last 24h;
+  #     (2) $522 share price >> $100 cap. Both structural blockers applied. Close: $495.07
+  #     (-5.15% vs prior close, -7.21% from premarket entry price) → "avoided."
+  #     Strongest single-session AMD rule validation in system history.
+  #   AVGO (+2.24% premarket, $390.44 vs $381.92 prior close): EVALUATED — cleared 2%
+  #     threshold BUT $382 >> $100 cap (3.82×). Cap blocker applied. Close: $383.35
+  #     (+0.37% vs prior close) → "correct."
+  #   stand_aside: 15/35 = 42.86%.
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 738.85             # EOD 2026-07-24
-  spy_pct_change_since_start: -0.74   # (738.85 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -99.26  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 739.02             # EOD 2026-07-27
+  spy_pct_change_since_start: -0.72   # (739.02 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -99.28  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
