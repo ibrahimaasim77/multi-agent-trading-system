@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-27
-trading_days_elapsed: 25
+last_updated: 2026-07-28
+trading_days_elapsed: 26
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 42             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i
+  guardrail_aborts: 44             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -201,6 +201,26 @@ financial:
   # post-GOOGL earnings — most sustained tech drawdown in monitoring window.
   # META earnings next pivotal binary event (expected late July).
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 20.
+  # note (updated 2026-07-28): Day 26 elapsed (Day 22 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/28 morning + intraday). Mixed tape: SPY +0.23%
+  # ($739.09 → $740.76; Dow-led strength), QQQ −0.97% ($682.12 → $675.50;
+  # chip sell-off on China AI competition fears; KOSPI triggered circuit breakers
+  # overnight; Nikkei −3.95%). AMD −8.10% ($494.95 → $454.85) — strongest single-
+  # session AMD decline in system history; AMD rule validated for 10th+ consecutive
+  # session; from any premarket entry (~$472.25 at −4.60%), additional −3.67% loss
+  # by close. NVDA +0.22% ($196.51 → $196.95; relatively resilient vs chip sector).
+  # META −0.04% ($593.87 → $593.66; pre-earnings flat). IWM +0.17% ($292.91 → $293.40).
+  # PYPL +4.01% ($56.07 → $58.32) — Q2 2026 earnings beat+raise (EPS $1.38 vs $1.28
+  # est = +8% beat; rev $8.68B vs $8.47B est = +2.5% beat; FY guidance raised to
+  # $5.38 midpoint). PYPL closed +4.01% vs QQQ −0.97% = +5.0 ppt alpha spread.
+  # Blocked exclusively by $0 cash (Day 22 anomaly). Third consecutive >3% within-
+  # cap win blocked by $0: ABT 7/16 +10.70%, MU 7/21 +10.1%, PYPL 7/28 +4.01%.
+  # +1 stand_aside candidate (PYPL, "missed"): stand_aside: 15/36 = 41.67%.
+  # Portfolio API also returned 500 errors in morning (4 attempts). Macro call
+  # correct: tech risk-off, broad market neutral. Macro accuracy: 21/23 = 91.3%.
+  # FOMC rate decision July 29 + META Q2 earnings July 29 after close — highest
+  # binary event concentration since week of GOOGL 7/22.
+  # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 22.
   # note (updated 2026-07-27): Day 25 elapsed (Day 21 of $0 streak), still $0.00.
   # +2 guardrail_aborts (7/27 morning + intraday). Split tape: risk-on open from
   # Iran ceasefire (QQQ +1.35% premarket) BUT NVDA -4.99% ($206.84 → $196.52)
@@ -222,10 +242,10 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 42.86   # 15/35
-  stand_aside_count: 35
+  stand_aside_correctness_pct: 41.67   # 15/36
+  stand_aside_count: 36
   stand_aside_correct: 15
-  stand_aside_missed: 20
+  stand_aside_missed: 21
   # note (corrected 2026-06-24): the 2026-06-23 journal claimed zero stand-aside
   # records existed due to a Gmail search bug (search_threads excludes drafts by
   # default; both routines deliver via create_draft per ADR-005). list_drafts on
@@ -329,17 +349,28 @@ decision_quality:
   #     threshold BUT (1) AMD catalyst-freshness rule: no fresh named catalyst last 24h;
   #     (2) $522 share price >> $100 cap. Both structural blockers applied. Close: $495.07
   #     (-5.15% vs prior close, -7.21% from premarket entry price) → "avoided."
-  #     Strongest single-session AMD rule validation in system history.
+  #     Strongest single-session AMD rule validation in system history (at the time).
   #   AVGO (+2.24% premarket, $390.44 vs $381.92 prior close): EVALUATED — cleared 2%
   #     threshold BUT $382 >> $100 cap (3.82×). Cap blocker applied. Close: $383.35
   #     (+0.37% vs prior close) → "correct."
   #   stand_aside: 15/35 = 42.86%.
+  # 2026-07-28: +1 candidate (morning routine):
+  #   PYPL (+2.25% premarket, $57.33 vs $56.07 prior close): EVALUATED — all eligibility
+  #     filters passed (Nasdaq 100, Mcap >$5B, price >$15, vol >3M, up >2%, named catalyst,
+  #     below 15% abort, VIX <28). Catalyst: Q2 2026 beat+raise (EPS $1.38 vs $1.28 =
+  #     +8% beat; rev $8.68B vs $8.47B = +2.5% beat; FY guidance raised $5.38 midpoint).
+  #     PRIMARY BLOCK: $0 cash (Day 22 anomaly; portfolio API also returning 500 errors).
+  #     SECONDARY CONCERN: FOMC + META earnings both July 29 = double binary event risk.
+  #     Close: $58.32 (+4.01% vs $56.07) → "missed" (>+2% threshold).
+  #     QQQ closed −0.97% on same day — PYPL disconnected from chip-sell tape.
+  #     Third consecutive >3% within-cap win blocked only by $0 cash anomaly.
+  #     stand_aside: 15/36 = 41.67%.
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 739.02             # EOD 2026-07-27
-  spy_pct_change_since_start: -0.72   # (739.02 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -99.28  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 740.76             # EOD 2026-07-28
+  spy_pct_change_since_start: -0.49   # (740.76 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -99.51  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
