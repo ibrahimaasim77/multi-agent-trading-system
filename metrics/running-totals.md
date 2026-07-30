@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-29
-trading_days_elapsed: 27
+last_updated: 2026-07-30
+trading_days_elapsed: 28
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 46             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i
+  guardrail_aborts: 48             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -239,6 +239,31 @@ financial:
   # NVDA drop reason unconfirmed — investigate Tuesday morning.
   # 42 total guardrail aborts. Macro accuracy: 20/22 = 91%.
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 21.
+  # note (updated 2026-07-30): Day 28 elapsed (Day 24 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (7/30 morning + intraday). Strong risk-on rebound:
+  # MSFT +15% (Azure Q2 fastest growth in 4 years; enterprise AI WIN), QQQ +3.31%
+  # ($661.73→$683.63; fastest single-session rebound in weeks), SPY +1.68%
+  # ($729.46→$741.73). SPY now −0.35% since system start (recovered from −1.99%
+  # yesterday). LRCX +21% (Lam Research; Q2 beat+raise; WFE outlook raised to
+  # low-$150B; Nasdaq 100; Tier-3 intraday candidate identified by intraday routine).
+  # Blocked solely by $0 cash — LARGEST SINGLE-NAME HYPOTHETICAL MISS IN SYSTEM
+  # HISTORY. Fourth consecutive >3% within-catalog hypothetical win blocked:
+  # ABT +10.70% (7/16), MU +10.1% (7/21), PYPL +4.01% (7/28), LRCX +21% (7/30).
+  # FTNT +5% (Fortinet; Nasdaq 100; Q2 beat+raise) also noted as potential candidate.
+  # MKTX +30% (ICE acquisition; real catalyst; but above $100 cap at ~$125+).
+  # Morning scan ran full eligibility check: MSFT ($425 >> cap), AMD (+5.73% pm,
+  # AMD rule = earnings anticipation ≠ named catalyst; also $454 >> cap), NVDA
+  # ($194 >> cap), AVGO ($380 >> cap) — no cap-eligible candidate found.
+  # ARM -8.11% and QCOM -4.42% confirmed as non-candidates (smartphone weakness).
+  # META -10% on Q2 miss (EPS $6.18 vs $7.22 est; FCF collapsed 91%); SNAP/PINS/TTD
+  # blacklisted. AMD rule: 12th consecutive validation (earnings anticipation fired).
+  # Macro call: risk-on rebound (MSFT Azure beat) — directionally correct; magnitude
+  # underestimate (premarket QQQ +1.60% vs close +3.31%) not counted as a miss.
+  # Macro accuracy: 23/25 = 92.0% (up from 22/24 = 91.7%).
+  # No formal stand-aside candidates. stand_aside: 15/36 = 41.67% (unchanged).
+  # AMZN, AAPL, Coinbase report after 7/30 close — binary event stack continues.
+  # AMD earnings after 7/30 close — ARM/QCOM smartphone weakness = downside risk.
+  # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 24.
   # note (updated 2026-07-29): Day 27 elapsed (Day 23 of $0 streak), still $0.00.
   # +2 guardrail_aborts (7/29 morning + intraday). Major risk-off: FOMC hawkish
   # hold (3.5–3.75% unchanged but hawkish statement language) → Treasury yields
@@ -395,9 +420,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 729.54             # EOD 2026-07-29
-  spy_pct_change_since_start: -1.99   # (729.54 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -98.01  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 741.73             # EOD 2026-07-30
+  spy_pct_change_since_start: -0.35   # (741.73 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -99.65  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
