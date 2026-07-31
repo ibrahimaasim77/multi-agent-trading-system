@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-30
-trading_days_elapsed: 28
+last_updated: 2026-07-31
+trading_days_elapsed: 29
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 48             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i
+  guardrail_aborts: 50             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -285,6 +285,28 @@ financial:
   # not retrieved; check Thursday morning for cap-eligible candidates.
   # 46 total guardrail aborts. SPY −1.99% since system start.
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 23.
+  # note (updated 2026-07-31): Day 29 elapsed (Day 25 of $0 streak), still $0.00.
+  # +2 guardrail_aborts estimated (7/31 morning + intraday — no Gmail Stand Aside
+  # drafts found; second missing-drafts occurrence after 7/24; aborts presumed per
+  # 25-day established pattern). Weekly options expiry Friday + AMZN/AAPL/AMD binary
+  # event results overnight. Split catalyst tape: AMZN +15.28% ($235.50→$271.57;
+  # AWS massive beat; enterprise AI cloud thesis doubly confirmed after MSFT Azure 7/30)
+  # vs AAPL -7.32% ($333.43→$309.03; iPhone/services miss; consumer tech headwind).
+  # AMD -1.89% ($485.39→$476.24) on own Q2 earnings — smartphone/PC weakness confirmed;
+  # ARM/QCOM narrative validated. FTNT +5.00% ($154.25→$161.96) — Day 2 continuation
+  # but 7/30 journal erroneously estimated FTNT at "$80–100" range; actual prior close
+  # $154.25 = 1.54× cap; not cap-eligible. NVDA +2.96% ($195.04→$200.81; AMZN halo).
+  # SPY +0.69% ($741.69→$746.81); QQQ +0.64% ($683.55→$687.92). Broad market positive
+  # month-end despite AAPL drag. SPY now +0.33% since system start (744.37→746.81) —
+  # BENCHMARK CROSSES POSITIVE FOR FIRST TIME IN SYSTEM HISTORY.
+  # No cap-eligible candidates: AMZN (2.35–2.71× cap), AAPL (negative + 3.09× cap),
+  # FTNT (1.54×cap), AMD (negative + 4.85×cap), NVDA (1.95×cap). No formal stand-aside
+  # candidates. stand_aside: 15/36 = 41.67% (unchanged). No formal macro accuracy
+  # score today (no Gmail draft confirming morning routine call).
+  # 50 total guardrail aborts. SPY +0.33% since system start.
+  # July 2026 summary: 23 trading days, 0 trades, ~42 guardrail aborts in July.
+  # Best within-cap misses in July: PYPL +4.01% (7/28), LRCX +21% (7/30).
+  # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 25.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
@@ -364,7 +386,7 @@ decision_quality:
   #     11am (~$102.78) then faded 54% to $100.67 close. Only blocker: $0 cash.
   #     Entry at 11am scan price would have been a loss of ~$2.11/share by EOD.
   #     "correct" (within -1% to +2% flat band). 2-session alpha window for
-  #     earnings confirmed: ABT Day 1 +10.70%, Day 2 faded to +1.86%.
+  #     earnings confirmed: ABT Day 1 +10.70%, Day 2 faded to +1.86% close.
   #   All 4 today correct → stand_aside: 12/32 = 37.50%.
   #   First perfect-score stand-aside day in system history (4/4 correct/avoided).
   # 2026-07-21: no new formal stand-aside candidates — both routines aborted at cash
@@ -420,9 +442,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 741.73             # EOD 2026-07-30
-  spy_pct_change_since_start: -0.35   # (741.73 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -99.65  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 746.81             # EOD 2026-07-31
+  spy_pct_change_since_start: +0.33   # (746.81 - 744.37) / 744.37 * 100; benchmark crosses positive
+  system_alpha_vs_spy_pct: -100.33  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
