@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-07-31
-trading_days_elapsed: 29
+last_updated: 2026-08-03
+trading_days_elapsed: 30
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 50             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i
+  guardrail_aborts: 52             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -285,6 +285,28 @@ financial:
   # not retrieved; check Thursday morning for cap-eligible candidates.
   # 46 total guardrail aborts. SPY −1.99% since system start.
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 23.
+  # note (updated 2026-08-03): Day 30 elapsed (Day 26 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (8/3 morning + intraday). Both routines ran and drafted.
+  # Strong risk-on: SPY +1.42% ($747.03→$757.63), QQQ +1.75% ($687.99→$700.06).
+  # QQQ crossed $700 for first time in system history. Iran geopolitical
+  # de-escalation (Trump called off Iran attack) + Big Tech continuation:
+  # MSFT +4.94% (Day 3 Azure earnings extension, now +24.4% in 4 sessions);
+  # AMZN +4.58% (Day 2 AWS beat); META +6.08% (cloud computing initiative
+  # rehabilitation from 7/29 miss); GOOGL +4.89% (pre-earnings rally, reports
+  # 8/5 AH); NVDA +2.94% (AI halo, reversed from -1.27% premarket). AAPL -1.83%
+  # (Day 3 post-earnings decline; blacklist continues). AMD +1.75% (unusual:
+  # AMD rule fired on -2.44% premarket / no catalyst, but AMD recovered to
+  # positive close on broad risk-on — first documented rule-fire day where AMD
+  # closed positive). PLTR beats Q2 after close: +12.4% AH to $138.30 from
+  # $123.06; above cap (1.23×) — untradeable. ATKR +28.12% on Prysmian $3.8B
+  # M&A acquisition; >15% abort rule correctly applied; from premarket entry
+  # only +0.13% to close (classic merger arb compression). Both stand-aside
+  # candidates scored "missed" (structural eliminations, not judgment failures).
+  # +2 stand_aside candidates: ATKR "missed" (+28.12%), PLTR "missed" (+2.30%).
+  # stand_aside: 15/38 = 39.47% (from 41.67%). Macro call (risk-on from Iran
+  # de-escalation) confirmed correct → macro accuracy 24/26 = 92.3%.
+  # SPY benchmark: $757.63 — now +1.78% since system start (was +0.33% on 7/31).
+  # 52 total guardrail aborts. CALL ROBINHOOD SUPPORT: 1-800-279-1969. Day 26.
   # note (updated 2026-07-31): Day 29 elapsed (Day 25 of $0 streak), still $0.00.
   # +2 guardrail_aborts estimated (7/31 morning + intraday — no Gmail Stand Aside
   # drafts found; second missing-drafts occurrence after 7/24; aborts presumed per
@@ -310,10 +332,10 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 41.67   # 15/36
-  stand_aside_count: 36
+  stand_aside_correctness_pct: 39.47   # 15/38
+  stand_aside_count: 38
   stand_aside_correct: 15
-  stand_aside_missed: 21
+  stand_aside_missed: 23
   # note (corrected 2026-06-24): the 2026-06-23 journal claimed zero stand-aside
   # records existed due to a Gmail search bug (search_threads excludes drafts by
   # default; both routines deliver via create_draft per ADR-005). list_drafts on
@@ -439,12 +461,29 @@ decision_quality:
   #   rule fired for 11th+ consecutive session), NVDA (−0.22% pm → −3.52% close),
   #   AVGO (−0.36% pm → −2.78% close), META (+0.19% pm → −1.08% close, MISS after-hours
   #   −7.07% from regular session close). Stand-aside stats unchanged: 15/36 = 41.67%.
+  # 2026-08-03: +2 candidates (morning opportunistic scan before cash-gate abort):
+  #   ATKR (+27.96% premarket, $93.36 vs $72.96 prior close): EVALUATED — confirmed
+  #     M&A catalyst (Prysmian $3.8B all-cash acquisition at $95/share). Named catalyst,
+  #     last 24h. Eliminated by: (1) >15% premarket abort rule; (2) mcap ~$2.9B < $5B
+  #     minimum. Close: $93.48 (+28.12% vs prior close). From premarket entry: only
+  #     +0.13% gain — classic merger arb compression. The >15% abort rule saved a
+  #     near-zero-return trade. Scored "missed" per mechanical rule (>+2% from prior
+  #     close), but the decision was structurally correct. stand_aside_missed: +1.
+  #   PLTR (+2.93% premarket, $126.66 vs $123.06 prior close): EVALUATED — earnings
+  #     anticipation only (Q2 report scheduled after close today). Eliminated by:
+  #     (1) price $123.06 >> $100 cap (1.23×); (2) earnings anticipation ≠ named
+  #     catalyst (AMD-analog rule). Regular close: $125.89 (+2.30% vs prior close).
+  #     After-hours: $138.30 (+12.4%) on actual Q2 beat — the real catalyst materialized
+  #     post-session. Scored "missed" (>+2% from prior close). PLTR remains above cap
+  #     tomorrow (~$135–140 expected open). stand_aside_missed: +1.
+  #   stand_aside: 15/38 = 39.47% (from 15/36 = 41.67%; two structural misses decrease
+  #   the rate despite both decisions being analytically correct).
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 746.81             # EOD 2026-07-31
-  spy_pct_change_since_start: +0.33   # (746.81 - 744.37) / 744.37 * 100; benchmark crosses positive
-  system_alpha_vs_spy_pct: -100.33  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 757.63             # EOD 2026-08-03
+  spy_pct_change_since_start: +1.78   # (757.63 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -101.78  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
