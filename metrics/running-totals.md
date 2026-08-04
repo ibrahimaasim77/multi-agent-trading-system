@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-08-03
-trading_days_elapsed: 30
+last_updated: 2026-08-04
+trading_days_elapsed: 31
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 52             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i
+  guardrail_aborts: 54             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -285,6 +285,24 @@ financial:
   # not retrieved; check Thursday morning for cap-eligible candidates.
   # 46 total guardrail aborts. SPY −1.99% since system start.
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 23.
+  # note (updated 2026-08-04): Day 31 elapsed (Day 27 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (8/4 morning + intraday). Strong risk-on: SPY +1.80%
+  # ($757.67→$771.28), QQQ +3.37% ($700.07→$723.68). US-Iran Strait of Hormuz
+  # deal optimism (oil drop) + PLTR Q2 earnings Day 2 continuation (+29.4%).
+  # PLTR formal stand-aside candidate: >15% abort + above cap (1.63×). Scored "missed"
+  # mechanically (premarket-entry-to-close ~+10.4%; rule correct in expectation).
+  # AMRC formal stand-aside candidate: Q2 beat+raise; >15% abort + not Nasdaq 100 +
+  # mcap <$5B. Scored "missed" (close $27.96 vs prior close $22.73 = +22.97%); but
+  # from premarket entry ~$28.87 = -3.2% loss — >15% abort rule validated perfectly.
+  # AMD rule strongest-ever validation: AMD +7.25% regular session on earnings
+  # anticipation, then -8.5% AH on actual Q2 2026 miss. AMD is now ~-1.8% vs prior
+  # close in AH trading. Rule prevented what would have been a losing position.
+  # GOOGL error corrected by 8/4 morning routine: 8/3 journal stated "GOOGL reports
+  # Q2 2026 on 8/5" — INCORRECT. GOOGL reported Q2 on 7/22. Corrected in 8/4 morning draft.
+  # +2 stand_aside candidates (PLTR "missed", AMRC "missed"):
+  # stand_aside: 15/40 = 37.50% (from 15/38 = 39.47%).
+  # 54 total guardrail aborts. SPY +3.62% since system start (was +1.78% on 8/3).
+  # CALL ROBINHOOD SUPPORT: 1-800-279-1969. Ref account ●●●●9602. Day 27.
   # note (updated 2026-08-03): Day 30 elapsed (Day 26 of $0 streak), still $0.00.
   # +2 guardrail_aborts (8/3 morning + intraday). Both routines ran and drafted.
   # Strong risk-on: SPY +1.42% ($747.03→$757.63), QQQ +1.75% ($687.99→$700.06).
@@ -332,10 +350,10 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 39.47   # 15/38
-  stand_aside_count: 38
+  stand_aside_correctness_pct: 37.50   # 15/40
+  stand_aside_count: 40
   stand_aside_correct: 15
-  stand_aside_missed: 23
+  stand_aside_missed: 25
   # note (corrected 2026-06-24): the 2026-06-23 journal claimed zero stand-aside
   # records existed due to a Gmail search bug (search_threads excludes drafts by
   # default; both routines deliver via create_draft per ADR-005). list_drafts on
@@ -481,9 +499,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 757.63             # EOD 2026-08-03
-  spy_pct_change_since_start: +1.78   # (757.63 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -101.78  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 771.28             # EOD 2026-08-04
+  spy_pct_change_since_start: +3.62   # (771.28 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -103.62  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
