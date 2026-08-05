@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-08-04
-trading_days_elapsed: 31
+last_updated: 2026-08-05
+trading_days_elapsed: 32
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 54             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i
+  guardrail_aborts: 56             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -285,6 +285,25 @@ financial:
   # not retrieved; check Thursday morning for cap-eligible candidates.
   # 46 total guardrail aborts. SPY −1.99% since system start.
   # CALL ROBINHOOD SUPPORT NOW: 1-800-279-1969. Ref account ●●●●9602. Day 23.
+  # note (updated 2026-08-05): Day 32 elapsed (Day 28 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (8/5 morning + intraday). Mixed tape: SPY -0.20%
+  # ($771.28→~$769.74), QQQ -0.88% ($723.68→~$717.28), IWM -0.64%. Risk-on open
+  # (SPY gapped to $775.84) faded to slight red as Iran de-escalation rally partially
+  # priced in without formal deal announcement. NVDA +3.47% ($211.86→~$219.21) — 2nd
+  # consecutive strong session; AI infrastructure theme intact. AMD -7.33% ($519.79→
+  # ~$481.72) — Q2 miss AH -8.5% (8/4) continued into regular session; AMD rule fired
+  # correctly (premarket -7.81%). LLY +4.80% on Q2 2026 clean beat (EPS $8.38 vs
+  # $6.07 est = +38%; revenue $22.97B vs $20.93B = +10%; FY guidance raised $85–87B)
+  # — premarket +4.69% at $1,168 = 11.68× cap; largest structural cap multiplier in
+  # system history. SPCX -11.03% premarket on Q1 2026 AI capex concerns; eliminated
+  # by negative premarket + above cap. APPS +27.7% premarket; eliminated by >15% abort
+  # + not S&P 500/Nasdaq 100. Morning routine called "modest risk-on"; SPY closed
+  # -0.20% = directional miss. Macro accuracy: 25/28 = 89.3% (from 25/27 = 92.6%).
+  # +2 stand_aside candidates (LLY "missed", AMD "avoided"/"correct"):
+  # stand_aside: 16/42 = 38.10% (from 15/40 = 37.50%).
+  # 56 total guardrail aborts. SPY +3.41% since system start (from +3.62% on 8/4).
+  # DIS + SHOP earnings after today's close — check premarket Thursday 8/6.
+  # CALL ROBINHOOD SUPPORT: 1-800-279-1969. Ref account ●●●●9602. Day 28.
   # note (updated 2026-08-04): Day 31 elapsed (Day 27 of $0 streak), still $0.00.
   # +2 guardrail_aborts (8/4 morning + intraday). Strong risk-on: SPY +1.80%
   # ($757.67→$771.28), QQQ +3.37% ($700.07→$723.68). US-Iran Strait of Hormuz
@@ -350,10 +369,10 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 37.50   # 15/40
-  stand_aside_count: 40
-  stand_aside_correct: 15
-  stand_aside_missed: 25
+  stand_aside_correctness_pct: 38.10   # 16/42
+  stand_aside_count: 42
+  stand_aside_correct: 16
+  stand_aside_missed: 26
   # note (corrected 2026-06-24): the 2026-06-23 journal claimed zero stand-aside
   # records existed due to a Gmail search bug (search_threads excludes drafts by
   # default; both routines deliver via create_draft per ADR-005). list_drafts on
@@ -496,12 +515,29 @@ decision_quality:
   #     tomorrow (~$135–140 expected open). stand_aside_missed: +1.
   #   stand_aside: 15/38 = 39.47% (from 15/36 = 41.67%; two structural misses decrease
   #   the rate despite both decisions being analytically correct).
+  # 2026-08-05: +2 candidates (morning opportunistic scan before cash-gate abort):
+  #   LLY (+4.69% premarket, ~$1,168 vs ~$1,115.24 prior close): EVALUATED — Q2 2026
+  #     beat (EPS $8.38 vs $6.07 est = +38%; revenue $22.97B vs $20.93B = +10%; FY
+  #     2026 guidance raised to $85–87B from $82–85B). Named catalyst, last 24h.
+  #     Eliminated by: (1) price $1,168 = 11.68× the $100 per-trade cap — LARGEST
+  #     CAP MULTIPLIER IN SYSTEM HISTORY. Close: ~$1,168.78 (+4.80% vs prior close).
+  #     Zero judgment component; purely structural. Even with full cash restored, LLY
+  #     cannot be purchased in whole shares under the $100 cap. stand_aside_missed: +1.
+  #   AMD (-7.81% premarket, $478.15 vs $519.79 8/4 regular close): EVALUATED —
+  #     AMD Q2 2026 miss confirmed (reported after 8/4 close; AH -8.5% to ~$475.75).
+  #     AMD rule fires: (1) negative premarket; (2) Q2 miss = negative catalyst; (3)
+  #     price $478 = 4.78× cap. Close: ~$481.72 (-7.33% vs 8/4 regular close). AMD
+  #     rule correctly identified no-entry signal; AMD opened $484, briefly touched
+  #     $502 intraday, then closed at $481.72. Any premarket buyer net negative.
+  #     Scored "avoided" (>-2% from prior close). stand_aside_correct: +1.
+  #   stand_aside: 16/42 = 38.10% (from 15/40 = 37.50%; LLY adds 1 missed, AMD adds
+  #   1 correct. Net: +1 numerator, +2 denominator).
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 771.28             # EOD 2026-08-04
-  spy_pct_change_since_start: +3.62   # (771.28 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -103.62  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 769.74             # EOD 2026-08-05 (approx from bar data; official settle may vary slightly)
+  spy_pct_change_since_start: +3.41   # (769.74 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -103.41  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
