@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-08-06
-trading_days_elapsed: 33
+last_updated: 2026-08-07
+trading_days_elapsed: 34
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 58             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i
+  guardrail_aborts: 60             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -38,56 +38,60 @@ financial:
   # Robinhood app directly. Do not treat -100% as a performance verdict on the
   # trading logic — no trades have ever been placed on this account
   # (trades.total: 0 throughout).
-  # note (updated 2026-08-06): Day 33 elapsed (Day 29 of $0 streak), still $0.00.
-  # +2 guardrail_aborts (8/6 morning + intraday). Flat-to-slightly-negative tape:
-  # SPY -0.16% ($769.79→$768.56), QQQ -0.38% ($717.30→$714.56). Individual earnings
-  # names outperformed the broad market: DIS +2.87% ($101.76→$104.68) on Q2 FY2026
-  # beat (EPS $1.57 vs $1.50 est; streaming income +88% to $582M); SHOP +2.29%
-  # ($144.24→$147.54) on Q2 2026 beat (EPS $0.42 vs $0.39 est; revenue +34% YoY).
-  # Both names eliminated in premarket: DIS (+0.64% pm, below 2% threshold + >$100
-  # budget); SHOP (-0.37% pm, negative premarket + 1.44× cap). Web search premarket
-  # data again substantially incorrect (3rd consecutive session): INTC claimed +10.84%
-  # (actual -1.67%), COHR +12.35% (actual -1.83%), PANW +5.53% (actual -1.31%),
-  # AMD +7.00% (actual -1.12%). All four correctly eliminated by Robinhood quotes.
-  # AMD rule fired (Day 4 of cycle): -1.12% premarket; AMD closed +1.50% from prior
-  # close (flat zone, "correct"). Morning macro call "stand aside on mixed day" →
-  # correct (SPY -0.16%). Macro accuracy: 26/29 = 89.7% (from 25/28 = 89.3%).
-  # +3 stand_aside candidates: DIS "missed" (+2.87%), SHOP "missed" (+2.29%),
-  # AMD "correct" (+1.50%). stand_aside: 17/45 = 37.78% (from 16/42 = 38.10%).
-  # 58 total guardrail aborts. SPY +3.25% since system start (was +3.41% on 8/5;
-  # SPY now $768.56 vs start $744.37).
-  # Day 29 — URGENT. CALL ROBINHOOD SUPPORT: 1-800-279-1969. Account ●●●●9602.
+  # note (updated 2026-08-07): Day 34 elapsed (Day 30 of $0 streak), still $0.00.
+  # +2 guardrail_aborts (8/7 morning + intraday). "Bad news is good news" tape:
+  # July NFP miss (-23K vs +80K expected) → rate-cut expectations → risk-on rally.
+  # SPY +0.60% ($768.56→$773.20), QQQ +1.17% ($714.65→$723.04). Gold miners
+  # outperformed: NEM +7.17% ($105.43→$112.99) on jobs-miss → gold catalyst;
+  # COHR +13.42% ($334.22→$379.05) on unknown catalyst + AI/rate-cut halo.
+  # Both NEM and COHR eliminated by price > $100 cap. Four stand-aside candidates
+  # ended flat: AMD -1.18%, ANET -1.92%, INTC +1.83%, PANW +1.22% (all correct).
+  # Web search premarket data incorrect for 4th consecutive session (INTC claimed
+  # +10.84%, actual +2.99%; COHR claimed +12.35%, actual +7.25%; PANW claimed
+  # +5.53%, actual +2.35%). Morning macro call "bad news is good news" → correct
+  # (SPY +0.60%, QQQ +1.17%). Macro accuracy: 27/30 = 90.0% (from 26/29 = 89.7%).
+  # +6 stand_aside candidates today: COHR "missed" (+13.42%), NEM "missed" (+7.17%),
+  # AMD "correct" (-1.18%), ANET "correct" (-1.92%), INTC "correct" (+1.83%),
+  # PANW "correct" (+1.22%). stand_aside: 21/51 = 41.18% (from 17/45 = 37.78%).
+  # 60 total guardrail aborts. SPY +3.87% since system start (was +3.25% on 8/6;
+  # SPY now $773.20 vs start $744.37).
+  # Day 30 MILESTONE — URGENT. CALL ROBINHOOD SUPPORT: 1-800-279-1969. Account ●●●●9602.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 37.78   # 17/45
-  stand_aside_count: 45
-  stand_aside_correct: 17
-  stand_aside_missed: 28
-  # 2026-08-06: +3 candidates (morning opportunistic scan before cash-gate abort):
-  #   DIS (+0.64% premarket, $102.41 vs $101.76 prior close): EVALUATED — Q2 FY2026
-  #     beat (EPS $1.57 vs $1.50 est; streaming income +88% to $582M). Eliminated by:
-  #     (1) premarket +0.64% < 2% threshold; (2) $102.41 > $100 per-trade cap (0 whole
-  #     shares on limit order). Close: $104.68 (+2.87% vs prior close). Structurally
-  #     untradeable even with cash restored due to cap constraint. Scored "missed" per
-  #     mechanical rule. stand_aside_missed: +1.
-  #   SHOP (-0.37% premarket, $143.70 vs $144.24 prior close): EVALUATED — Q2 2026
-  #     beat (EPS $0.42 vs $0.39 est; revenue +34% YoY; GMV +30%+). Eliminated by:
-  #     (1) negative premarket (-0.37%); (2) 1.44× cap ($143.70 >> $100). Close:
-  #     $147.54 (+2.29% vs prior close). V-bottom: negative premarket → +2.29% close.
-  #     Rule applied correctly at evaluation time. Scored "missed." stand_aside_missed: +1.
-  #   AMD (-1.12% premarket, $476.67 vs $482.05 prior close): EVALUATED — Q2 2026
-  #     miss continuing (AH -8.5% on 8/4; session -7.33% on 8/5). AMD rule fires:
-  #     negative premarket + confirmed negative catalyst. Close: $489.29 (+1.50% vs
-  #     prior close). Relief bounce; AMD closed in flat zone. Scored "correct."
-  #     stand_aside_correct: +1.
-  #   stand_aside: 17/45 = 37.78% (from 16/42 = 38.10%).
+  stand_aside_correctness_pct: 41.18   # 21/51
+  stand_aside_count: 51
+  stand_aside_correct: 21
+  stand_aside_missed: 30
+  # 2026-08-07: +6 candidates (morning opportunistic scan before cash-gate abort):
+  #   COHR (+7.25% premarket, $358.43 vs $334.22 prior close): EVALUATED — no named
+  #     catalyst identified (possible AI data center optical/photonics re-rating on
+  #     rate-cut expectations). Eliminated by cap (3.58×). Close: $379.05 (+13.42%).
+  #     COHR accelerated premarket-to-close — unusual. Scored "missed." +1 missed.
+  #   NEM (+5.69% premarket, $111.43 vs $105.43 prior close): EVALUATED — named
+  #     catalyst: July NFP miss (-23K) → Fed rate cut → gold rally → gold miners.
+  #     Eliminated by price > $100 cap ($111.43 = 1.11×). Close: $112.99 (+7.17%).
+  #     Cleanest catalyst-correct stand-aside miss in recent sessions. +1 missed.
+  #   AMD (+2.79% premarket, $502.91 vs $489.28 prior close): EVALUATED — no named
+  #     catalyst last 24h (AMD rule does NOT fire; positive premarket). Eliminated by
+  #     cap (5.03×). Close: $483.50 (-1.18%). Reversed from premarket gains.
+  #     Scored "correct." +1 correct.
+  #   ANET (+3.19% premarket, $198.46 vs $192.32 prior close): EVALUATED — no named
+  #     catalyst. Eliminated by cap (1.98×). Close: $188.64 (-1.92%). Gave back all
+  #     premarket gains despite broad QQQ +1.17% tape. Scored "correct." +1 correct.
+  #   INTC (+2.99% premarket, $102.79 vs $99.81 prior close): EVALUATED — no named
+  #     catalyst. Eliminated by price > $100 (0 whole shares on limit order). Close:
+  #     $101.64 (+1.83%). Flat zone. Scored "correct." +1 correct.
+  #   PANW (+2.35% premarket, $368.10 vs $359.49 prior close): EVALUATED — no named
+  #     catalyst. Eliminated by cap (3.68×). Close: $363.86 (+1.22%). Flat zone.
+  #     Scored "correct." +1 correct.
+  #   stand_aside: 21/51 = 41.18% (from 17/45 = 37.78%).
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 768.56             # EOD 2026-08-06 (official market close from Robinhood)
-  spy_pct_change_since_start: +3.25   # (768.56 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -103.25  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 773.20             # EOD 2026-08-07 (official market close from Robinhood)
+  spy_pct_change_since_start: +3.87   # (773.20 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -103.87  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
