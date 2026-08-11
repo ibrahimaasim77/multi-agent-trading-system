@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-08-10
-trading_days_elapsed: 35
+last_updated: 2026-08-11
+trading_days_elapsed: 36
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 62             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i
+  guardrail_aborts: 64             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -38,49 +38,41 @@ financial:
   # Robinhood app directly. Do not treat -100% as a performance verdict on the
   # trading logic — no trades have ever been placed on this account
   # (trades.total: 0 throughout).
-  # note (updated 2026-08-10): Day 35 elapsed (Day 31 of $0 streak since 6/25), still $0.00.
-  # +2 guardrail_aborts (8/10 morning + intraday). Flat tape: SPY -0.03% ($773.26→$773.06),
-  # QQQ -0.31% ($723.03→$720.81). Markets digesting 8/7 jobs-miss rally; awaiting CPI this week.
-  # KEY DEVELOPMENT: INTC closed $97.54 (-4.04% from $101.65) — FIRST CLOSE BELOW $100 CAP
-  # IN SYSTEM HISTORY. INTC now cap-eligible by price. TTD closed $13.38 (-3.04% from $13.80) —
-  # second cap-priced evaluation candidate. COHR collapsed -14.24% ($379.13→$325.18),
-  # retroactively validating the 8/7 structural stand-aside (cap 3.58×).
-  # 4 stand_aside candidates today: ABNB "missed" (+3.71%; earnings beat, 1.78×cap + >15%abort),
-  # TTD "avoided" (-3.04%; earnings miss, AMD-rule-analog), VRTX "missed" (+5.62%; 4.96×cap),
-  # HON "correct" (-1.33%; 2.46×cap). stand_aside: 23/55 = 41.82% (from 21/51 = 41.18%).
-  # 62 total guardrail aborts. SPY +3.86% since system start ($773.06 vs $744.37).
-  # Day 31 MILESTONE. INTC BELOW $100. CALL ROBINHOOD SUPPORT: 1-800-279-1969. Account ●●●●9602.
+  # note (updated 2026-08-11): Day 36 elapsed (Day 33 of $0 streak since 6/25), still $0.00.
+  # +2 guardrail_aborts (8/11 morning + intraday). SPY closed $770.45 (-0.33% from $773.03).
+  # Pre-CPI caution; US-Iran/Strait of Hormuz drag. PERFECT STAND-ASIDE DAY: 4/4 correct
+  # (INTC +0.19%, COHR +1.05%, PANW -0.29%, TTD +1.19% — all within flat zone).
+  # Stand-aside correctness: 27/59 = 45.76% (new system high, from 41.82%).
+  # INTC in second consecutive sub-$100 session ($97.705 close). CPI releases 8/12 8:30 AM ET.
+  # 64 total guardrail aborts. Call Robinhood Support: 1-800-279-1969. Account ●●●●9602.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 41.82   # 23/55
-  stand_aside_count: 55
-  stand_aside_correct: 23
+  stand_aside_correctness_pct: 45.76   # 27/59
+  stand_aside_count: 59
+  stand_aside_correct: 27
   stand_aside_missed: 32
-  # 2026-08-10: +4 candidates (morning opportunistic scan before cash-gate abort):
-  #   ABNB (est. +15%+ premarket, $178.07 prior close = 1.78× cap): EVALUATED —
-  #     Q2 2026 earnings beat. >15% premarket abort rule fires. Cap 1.78× eliminates
-  #     independently. Intraday peak +17.4%, close +3.71%. Scored "missed." +1 missed.
-  #   TTD (est. -15%+ premarket, $13.80 prior close = within $100 cap by price):
-  #     EVALUATED — Q2 2026 earnings miss (inferred from -21.9% intraday trough).
-  #     AMD-rule-analog fires: negative premarket on own negative catalyst. Within cap
-  #     by price but eliminated at first gate. Close -3.04%. Scored "avoided." +1 correct.
-  #   VRTX (est. +5-7% premarket, $496.07 prior close = 4.96× cap): EVALUATED —
-  #     biotech catalyst (FDA approval or clinical data). Cap 4.96× eliminates.
-  #     Close +5.62%. Scored "missed." +1 missed.
-  #   HON (est. +5-8% premarket, $246.21 prior close = 2.46× cap): EVALUATED —
-  #     possible earnings or energy/industrial catalyst. Cap 2.46× eliminates.
-  #     Reversed from +7.5% intraday to -1.33% close. Scored "correct." +1 correct.
-  #   stand_aside: 23/55 = 41.82% (from 21/51 = 41.18%).
-  # 2026-08-07: +6 candidates: COHR "missed" (+13.42%), NEM "missed" (+7.17%),
-  #   AMD "correct" (-1.18%), ANET "correct" (-1.92%), INTC "correct" (+1.83%),
-  #   PANW "correct" (+1.22%). stand_aside: 21/51 = 41.18% (from 17/45 = 37.78%).
+  # 2026-08-11: +4 candidates (morning evaluation before cash-gate abort):
+  #   INTC (premarket -0.51%, $97.02; no named catalyst last 24h; AMD-rule-adjacent):
+  #     Negative premarket → hard elimination. Cap $97.02 < $100 (technically eligible by
+  #     price but eliminated on premarket gate). Close $97.705 = +0.19% from prior $97.52.
+  #     Scored "correct." +1 correct.
+  #   COHR (premarket -0.20%, $324.50; cap 3.25×; do-not-evaluate flag):
+  #     Negative premarket + cap + flag → triple elimination. Close $328.58 = +1.05% from
+  #     prior $325.15 (dead-cat bounce after 8/10 -14.24%). Scored "correct." +1 correct.
+  #   PANW (premarket -0.12%, $384.57; cap 3.85×):
+  #     Negative premarket + cap → eliminated. Close $383.93 = -0.29% from prior $385.04.
+  #     Scored "correct." +1 correct.
+  #   TTD (premarket -0.82%, $13.28; post-earnings Day 2; AMD-rule-analog):
+  #     Negative premarket + consolidation window Day 2 → eliminated. Close $13.55 =
+  #     +1.19% from prior $13.39. Scored "correct." +1 correct.
+  #   stand_aside: 27/59 = 45.76% (from 23/55 = 41.82%). NEW SYSTEM HIGH. 4/4 correct.
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 773.06             # EOD 2026-08-10 (Robinhood last_trade_price at 19:59:59Z)
-  spy_pct_change_since_start: +3.86   # (773.06 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -103.86  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 770.45             # EOD 2026-08-11 (Robinhood last_trade_price at 19:59:59Z)
+  spy_pct_change_since_start: +3.50   # (770.45 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -103.50  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
