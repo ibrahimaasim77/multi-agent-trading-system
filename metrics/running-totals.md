@@ -42,16 +42,16 @@ financial:
   # +2 guardrail_aborts (8/12 morning + intraday). SPY closed $772.54 (+0.26% from $770.56).
   # CPI in-line (3.4% YoY, 2.5% core) — modest relief rally.
   # WATERSHED EVENT: SMCI passed ALL FIVE EVALUATION GATES for the first time in system
-  # history (S&P 500 member, mcap >$5B, price $34.45 <= $100 cap, Q4 FY26 earnings beat
+  # history (S&P 500 member, mcap >$5B, price $34.45 ≤ $100 cap, Q4 FY26 earnings beat
   # as named catalyst, premarket +9.49% within 2-14.99%). Sole block: $0 cash. SMCI
-  # closed +18.86% ($31.60 -> $37.56). First concrete, non-structural opportunity cost.
-  # Hypothetical P&L: 2 shares x ($37.56 - $34.45) = +$6.22 on $68.90 deployed (+9.03%).
+  # closed +18.86% ($31.60 → $37.56). First concrete, non-structural opportunity cost.
+  # Hypothetical P&L: 2 shares × ($37.56 - $34.45) = +$6.22 on $68.90 deployed (+9.03%).
   # CRWV also missed (+19.20%): correctly blocked by >15% premarket abort rule (structural).
   # Stand-aside correctness: 27/61 = 44.26% (from 45.76%). INTC bounced back above $100
   # cap (+3.32% to $100.95) — sub-$100 window (8/10–8/11) now closed. 66 total guardrail
   # aborts. Call Robinhood Support: 1-800-279-1969. Account ●●●●9602.
   # note (updated 2026-08-13): Day 38 elapsed (Day 35 of $0 streak since 6/25), still $0.00.
-  # +2 guardrail_aborts (8/13 morning + intraday) -> 68 total. SPY closed $777.77 (+0.68%
+  # +2 guardrail_aborts (8/13 morning + intraday) → 68 total. SPY closed $777.77 (+0.68%
   # from $772.49). S&P 500 index hit all-time high 7,798.99 — first-ever close above 7,800.
   # SMCI Day 2: opened at prior close $37.61 (flat premarket); analyst upgrades intraday
   # (Rosenblatt $51 PT, Wedbush $40 PT, Citigroup $39 PT); Gate 5 failed at evaluation time
