@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-08-13
-trading_days_elapsed: 38
+last_updated: 2026-08-14
+trading_days_elapsed: 39
 
 trades:
   total: 0
@@ -20,7 +20,7 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 68             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i, 8/12 m+i, 8/13 m+i
+  guardrail_aborts: 70             # 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i, 8/12 m+i, 8/13 m+i, 8/14 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -59,13 +59,24 @@ financial:
   # CORRECT — no premarket signal = no limit order warranted. TTD Day 4 post-earnings:
   # +7.86% on ATH short-covering/no named catalyst; scored "missed." Stand-aside correct.
   # Stand-aside correctness: 27/63 = 42.86% (from 44.26%). Call 1-800-279-1969.
+  # note (updated 2026-08-14): Day 39 elapsed (Day 36 of $0 streak since 6/25), still $0.00.
+  # +2 guardrail_aborts (8/14 morning + intraday) → 70 total. SPY closed $776.31 (-0.20%
+  # from $777.88). Russell 2000 fresh all-time high (IWM +0.52%). No valid trade even
+  # hypothetically. Five stand-aside candidates: SMCI correct (+1.74% flat zone, Day 3);
+  # TTD avoided (-2.98%, AMD-rule-analog Day 5 fired correctly — final application);
+  # RDDT missed (+12.56%, Gate 1 structural — not S&P 500 member until 8/18); AMD missed
+  # (+6.48%, structural price cap 5.14× on Technology Leadership Forum catalyst);
+  # WDAY avoided (-3.74%, abort threshold fired on +17-25% Silver Lake M&A rumor that
+  # was subsequently denied — most dramatic abort threshold validation in system history,
+  # entry at open would have been -19 to -23% loss by close). Stand-aside: 30/68 = 44.12%
+  # (+1.26 pts). Call 1-800-279-1969. Week 8 of anomaly begins Monday 8/17 (Day 37).
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 42.86   # 27/63
-  stand_aside_count: 63
-  stand_aside_correct: 27
-  stand_aside_missed: 36
+  stand_aside_correctness_pct: 44.12   # 30/68
+  stand_aside_count: 68
+  stand_aside_correct: 30
+  stand_aside_missed: 38
   # 2026-08-12: +2 candidates (morning evaluation before cash-gate abort):
   #   SMCI (premarket +9.49%, ~$34.45; Q4 FY2026 earnings blowout — gross margin 17.6%,
   #         guidance $65-72B vs $52.5B consensus, $60B+ new orders; S&P 500 member;
@@ -84,12 +95,19 @@ decision_quality:
   #        +7.86% driven by S&P 500 ATH short-covering; named catalyst requirement unsatisfied):
   #     Close $14.55 = +7.86% from prior $13.49. Scored "missed." +1 missed (evaluation correct).
   #   stand_aside: 27/63 = 42.86% (from 27/61 = 44.26%). Two misses, zero correct.
+  # 2026-08-14: +5 candidates (morning + intraday evaluation before cash-gate abort):
+  #   SMCI (Day 3 post-earnings; premarket -0.50%; Gate 5 fail; close +1.74%): correct. +1/+1.
+  #   TTD (Day 5 AMD-rule-analog; premarket -0.55%; hard block; close -2.98%): avoided. +1/+1.
+  #   RDDT (S&P 500 inclusion 8/18; Gate 1 fail — not a member today; close +12.56%): missed. +0/+1.
+  #   AMD (Technology Leadership Forum +6.48% catalyst; structural price cap 5.14×; close +6.48%): missed. +0/+1.
+  #   WDAY (Silver Lake M&A rumor +17-25% spike, then denied; abort threshold >12%; close -3.74%): avoided. +1/+1.
+  #   stand_aside: 30/68 = 44.12% (from 27/63 = 42.86%). Three correct/avoided, two missed (both structural).
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 777.77             # EOD 2026-08-13 (Robinhood last_trade_price at 19:59:59Z)
-  spy_pct_change_since_start: +4.49   # (777.77 - 744.37) / 744.37 * 100; S&P 500 index hit ATH 7,798.99
-  system_alpha_vs_spy_pct: -104.49  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 776.31             # EOD 2026-08-14 (Robinhood last_trade_price at 19:59:59Z)
+  spy_pct_change_since_start: +4.29   # (776.31 - 744.37) / 744.37 * 100; Russell 2000 fresh ATH today (IWM $305.08)
+  system_alpha_vs_spy_pct: -104.29  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
