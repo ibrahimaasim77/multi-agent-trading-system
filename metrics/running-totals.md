@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-08-18
-trading_days_elapsed: 41
+last_updated: 2026-08-19
+trading_days_elapsed: 42
 
 trades:
   total: 0
@@ -20,8 +20,8 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 74             # 70 confirmed through 8/14; +2 inferred 8/17 (no journal); +2 confirmed 8/18 = 74 estimated
-                                   # prior: 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i, 8/12 m+i, 8/13 m+i, 8/14 m+i, 8/17 m+i (inferred), 8/18 m+i
+  guardrail_aborts: 76             # 74 confirmed through 8/18; +2 today (8/19 morning + intraday) = 76 total
+                                   # prior: 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i, 8/12 m+i, 8/13 m+i, 8/14 m+i, 8/17 m+i (inferred), 8/18 m+i, 8/19 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -84,12 +84,22 @@ financial:
   # Day 2). RDDT (S&P 500 inclusion Day 1) declined -3.80% — post-inclusion fading as
   # predicted, Gate 3 structural block ($158.24 > $100 cap). No Gmail drafts found for today.
   # Stand-aside: 32/70 = 45.71% (+1.59 pts). Call 1-800-279-1969. Week 9 of anomaly.
+  # note (updated 2026-08-19): Day 42 elapsed (Day 39 of $0 streak since 6/25), still $0.00.
+  # +2 guardrail aborts (8/19 morning + intraday) → 76 total. SPY closed $769.06 (+0.21%
+  # from $767.45). Sector-rotation day: IWM +0.50%, META +0.46%; but semis continued lower
+  # (AVGO -4.60% on earnings miss Day 2, AMD -3.63%, NVDA -0.93%). QQQ -0.19%. Both routines
+  # ran and produced Gmail drafts (draft-absence anomaly from 8/18 resolved). Two stand-aside
+  # candidates: SMCI avoided (-2.23%, Gate 5 fail — AVGO earnings miss Day 2 chip headwind;
+  # third consecutive correct SMCI block; prior close $37.41); TTD correct (+0.89%, flat zone,
+  # no named catalyst, normal eval mode Day 3; prior close $13.42). KEYS +2.6% PM on record
+  # Q3 — above $100 cap, not evaluated. No valid trade even hypothetically.
+  # Stand-aside: 34/72 = 47.22% (+1.51 pts) — NEW ALL-TIME HIGH. Call 1-800-279-1969.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 45.71   # 32/70
-  stand_aside_count: 70
-  stand_aside_correct: 32
+  stand_aside_correctness_pct: 47.22   # 34/72
+  stand_aside_count: 72
+  stand_aside_correct: 34
   stand_aside_missed: 38
   # 2026-08-12: +2 candidates (morning evaluation before cash-gate abort):
   #   SMCI (premarket +9.49%, ~$34.45; Q4 FY2026 earnings blowout — gross margin 17.6%,
@@ -124,12 +134,20 @@ decision_quality:
   #   TTD (normal evaluation mode Day 2; no named catalyst; flat +0.11%):
   #     Close $13.42 = +0.11% from prior $13.40. Scored "correct." +1/+1.
   #   stand_aside: 32/70 = 45.71% (from 30/68 = 44.12%). Two correct/avoided, zero missed.
+  # 2026-08-19: +2 candidates (morning evaluation before cash-gate abort):
+  #   SMCI (Gate 5 fail — AVGO earnings miss extends chip headwind Day 2; premarket -0.72%;
+  #         no SMCI company-specific catalyst; prior close $37.41):
+  #     Close $36.58 = -2.23% from prior $37.41. Scored "avoided." +1/+1.
+  #   TTD (normal evaluation mode Day 3; no named catalyst; premarket +0.22% below Gate 5;
+  #        prior close $13.42):
+  #     Close $13.54 = +0.89% from prior $13.42. Scored "correct." +1/+1.
+  #   stand_aside: 34/72 = 47.22% (from 32/70 = 45.71%). Two correct/avoided. NEW ALL-TIME HIGH.
 
 benchmark:
   spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 767.42             # EOD 2026-08-18 (Robinhood last_trade_price at 19:59:59Z); chip sector -5.5%
-  spy_pct_change_since_start: +3.09   # (767.42 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -103.09  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_today: 769.06             # EOD 2026-08-19 (Robinhood last_trade_price at 19:59:59Z); SPY +0.21% on sector rotation day
+  spy_pct_change_since_start: +3.32   # (769.06 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -103.32  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
 ```
 
 ## Reading the table
