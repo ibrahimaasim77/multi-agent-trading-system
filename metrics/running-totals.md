@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-08-21
-trading_days_elapsed: 44
+last_updated: 2026-08-24
+trading_days_elapsed: 45
 
 trades:
   total: 0
@@ -20,8 +20,8 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 80             # 78 confirmed through 8/20; +2 today (8/21 morning + intraday) = 80 total
-                                   # prior: 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i, 8/12 m+i, 8/13 m+i, 8/14 m+i, 8/17 m+i (inferred), 8/18 m+i, 8/19 m+i, 8/20 m+i, 8/21 m+i
+  guardrail_aborts: 82             # 80 confirmed through 8/21; +2 today (8/24 morning + intraday) = 82 total
+                                   # prior: 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i, 8/12 m+i, 8/13 m+i, 8/14 m+i, 8/17 m+i (inferred), 8/18 m+i, 8/19 m+i, 8/20 m+i, 8/21 m+i, 8/24 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -119,80 +119,39 @@ financial:
   # did not participate in semiconductor recovery). No valid trade even hypothetically.
   # Stand-aside: 37/76 = 48.68% (+0.03 ppts) — MARGINAL NEW ALL-TIME HIGH.
   # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. Monday is a business day.
+  # note (updated 2026-08-24): Day 45 elapsed (Day 42 of $0 streak since 6/25), still $0.00.
+  # +2 guardrail aborts (8/24 morning + intraday) → 82 total. SPY closed $763.47 (-0.29%
+  # from $765.72). Risk-off Monday: Iran sanctions ("Operation Economic Fury" expanded by
+  # Treasury Sec Bessent), US-Canada trade talks collapsed + reciprocal tariff threats,
+  # NVDA earnings Wednesday AH uncertainty, Fed Chair Warsh at Jackson Hole Friday (market
+  # pricing 40% probability of 25bp HIKE at Sept 16 meeting — hawkish bias active).
+  # Nasdaq -0.76%, S&P -0.28%, Dow +0.26% (defensive/value rotation). Both routines ran
+  # and produced Gmail drafts. Two stand-aside candidates: SMCI avoided (-5.62%, premarket
+  # -2.34% Gate 5 fail; AVGO -0.99% PM confirmed chip sector headwind RESUMED after single
+  # 8/21 recovery day; no SMCI-specific catalyst; NVDA earnings uncertainty overhang;
+  # decisive avoidance — most significant chip sector drop since 8/18-8/19 selloff); TTD
+  # correct (+0.61%, premarket -0.08% Gate 5 fail, no named catalyst, flat zone). No valid
+  # trade even hypothetically. 8/21 marginal miss (SMCI +2.055% OpEx anomaly) now
+  # contextualized: Monday confirmed the directional chip sector pressure.
+  # Stand-aside: 39/78 = 50.00% (+1.32 ppts) — NEW ALL-TIME HIGH. FIRST 50% SESSION.
+  # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. Tuesday is a business day.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 48.68   # 37/76
-  stand_aside_count: 76
-  stand_aside_correct: 37
+  stand_aside_correctness_pct: 50.00   # 39/78 — NEW ALL-TIME HIGH, first 50% session
+  stand_aside_count: 78
+  stand_aside_correct: 39
   stand_aside_missed: 39
-  # 2026-08-12: +2 candidates (morning evaluation before cash-gate abort):
-  #   SMCI (premarket +9.49%, ~$34.45; Q4 FY2026 earnings blowout — gross margin 17.6%,
-  #         guidance $65-72B vs $52.5B consensus, $60B+ new orders; S&P 500 member;
-  #         ALL FIVE GATES CLEARED; sole block: $0 cash guardrail):
-  #     Close $37.56 = +18.86% from prior $31.60. Scored "missed." +1 missed.
-  #   CRWV (premarket +18%; Q2 2026 earnings beat — $104B backlog, revenue +112% YoY;
-  #         >15% abort rule fires before cap/cash/S&P check; structural hard abort):
-  #     Close $107.67 = +19.20% from prior $90.32. Scored "missed." +1 missed (structural).
-  #   stand_aside: 27/61 = 44.26% (from 27/59 = 45.76%). Two misses, zero correct.
-  # 2026-08-13: +2 candidates (morning evaluation before cash-gate abort):
-  #   SMCI (Day 2 post-earnings; analyst upgrades intraday — Rosenblatt $51 PT, Wedbush $40 PT,
-  #         Citigroup $39 PT; premarket flat/opened at $37.61 prior close; Gate 5 <2% fail;
-  #         evaluation logic CORRECT — no premarket signal = no entry warranted):
-  #     Close $39.16 = +4.12% from prior $37.61. Scored "missed." +1 missed (evaluation correct).
-  #   TTD (Day 4 post-earnings consolidation; AMD-rule-analog active; no named company catalyst;
-  #        +7.86% driven by S&P 500 ATH short-covering; named catalyst requirement unsatisfied):
-  #     Close $14.55 = +7.86% from prior $13.49. Scored "missed." +1 missed (evaluation correct).
-  #   stand_aside: 27/63 = 42.86% (from 27/61 = 44.26%). Two misses, zero correct.
-  # 2026-08-14: +5 candidates (morning + intraday evaluation before cash-gate abort):
-  #   SMCI (Day 3 post-earnings; premarket -0.50%; Gate 5 fail; close +1.74%): correct. +1/+1.
-  #   TTD (Day 5 AMD-rule-analog; premarket -0.55%; hard block; close -2.98%): avoided. +1/+1.
-  #   RDDT (S&P 500 inclusion 8/18; Gate 1 fail — not a member today; close +12.56%): missed. +0/+1.
-  #   AMD (Technology Leadership Forum +6.48% catalyst; structural price cap 5.14×; close +6.48%): missed. +0/+1.
-  #   WDAY (Silver Lake M&A rumor +17-25% spike, then denied; abort threshold >12%; close -3.74%): avoided. +1/+1.
-  #   stand_aside: 30/68 = 44.12% (from 27/63 = 42.86%). Three correct/avoided, two missed (both structural).
-  # 2026-08-17: NO JOURNAL — stand-aside candidates unknown; +2 guardrail aborts inferred.
-  # 2026-08-18: +2 candidates (morning evaluation before cash-gate abort):
-  #   SMCI (Gate 5 fail — semiconductor sector -5.5% selloff; premarket negative inferred;
-  #         no company-specific catalyst; prior close $38.28 [8/17 confirmed]):
-  #     Close $37.41 = -2.27% from prior $38.28. Scored "avoided." +1/+1.
-  #   TTD (normal evaluation mode Day 2; no named catalyst; flat +0.11%):
-  #     Close $13.42 = +0.11% from prior $13.40. Scored "correct." +1/+1.
-  #   stand_aside: 32/70 = 45.71% (from 30/68 = 44.12%). Two correct/avoided, zero missed.
-  # 2026-08-19: +2 candidates (morning evaluation before cash-gate abort):
-  #   SMCI (Gate 5 fail — AVGO earnings miss extends chip headwind Day 2; premarket -0.72%;
-  #         no SMCI company-specific catalyst; prior close $37.41):
-  #     Close $36.58 = -2.23% from prior $37.41. Scored "avoided." +1/+1.
-  #   TTD (normal evaluation mode Day 3; no named catalyst; premarket +0.22% below Gate 5;
-  #        prior close $13.42):
-  #     Close $13.54 = +0.89% from prior $13.42. Scored "correct." +1/+1.
-  #   stand_aside: 34/72 = 47.22% (from 32/70 = 45.71%). Two correct/avoided. NEW ALL-TIME HIGH.
-  # 2026-08-20: +2 candidates (morning evaluation before cash-gate abort):
-  #   SMCI (premarket -0.38% Gate 5 fail; AVGO stabilizing -0.15% but not recovering;
-  #         no SMCI company-specific catalyst; prior close $36.58):
-  #     Close $36.49 = -0.25% from prior. Scored "correct." +1/+1.
-  #   TTD (premarket -0.30% Gate 5 fail; no named catalyst; normal eval mode Day 4;
-  #        prior close $13.54):
-  #     Close $13.31 = -1.70% from prior. Scored "correct." +1/+1.
-  #   stand_aside: 36/74 = 48.65% (from 34/72 = 47.22%). Two correct. NEW ALL-TIME HIGH.
-  # 2026-08-21: +2 candidates (morning evaluation before cash-gate abort):
-  #   SMCI (premarket +1.31% Gate 5 fail — below ≥+2% threshold; Gate 4 fail: analyst
-  #         upgrades from 8/17 are 4 days old, outside 24h window; AVGO +1.35% PM is
-  #         sector recovery signal only, ≠ SMCI named catalyst; Friday OpEx gamma near
-  #         $37 strike + Dow +1.1% risk-on tape drove close above threshold;
-  #         prior close $36.50):
-  #     Close $37.25 = +2.055% from prior. Scored "missed." +0/+1. Marginal; evaluation correct.
-  #   TTD (premarket +0.30% Gate 5 fail; no named catalyst; normal eval mode Day 5;
-  #        prior close $13.32):
-  #     Close $13.17 = -1.13% from prior. Scored "correct." +1/+1.
-  #   stand_aside: 37/76 = 48.68% (from 36/74 = 48.65%). One correct, one missed.
-  #   MARGINAL NEW ALL-TIME HIGH (+0.03 ppts).
+  # 2026-08-24: +2 candidates:
+  #   SMCI: close $35.145 = -5.62%. Scored "avoided." +1/+1.
+  #   TTD: close $13.26 = +0.61%. Scored "correct." +1/+1.
+  #   stand_aside: 39/78 = 50.00% NEW ALL-TIME HIGH. FIRST 50% SESSION.
 
 benchmark:
-  spy_close_at_system_start: 744.37   # captured EOD 2026-06-22 (system's first tracked day)
-  spy_close_today: 765.69             # EOD 2026-08-21 (Robinhood last_trade_price at 19:59:59Z); SPY +0.40% recovery from risk-off/WMT/Treasury yield reversal session
-  spy_pct_change_since_start: +2.87   # (765.69 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -102.87  # UNCONFIRMED — mechanical result of the unexplained $0 balance, not a skill signal. See financial note above.
+  spy_close_at_system_start: 744.37
+  spy_close_today: 763.47             # EOD 2026-08-24; SPY -0.29%
+  spy_pct_change_since_start: +2.57   # (763.47 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -102.57  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
