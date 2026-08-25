@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-08-24
-trading_days_elapsed: 45
+last_updated: 2026-08-25
+trading_days_elapsed: 46
 
 trades:
   total: 0
@@ -20,8 +20,8 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 82             # 80 confirmed through 8/21; +2 today (8/24 morning + intraday) = 82 total
-                                   # prior: 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i, 8/12 m+i, 8/13 m+i, 8/14 m+i, 8/17 m+i (inferred), 8/18 m+i, 8/19 m+i, 8/20 m+i, 8/21 m+i, 8/24 m+i
+  guardrail_aborts: 84             # 82 confirmed through 8/24; +2 today (8/25 morning + intraday) = 84 total
+                                   # prior: 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i, 8/12 m+i, 8/13 m+i, 8/14 m+i, 8/17 m+i (inferred), 8/18 m+i, 8/19 m+i, 8/20 m+i, 8/21 m+i, 8/24 m+i, 8/25 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -135,23 +135,38 @@ financial:
   # contextualized: Monday confirmed the directional chip sector pressure.
   # Stand-aside: 39/78 = 50.00% (+1.32 ppts) — NEW ALL-TIME HIGH. FIRST 50% SESSION.
   # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. Tuesday is a business day.
+  # note (updated 2026-08-25): Day 46 elapsed (Day 43 of $0 streak since 6/25), still $0.00.
+  # +2 guardrail aborts (8/25 morning + intraday) → 84 total. SPY closed $765.85 (+0.31%
+  # from $763.47). Risk-on recovery: pre-NVDA positioning drove chip complex higher.
+  # Both routines ran and produced Gmail drafts (morning at 12:48 UTC, intraday at 15:19 UTC).
+  # Two stand-aside candidates: SMCI missed (+9.33%, premarket +2.28% Gate 5 pass; Gate 4
+  # fail — last SMCI-specific catalyst was $60B order Aug 22, 3 days old; no new catalyst
+  # emerged; pure pre-NVDA sentiment trade; large magnitude miss); AMD missed (+4.93%,
+  # premarket +2.86% Gate 5 pass; Gate 4 fail at morning — sector sympathy only; AMD
+  # developed a named intraday catalyst by 11 AM ET — Strong Buy analyst upgrade + Pelosi
+  # long disclosure; morning block was correct at evaluation time; intraday routine identified
+  # correctly but $0 capital prevented action). NVDA earnings Wednesday AH: binary event for
+  # entire chip complex. Daily score: 35 (two missed outcomes; gates technically correct at
+  # morning evaluation time; AMD developed catalyst intraday; $0 capital irrelevant to
+  # scoring). Lost the 50% milestone hit on 8/24.
+  # Stand-aside: 39/80 = 48.75% (-1.25 ppts from 50.00%). LOST 50% MILESTONE.
+  # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. Wednesday is a business day.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 50.00   # 39/78 — NEW ALL-TIME HIGH, first 50% session
-  stand_aside_count: 78
+  stand_aside_correctness_pct: 48.75   # 39/80 — lost 50% milestone; down -1.25 ppts from 8/24
+  stand_aside_count: 80
   stand_aside_correct: 39
-  stand_aside_missed: 39
-  # 2026-08-24: +2 candidates:
-  #   SMCI: close $35.145 = -5.62%. Scored "avoided." +1/+1.
-  #   TTD: close $13.26 = +0.61%. Scored "correct." +1/+1.
-  #   stand_aside: 39/78 = 50.00% NEW ALL-TIME HIGH. FIRST 50% SESSION.
+  # 2026-08-25: +2 candidates:
+  #   SMCI: close $38.45 = +9.33%. Scored "missed." +0/+1.
+  #   AMD: close $479.25 = +4.93%. Scored "missed." +0/+1.
+  #   stand_aside: 39/80 = 48.75%. LOST 50% MILESTONE (-1.25 ppts). Pre-NVDA sentiment carried chip names.
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 763.47             # EOD 2026-08-24; SPY -0.29%
-  spy_pct_change_since_start: +2.57   # (763.47 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -102.57  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 765.85             # EOD 2026-08-25; SPY +0.31%
+  spy_pct_change_since_start: +2.89   # (765.85 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -102.89  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
