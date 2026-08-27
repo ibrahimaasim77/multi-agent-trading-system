@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-08-26
-trading_days_elapsed: 47
+last_updated: 2026-08-27
+trading_days_elapsed: 48
 
 trades:
   total: 0
@@ -20,8 +20,8 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 86             # 84 confirmed through 8/25; +2 today (8/26 morning + intraday) = 86 total
-                                   # prior: 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i, 8/12 m+i, 8/13 m+i, 8/14 m+i, 8/17 m+i (inferred), 8/18 m+i, 8/19 m+i, 8/20 m+i, 8/21 m+i, 8/24 m+i, 8/25 m+i, 8/26 m+i
+  guardrail_aborts: 88             # 86 confirmed through 8/26; +2 today (8/27 morning + intraday) = 88 total
+                                   # prior: 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i, 8/12 m+i, 8/13 m+i, 8/14 m+i, 8/17 m+i (inferred), 8/18 m+i, 8/19 m+i, 8/20 m+i, 8/21 m+i, 8/24 m+i, 8/25 m+i, 8/26 m+i, 8/27 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -166,22 +166,42 @@ financial:
   # NVDA reports AH tonight — Thursday AM is the highest-quality potential setup since 8/12.
   # Stand-aside: 41/82 = 50.00% (+1.25 ppts) — RECOVERED 50% MILESTONE (lost 8/25, restored 8/26).
   # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. Thursday is a business day.
+  # note (updated 2026-08-27): Day 48 elapsed (Day 45 of $0 streak since 6/25), still $0.00.
+  # +2 guardrail aborts (8/27 morning + intraday) → 88 total. SPY closed $771.07 (+0.65%
+  # from $766.08). NVDA blowout Q2 FY27 beat → chip complex broadly positive: NVDA +8.77%
+  # ($228.05), AVGO +4.49% ($371.56), SMCI +2.85% ($38.455). AMD -0.82% ($477.00) — anomalous
+  # divergence; declined on highest chip-sector positive day of the week. TTD +2.96% ($13.415).
+  # No Gmail drafts found (third no-draft anomaly: 8/18, 8/26, 8/27 — two consecutive days).
+  # Two stand-aside candidates reconstructed: SMCI missed (+2.85%, NVDA beat = valid named
+  # catalyst, all gates presumptive PASS, $0 cash blocks — highest-quality setup since 8/12;
+  # pure execution failure, not logic failure); AMD correct (-0.82%, 8/25 upgrade >48h stale,
+  # AMD underperformed entire chip complex on bullish day — Gate 4 staleness rule vindicated).
+  # Stand-aside: 42/84 = 50.00% (UNCHANGED — maintained 50% milestone; +2 candidates, +1 correct).
+  # Warsh Jackson Hole speech Friday (8/28) — hawkish risk; Friday constraint active.
+  # SPY benchmark: $771.07 (+3.59% since system start $744.37). Daily score: 50.
+  # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. Friday is a business day.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 50.00   # 41/82 — recovered 50% milestone; +1.25 ppts from 8/25
-  stand_aside_count: 82
-  stand_aside_correct: 41
+  stand_aside_correctness_pct: 50.00   # 42/84 — maintained 50% milestone; SMCI missed +2.85%, AMD correct -0.82%
+  stand_aside_count: 84
+  stand_aside_correct: 42
   # 2026-08-26: +2 candidates:
   #   SMCI: close $37.415 = -2.72%. Scored "avoided." +1/+1.
   #   AMD: close $481.01 = +0.38%. Scored "correct." +1/+1.
   #   stand_aside: 41/82 = 50.00%. RESTORED 50% MILESTONE (+1.25 ppts). Pre-NVDA reversal confirmed.
+  # 2026-08-27: +2 candidates (reconstructed — no Gmail draft, third no-draft anomaly):
+  #   SMCI: close $38.455 = +2.85%. Scored "missed." +1/+0. NVDA beat = valid named catalyst;
+  #         all gates presumptive PASS; $0 cash only block. Highest-quality setup since 8/12.
+  #   AMD: close $477.00 = -0.82%. Scored "correct." +1/+1. 8/25 upgrade >48h stale; AMD
+  #         declined -0.82% on chip-sector-positive day — Gate 4 staleness rule vindicated.
+  #   stand_aside: 42/84 = 50.00%. MAINTAINED 50% MILESTONE (+0.00 ppts). Stable at benchmark.
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 765.95             # EOD 2026-08-26; SPY +0.01% (flat NVDA-earnings day)
-  spy_pct_change_since_start: +2.90   # (765.95 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -102.90  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 771.07             # EOD 2026-08-27; SPY +0.65% (NVDA beat risk-on day)
+  spy_pct_change_since_start: +3.59   # (771.07 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -103.59  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
