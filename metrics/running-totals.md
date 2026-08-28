@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-08-27
-trading_days_elapsed: 48
+last_updated: 2026-08-28
+trading_days_elapsed: 49
 
 trades:
   total: 0
@@ -20,8 +20,8 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 88             # 86 confirmed through 8/26; +2 today (8/27 morning + intraday) = 88 total
-                                   # prior: 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i, 8/12 m+i, 8/13 m+i, 8/14 m+i, 8/17 m+i (inferred), 8/18 m+i, 8/19 m+i, 8/20 m+i, 8/21 m+i, 8/24 m+i, 8/25 m+i, 8/26 m+i, 8/27 m+i
+  guardrail_aborts: 90             # 88 confirmed through 8/27; +2 today (8/28 morning + intraday) = 90 total
+                                   # prior: 6/25 m+i, 6/26 m+i, 6/29 m+i, 6/30 m+i, 7/1 m+i, 7/2 m+i, 7/6 m+i, 7/7 m+pm, 7/8 m+i, 7/9 m+i, 7/10 m+i, 7/13 m+i, 7/14 m+i, 7/15 m+i, 7/16 m+i, 7/17 m+i, 7/21 m+i, 7/22 m+i, 7/23 m+i, 7/24 m+i, 7/27 m+i, 7/28 m+i, 7/29 m+i, 7/30 m+i, 7/31 m+i, 8/3 m+i, 8/4 m+i, 8/5 m+i, 8/6 m+i, 8/7 m+i, 8/10 m+i, 8/11 m+i, 8/12 m+i, 8/13 m+i, 8/14 m+i, 8/17 m+i (inferred), 8/18 m+i, 8/19 m+i, 8/20 m+i, 8/21 m+i, 8/24 m+i, 8/25 m+i, 8/26 m+i, 8/27 m+i, 8/28 m+i
   # note (updated 2026-07-02): account 912269602 (Agentic, ●●●●9602) has now
   # shown $0.00 total_value / $0.00 cash for SIX consecutive trading days
   # (6/25, 6/26, 6/29, 6/30, 7/1, 7/2), down from $217.19 cash_close recorded
@@ -180,12 +180,27 @@ financial:
   # Warsh Jackson Hole speech Friday (8/28) — hawkish risk; Friday constraint active.
   # SPY benchmark: $771.07 (+3.59% since system start $744.37). Daily score: 50.
   # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. Friday is a business day.
+  # note (updated 2026-08-28): Day 49 elapsed (Day 46 of $0 streak since 6/25), still $0.00.
+  # +2 guardrail aborts (8/28 morning + intraday) → 90 total. SPY closed $769.39 (-0.22%
+  # from $771.10). RISK-OFF: Warsh Jackson Hole hawkish signal → chip complex broad selloff.
+  # NVDA -4.58% ($217.54), SMCI -3.59% ($37.08), AMD -2.32% ($465.60), AVGO -0.77% ($368.68).
+  # META +1.21% ($578.02) — only major tech outlier positive. IWM -1.35% (rate-hike sensitivity).
+  # Two Gmail drafts generated today (draft-anomaly resolved). Two stand-aside candidates:
+  # SMCI avoided (-3.59%, Gate 5 fail -1.35% PM; Warsh binary event override; 8/27 journal
+  # called 'chip rally one-day setup only' — validated exactly. Most precise multi-day
+  # prediction in system history. Warsh erased entire NVDA-beat chip rally in one session);
+  # AMD avoided (-2.32%, Gate 5 fail -0.98% PM; Gate 4 fail >72h stale; structural
+  # underperformance confirmed — third consecutive session of AMD diverging negatively).
+  # Stand-aside: 44/86 = 51.16% — NEW ALL-TIME HIGH (+1.16 ppts). First time above 50%.
+  # SPY benchmark: $769.39 (+3.36% since system start $744.37). Daily score: 80.
+  # Next binary event: Sept 16 FOMC. Chip complex in post-Warsh consolidation mode.
+  # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. Monday is a business day.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 50.00   # 42/84 — maintained 50% milestone; SMCI missed +2.85%, AMD correct -0.82%
-  stand_aside_count: 84
-  stand_aside_correct: 42
+  stand_aside_correctness_pct: 51.16   # 44/86 — NEW ALL-TIME HIGH; SMCI avoided -3.59%, AMD avoided -2.32%
+  stand_aside_count: 86
+  stand_aside_correct: 44
   # 2026-08-26: +2 candidates:
   #   SMCI: close $37.415 = -2.72%. Scored "avoided." +1/+1.
   #   AMD: close $481.01 = +0.38%. Scored "correct." +1/+1.
@@ -196,12 +211,18 @@ decision_quality:
   #   AMD: close $477.00 = -0.82%. Scored "correct." +1/+1. 8/25 upgrade >48h stale; AMD
   #         declined -0.82% on chip-sector-positive day — Gate 4 staleness rule vindicated.
   #   stand_aside: 42/84 = 50.00%. MAINTAINED 50% MILESTONE (+0.00 ppts). Stable at benchmark.
+  # 2026-08-28: +2 candidates (Warsh Jackson Hole hawkish signal; chip complex broad selloff):
+  #   SMCI: close $37.08 = -3.59%. Scored "avoided." +1/+1. Gate 5 fail (-1.35% PM);
+  #         Warsh binary event override; 8/27 journal called chip one-day setup exactly.
+  #   AMD: close $465.60 = -2.32%. Scored "avoided." +1/+1. Gate 5 fail (-0.98% PM);
+  #         Gate 4 fail (>72h stale); structural underperformance confirmed pattern.
+  #   stand_aside: 44/86 = 51.16%. NEW ALL-TIME HIGH (+1.16 ppts). First time above 50%.
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 771.07             # EOD 2026-08-27; SPY +0.65% (NVDA beat risk-on day)
-  spy_pct_change_since_start: +3.59   # (771.07 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -103.59  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 769.39             # EOD 2026-08-28; SPY -0.22% (Warsh hawkish signal; risk-off)
+  spy_pct_change_since_start: +3.36   # (769.39 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -103.36  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
