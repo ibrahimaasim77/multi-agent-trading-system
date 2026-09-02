@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-09-01
-trading_days_elapsed: 51
+last_updated: 2026-09-02
+trading_days_elapsed: 52
 
 trades:
   total: 0
@@ -20,40 +20,42 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 94             # 92 through 8/31; +2 today (9/1 morning #93 + intraday #94) = 94 total
-  # note (updated 2026-09-01): Day 51 elapsed (Day 48 of $0 streak since 6/25), still $0.00.
-  # +2 guardrail aborts (9/1 morning + intraday) → 94 total. SPY closed $761.65 (-0.70%
-  # from $767.05). RISK-OFF: Inflation worries + elevated oil (Brent >$90/bbl; Iran-Hormuz
-  # ongoing) lifting bond yields; FOMC September 16 overhang (40% probability 25bp hike per
-  # Warsh hawkish Jackson Hole signal). Dow -0.79%; S&P -0.71%; Nasdaq -1.03%; QQQ -1.27%.
-  # Both routines ran and produced Gmail drafts. Two stand-aside candidates:
-  # SMCI correct (-1.50%, premarket -2.44% Gate 5 fail; AVGO -1.47% PM chip gate FAIL;
-  # no SMCI-specific catalyst; September risk-off tape);
-  # AMD avoided (-2.33%, premarket -2.07% Gate 5 fail; structural block — 5-session
-  # underperformance streak; Raymond James upgrade 5 trading days old/stale). Even with
-  # capital restored, no valid trade existed today — no Gate-5 pass, chip gate negative.
-  # Stand-aside: 48/90 = 53.33% — NEW ALL-TIME HIGH (+1.06 ppts). Daily score: 70.
+  guardrail_aborts: 96             # 94 through 9/1; +2 today (9/2 morning #95 + intraday #96) = 96 total
+  # note (updated 2026-09-02): Day 52 elapsed (Day 49 of $0 streak since 6/25), still $0.00.
+  # +2 guardrail aborts (9/2 morning + intraday) → 96 total. SPY closed $765.14 (+0.44%
+  # from $761.78). RISK-ON relief rally: S&P +0.46% (7,666.60), Dow +0.56% (+295 pts),
+  # Nasdaq +0.45% (26,217.83). Major events: AVGO Q3 earnings MISS AH (-4.1% AH to $352.50
+  # from $367.77 close) — chip gate will fire NEGATIVE 9/3. DELL +15.81% on blowout earnings
+  # (missed — capital failure). CRM gap-and-fade: +10.53% PM → -0.36% close (correct stand).
+  # CRWD -5.42% (avoided — investor briefing catalyst failed). Five stand-aside candidates:
+  # CRM correct (-0.36%); DELL MISSED (+15.81%); AMD correct (-0.72%, structural block);
+  # CRWD avoided (-5.42%); HPE correct (+1.89%, binary event block). 4/5 correct/avoided.
+  # Stand-aside: 52/95 = 54.74% — NEW ALL-TIME HIGH (+1.41 ppts). Daily score: 70.
   # Next binary event: September 16 FOMC (40% probability 25bp rate hike; 10 trading days).
-  # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. September 2 is a business day.
+  # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. Day 50 — escalate to supervisor.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 53.33   # 48/90 — NEW ALL-TIME HIGH; SMCI correct -1.50%, AMD avoided -2.33%
-  stand_aside_count: 90
-  stand_aside_correct: 48
-  # 2026-09-01: +2 candidates (September risk-off; inflation+oil+yields; FOMC overhang):
-  #   SMCI: close $36.72 = -1.50%. Scored "correct." +1/+1. Premarket -2.44% Gate 5 fail;
-  #         AVGO -1.47% PM chip gate FAIL; no new SMCI catalyst; September risk-off tape.
-  #   AMD: close $459.75 = -2.33%. Scored "avoided." +1/+1. Premarket -2.07% Gate 5 fail;
-  #         structural 5-session underperformance block; stale catalyst (5 trading days old).
-  #         AMD led the tape lower today, down -2.33% vs QQQ -1.27%. Pattern accelerating.
-  #   stand_aside: 48/90 = 53.33%. NEW ALL-TIME HIGH (+1.06 ppts). Clean 2/2 sweep.
+  stand_aside_correctness_pct: 54.74   # 52/95 — NEW ALL-TIME HIGH; 4/5 correct/avoided today
+  stand_aside_count: 95
+  stand_aside_correct: 52
+  # 2026-09-02: +5 candidates (risk-ON day; AVGO earnings AH; earnings-driven movers):
+  #   CRM: close $257.19 = -0.36%. Scored "correct." PM +10.53% gap-and-fade. Anthropic
+  #         partnership announced; market sold the news. Agent flagged: "not a same-day chaser."
+  #   DELL: close $492.18 = +15.81%. Scored "MISSED." PM +9.11% on blowout Q2 earnings.
+  #         Capital failure (not decision error) — this was the correct pick, $0 prevented entry.
+  #   AMD: close $456.30 = -0.72%. Scored "correct." Structural block holds: 6th consecutive
+  #         session underperforming chip complex. AMD -0.72% vs QQQ +0.23% (-95bps vs tape).
+  #   CRWD: close $203.42 = -5.42%. Scored "avoided." PM +9.23% investor briefing → reversed
+  #         hard. Ambiguous catalyst correctly identified as lower-tier. Saved ~5.4% loss.
+  #   HPE: close $51.83 = +1.89%. Scored "correct." Binary event block (earnings day).
+  #   stand_aside: 52/95 = 54.74%. NEW ALL-TIME HIGH (+1.41 ppts). 4/5 sweep.
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 761.65             # EOD 2026-09-01; SPY -0.70% (inflation + oil + yields; risk-off)
-  spy_pct_change_since_start: +2.32   # (761.65 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -102.32  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 765.14             # EOD 2026-09-02; SPY +0.44% (risk-ON relief rally)
+  spy_pct_change_since_start: +2.79   # (765.14 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -102.79  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
