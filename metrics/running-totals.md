@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-09-02
-trading_days_elapsed: 52
+last_updated: 2026-09-03
+trading_days_elapsed: 53
 
 trades:
   total: 0
@@ -20,25 +20,31 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 96             # 94 through 9/1; +2 today (9/2 morning #95 + intraday #96) = 96 total
-  # note (updated 2026-09-02): Day 52 elapsed (Day 49 of $0 streak since 6/25), still $0.00.
-  # +2 guardrail aborts (9/2 morning + intraday) → 96 total. SPY closed $765.14 (+0.44%
-  # from $761.78). RISK-ON relief rally: S&P +0.46% (7,666.60), Dow +0.56% (+295 pts),
-  # Nasdaq +0.45% (26,217.83). Major events: AVGO Q3 earnings MISS AH (-4.1% AH to $352.50
-  # from $367.77 close) — chip gate will fire NEGATIVE 9/3. DELL +15.81% on blowout earnings
-  # (missed — capital failure). CRM gap-and-fade: +10.53% PM → -0.36% close (correct stand).
-  # CRWD -5.42% (avoided — investor briefing catalyst failed). Five stand-aside candidates:
-  # CRM correct (-0.36%); DELL MISSED (+15.81%); AMD correct (-0.72%, structural block);
-  # CRWD avoided (-5.42%); HPE correct (+1.89%, binary event block). 4/5 correct/avoided.
-  # Stand-aside: 52/95 = 54.74% — NEW ALL-TIME HIGH (+1.41 ppts). Daily score: 70.
-  # Next binary event: September 16 FOMC (40% probability 25bp rate hike; 10 trading days).
-  # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. Day 50 — escalate to supervisor.
+  guardrail_aborts: 98             # 96 through 9/2; +2 estimated today (9/3 morning #97 + intraday #98) = 98 total
+  # note (updated 2026-09-03): Day 53 elapsed (Day 50 of $0 streak — ROUND-NUMBER MILESTONE).
+  # +2 guardrail aborts (estimated — no Gmail drafts found, 4th no-draft anomaly). SPY closed
+  # $773.16 (+1.05% from $765.16). Strong RISK-ON: QQQ +1.18% ($717.61). AVGO chip gate NEGATIVE:
+  # AVGO closed $357.24 (-2.72%) after Q3 earnings MISS AH on 9/2. AMD -0.18% (structural block,
+  # 7+ sessions, CORRECT). SMCI +2.35% (chip gate override applied but SMCI diverged — MISSED;
+  # second SMCI divergence from AVGO gate, 8/31 +0.54% was first). No draft found (4th anomaly:
+  # 8/18, 8/26, 8/27, 9/3). 2 reconstructed stand-aside candidates: AMD correct (-0.18%); SMCI
+  # missed (+2.35%). Stand-aside: 53/97 = 54.64% (slight pullback from 54.74% peak). Daily score: 60.
+  # Next binary event: September 16 FOMC (40% probability 25bp rate hike; 9 trading days).
+  # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. Day 50 — DAY 50 LANDMARK.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 54.74   # 52/95 — NEW ALL-TIME HIGH; 4/5 correct/avoided today
-  stand_aside_count: 95
-  stand_aside_correct: 52
+  stand_aside_correctness_pct: 54.64   # 53/97; slight pullback from 54.74% peak (9/2)
+  stand_aside_count: 97
+  stand_aside_correct: 53
+  # 2026-09-03: +2 reconstructed candidates (no Gmail draft found — 4th no-draft anomaly):
+  #   AMD: close $456.24 = -0.18%. Scored "correct." Structural block; 7th consecutive session
+  #         underperforming chip complex. AMD -0.18% vs QQQ +1.18% (-136bps vs tape).
+  #   SMCI: close $37.87 = +2.35%. Scored "MISSED." AVGO chip gate override applied (AVGO -2.72%).
+  #         SMCI diverged from AVGO — server manufacturer vs chip designer decoupling.
+  #         Second SMCI positive divergence on negative chip gate day (prior: 8/31 +0.54%).
+  #         Protocol gap identified: SMCI gate carve-out recommended. Rule-based miss, not judgment.
+  #   stand_aside: 53/97 = 54.64% (pullback from 54.74% peak; SMCI miss is the driver).
   # 2026-09-02: +5 candidates (risk-ON day; AVGO earnings AH; earnings-driven movers):
   #   CRM: close $257.19 = -0.36%. Scored "correct." PM +10.53% gap-and-fade. Anthropic
   #         partnership announced; market sold the news. Agent flagged: "not a same-day chaser."
@@ -49,13 +55,13 @@ decision_quality:
   #   CRWD: close $203.42 = -5.42%. Scored "avoided." PM +9.23% investor briefing → reversed
   #         hard. Ambiguous catalyst correctly identified as lower-tier. Saved ~5.4% loss.
   #   HPE: close $51.83 = +1.89%. Scored "correct." Binary event block (earnings day).
-  #   stand_aside: 52/95 = 54.74%. NEW ALL-TIME HIGH (+1.41 ppts). 4/5 sweep.
+  #   stand_aside: 52/95 = 54.74%. WAS ALL-TIME HIGH (+1.41 ppts). 4/5 sweep.
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 765.14             # EOD 2026-09-02; SPY +0.44% (risk-ON relief rally)
-  spy_pct_change_since_start: +2.79   # (765.14 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -102.79  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 773.16             # EOD 2026-09-03; SPY +1.05% (strong risk-ON; AVGO chip drag isolated)
+  spy_pct_change_since_start: +3.87   # (773.16 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -103.87  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
