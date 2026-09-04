@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-09-03
-trading_days_elapsed: 53
+last_updated: 2026-09-04
+trading_days_elapsed: 54
 
 trades:
   total: 0
@@ -20,23 +20,35 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 98             # 96 through 9/2; +2 estimated today (9/3 morning #97 + intraday #98) = 98 total
-  # note (updated 2026-09-03): Day 53 elapsed (Day 50 of $0 streak — ROUND-NUMBER MILESTONE).
-  # +2 guardrail aborts (estimated — no Gmail drafts found, 4th no-draft anomaly). SPY closed
-  # $773.16 (+1.05% from $765.16). Strong RISK-ON: QQQ +1.18% ($717.61). AVGO chip gate NEGATIVE:
-  # AVGO closed $357.24 (-2.72%) after Q3 earnings MISS AH on 9/2. AMD -0.18% (structural block,
-  # 7+ sessions, CORRECT). SMCI +2.35% (chip gate override applied but SMCI diverged — MISSED;
-  # second SMCI divergence from AVGO gate, 8/31 +0.54% was first). No draft found (4th anomaly:
-  # 8/18, 8/26, 8/27, 9/3). 2 reconstructed stand-aside candidates: AMD correct (-0.18%); SMCI
-  # missed (+2.35%). Stand-aside: 53/97 = 54.64% (slight pullback from 54.74% peak). Daily score: 60.
-  # Next binary event: September 16 FOMC (40% probability 25bp rate hike; 9 trading days).
-  # Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. Day 50 — DAY 50 LANDMARK.
+  guardrail_aborts: 100            # 98 through 9/3; +2 today (9/4 morning #99 + intraday #100) = 100 ROUND-NUMBER MILESTONE
+  # note (updated 2026-09-04): Day 54 elapsed (Day 51 of $0 streak). 100 GUARDRAIL ABORTS — landmark.
+  # Two Gmail drafts found (draft anomaly resolved; no 5th no-draft anomaly). NFP day (first Friday
+  # of September — employment report at 8:30 AM ET). Morning routine incorrectly noted "No major US
+  # data scheduled." Protocol gap identified: add NFP/CPI/FOMC calendar check to morning routine.
+  # SPY -0.38% ($770.23 vs $773.17). QQQ +0.19%. AI infrastructure surged: AMD +4.67% ($477.45),
+  # SMCI +4.55% ($39.59). DDOG +6.08% premarket → -0.84% close (gap-and-fade, no catalyst).
+  # AMD: Gate 5 FAIL (+0.86% PM) + structural block → MISSED (+4.67%). NFP macro rotation.
+  # SMCI: AVGO gate NEUTRAL (+0.20%); premarket not checked → MISSED (+4.55%). Protocol gap.
+  # DDOG: opportunistic, no catalyst → correct (-0.84%). Stand-aside: 53/99 = 53.54%.
+  # Daily score: 50. Call Robinhood Support: 1-800-279-1969. Account ●●●●9602. 100 ABORTS.
+  # FOMC September 16 now 8 trading days away. Labor Day Monday 9/7 — market CLOSED.
+  # Next trading day: Tuesday September 8, 2026.
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 54.64   # 53/97; slight pullback from 54.74% peak (9/2)
-  stand_aside_count: 97
+  stand_aside_correctness_pct: 53.54   # 53/99; pullback from 54.64% (9/3); two misses today (AMD, SMCI)
+  stand_aside_count: 99
   stand_aside_correct: 53
+  # 2026-09-04: +3 candidates (NFP day; AI infrastructure surge; jobs-report rotation):
+  #   AMD: close $477.45 = +4.67%. Scored "MISSED." Gate 5 FAIL (+0.86% PM < +2%) + structural
+  #         block (7+ sessions underperforming QQQ). NFP macro rotation drove intraday surge.
+  #         Block remains active — one macro-driven day does not reset structural underperformance.
+  #   SMCI: close $39.59 = +4.55%. Scored "MISSED." AVGO gate NEUTRAL; morning routine did not
+  #         check SMCI premarket (protocol gap). Third consecutive week of SMCI miss. Gate carve-out
+  #         protocol revision now urgent: always check SMCI premarket when AVGO gate ≥ -1%.
+  #   DDOG: close $212.95 = -0.84%. Scored "correct." PM +6.08% with no named catalyst → faded.
+  #         Consistent with CRWD (9/2: -5.42%) and CRM (9/2: -0.36%) gap-and-fade pattern.
+  #   stand_aside: 53/99 = 53.54% (pullback; two misses AMD+SMCI; DDOG correct partially offsets).
   # 2026-09-03: +2 reconstructed candidates (no Gmail draft found — 4th no-draft anomaly):
   #   AMD: close $456.24 = -0.18%. Scored "correct." Structural block; 7th consecutive session
   #         underperforming chip complex. AMD -0.18% vs QQQ +1.18% (-136bps vs tape).
@@ -59,9 +71,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 773.16             # EOD 2026-09-03; SPY +1.05% (strong risk-ON; AVGO chip drag isolated)
-  spy_pct_change_since_start: +3.87   # (773.16 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -103.87  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 770.23             # EOD 2026-09-04; SPY -0.38% (NFP jobs surprise; yields jumped; mixed market)
+  spy_pct_change_since_start: +3.47   # (770.23 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -103.47  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
