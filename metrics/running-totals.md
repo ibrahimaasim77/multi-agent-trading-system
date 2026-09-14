@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-09-11
-trading_days_elapsed: 58
+last_updated: 2026-09-14
+trading_days_elapsed: 59
 
 trades:
   total: 0
@@ -20,7 +20,15 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 108            # 106 through 9/10; +2 today (9/11 morning #107 + intraday #108)
+  guardrail_aborts: 110            # 108 through 9/11; +2 today (9/14 morning #109 + intraday #110)
+  # note (updated 2026-09-14): Day 59 elapsed (Day 57 of $0 streak). 110 GUARDRAIL ABORTS.
+  # Two drafts confirmed — 8th consecutive compliant day. No-draft anomaly resolved.
+  # Macro: severe risk-off (SPY -0.46% → $760.77; QQQ -0.80% → $709.16). Saudi pipeline shutdown (Brent +3% → $107.65/bbl).
+  #   Anthropic/OpenAI AI slowdown calls. FOMC Sep 16 ONE SESSION AWAY. Rate hike probability 85.5%.
+  # META +2.73% ($648.03 → $665.71): Gate 5 FAIL (+1.74% PM, < +2%). Muse Day 4 (JPMorgan OW/$820, GS reiteration). Close surpassed threshold — MISSED.
+  # AMD -4.43% ($516.13 → $493.26): CHIP GATE NEGATIVE (AVGO -4.16% PM) + Gate 5 FAIL (-5.80% PM). Largest AMD PM decline in system history. AVOIDED.
+  # Stand-aside: 61/113 = 53.98% (from 54.05%; META missed, AMD avoided). Daily score: 60.
+  # FOMC September 16 is ONE TRADING SESSION AWAY. Call Robinhood: 1-800-279-1969. Account ●●●●9602.
   # note (updated 2026-09-11): Day 58 elapsed (Day 55 of $0 streak). 108 GUARDRAIL ABORTS.
   # Two drafts confirmed — 7th consecutive compliant day. No-draft anomaly resolved.
   # Macro: relief bounce (SPY +0.84% → $764.20; QQQ +0.87% → $714.85). Oracle earnings drove tech bid.
@@ -34,9 +42,17 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 54.05   # 60/111; AMD missed (+2.52%), META correct (+0.60%), SMCI missed (+7.28%), ORCL correct (-1.76%)
-  stand_aside_count: 111
-  stand_aside_correct: 60
+  stand_aside_correctness_pct: 53.98   # 61/113; META missed (+2.73%), AMD avoided (-4.43%)
+  stand_aside_count: 113
+  stand_aside_correct: 61
+  # 2026-09-14: +2 candidates (severe risk-off; AI/chip rout; pre-FOMC; Saudi oil shock; AI slowdown narrative):
+  #   META: close $665.71 = +2.73%. Scored "MISSED." Muse Day 4 (JPMorgan OW/$820, GS reiteration, #3 App Store).
+  #         Gate 5 FAIL (+1.74% PM < +2% threshold) — 26bps below. FOMC probability 85.5%. Cash guardrail fires.
+  #         First session where Gate 5 FAILED at evaluation but META closed ABOVE +2% threshold. Gate correctly applied.
+  #   AMD: close $493.26 = -4.43%. Scored "avoided." CHIP GATE NEGATIVE (AVGO -4.16% PM, far below -1% threshold).
+  #         Gate 5 FAIL (-5.80% PM — largest single-day AMD PM decline in system history). Doubly blocked.
+  #         AMD premarket-to-close divergence pattern does NOT apply at -5.80% PM. Both gates validated.
+  #   stand_aside: 61/113 = 53.98% (from 60/111 = 54.05%; +2 candidates, +1 correct; -0.07 ppts.)
   # 2026-09-11: +4 candidates (relief bounce; Oracle earnings; pre-FOMC Friday; oil $102.59/bbl):
   #   AMD: close $516.28 = +2.52%. Scored "missed." Gate 5 FAIL (+1.34% PM < +2%). No catalyst.
   #         AVGO carve-out active (+1.09% PM). Close exceeded threshold — 2nd AMD PM-to-close divergence.
@@ -91,9 +107,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 764.20             # EOD 2026-09-11; SPY +0.84% (relief bounce: Oracle earnings; 4-session streak broken)
-  spy_pct_change_since_start: +2.66   # (764.20 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -102.66  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 760.77             # EOD 2026-09-14; SPY -0.46% (severe risk-off: FOMC eve, Saudi oil shock, AI slowdown calls)
+  spy_pct_change_since_start: +2.21   # (760.77 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -102.21  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
