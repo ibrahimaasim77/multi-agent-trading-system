@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-09-14
-trading_days_elapsed: 59
+last_updated: 2026-09-15
+trading_days_elapsed: 60
 
 trades:
   total: 0
@@ -20,7 +20,16 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 110            # 108 through 9/11; +2 today (9/14 morning #109 + intraday #110)
+  guardrail_aborts: 112            # 110 through 9/14; +2 today (9/15 morning #111 + intraday #112)
+  # note (updated 2026-09-15): Day 60 elapsed (Day 58 of $0 streak). 112 GUARDRAIL ABORTS.
+  # Two drafts confirmed — 10th consecutive compliant day. No-draft anomaly resolved.
+  # Macro: FOMC eve — bifurcated (SPY -0.46% → $757.38; QQQ -0.65% → $704.59). Oil $107+/bbl (9th+ elevated session).
+  #   FOMC rate hike probability >90%. 10-yr yield above 5%. Individual AI names diverged: META +0.73%, AMD +2.21%, NVDA +0.57%.
+  # META +0.73% ($665.60 → $670.49): Gate 5 FAIL (-0.47% PM, < +2%). Muse Day 5. No fresh catalyst. Close +0.73% — CORRECT.
+  # AMD +2.21% ($493.41 → $504.30): FOMC eve protocol (DO NOT EVALUATE) + Gate 5 FAIL (+1.20% PM < +2%). Close +2.21% — MISSED.
+  #   AMD divergence pattern 3rd consecutive session: PM +1.20% → close +2.21% (+101bps intraday outperformance).
+  # Stand-aside: 62/115 = 53.91% (from 53.98%; META correct, AMD missed). Daily score: 55.
+  # FOMC September 16 IS TOMORROW. Call Robinhood: 1-800-279-1969. Account ●●●●9602.
   # note (updated 2026-09-14): Day 59 elapsed (Day 57 of $0 streak). 110 GUARDRAIL ABORTS.
   # Two drafts confirmed — 8th consecutive compliant day. No-draft anomaly resolved.
   # Macro: severe risk-off (SPY -0.46% → $760.77; QQQ -0.80% → $709.16). Saudi pipeline shutdown (Brent +3% → $107.65/bbl).
@@ -42,9 +51,18 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 53.98   # 61/113; META missed (+2.73%), AMD avoided (-4.43%)
-  stand_aside_count: 113
-  stand_aside_correct: 61
+  stand_aside_correctness_pct: 53.91   # 62/115; META correct (+0.73%), AMD missed (+2.21%)
+  stand_aside_count: 115
+  stand_aside_correct: 62
+  # 2026-09-15: +2 candidates (FOMC eve; bifurcated tape; META Muse Day 5; AMD FOMC block):
+  #   META: close $670.49 = +0.73%. Scored "correct." Gate 5 FAIL (-0.47% PM < +2%). Muse Day 5.
+  #         No confirmed fresh catalyst within 24h. FOMC eve protocol also fires (>90% hike prob).
+  #         Close +0.73% validates stand-aside — within correct band (-1% to +2%). Gate correctly applied.
+  #   AMD: close $504.30 = +2.21%. Scored "missed." FOMC eve protocol (DO NOT EVALUATE per 9/14 journal).
+  #         Gate 5 FAIL also fires (+1.20% PM < +2%). Close +2.21% — 3rd consecutive AMD PM-to-close
+  #         divergence session: 9/9 (PM -1.11% → +3.03%), 9/11 (PM +1.34% → +2.52%), 9/15 (PM +1.20% → +2.21%).
+  #         FOMC eve block was protocol-correct. AMD divergence pattern now confirmed structural (3 of 3).
+  #   stand_aside: 62/115 = 53.91% (from 61/113 = 53.98%; +2 candidates, +1 correct; -0.07 ppts.)
   # 2026-09-14: +2 candidates (severe risk-off; AI/chip rout; pre-FOMC; Saudi oil shock; AI slowdown narrative):
   #   META: close $665.71 = +2.73%. Scored "MISSED." Muse Day 4 (JPMorgan OW/$820, GS reiteration, #3 App Store).
   #         Gate 5 FAIL (+1.74% PM < +2% threshold) — 26bps below. FOMC probability 85.5%. Cash guardrail fires.
@@ -107,9 +125,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 760.77             # EOD 2026-09-14; SPY -0.46% (severe risk-off: FOMC eve, Saudi oil shock, AI slowdown calls)
-  spy_pct_change_since_start: +2.21   # (760.77 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -102.21  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 757.38             # EOD 2026-09-15; SPY -0.46% (FOMC eve; bifurcated tape: broad market down, AI names mixed)
+  spy_pct_change_since_start: +1.75   # (757.38 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -101.75  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
