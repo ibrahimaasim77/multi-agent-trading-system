@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-09-15
-trading_days_elapsed: 60
+last_updated: 2026-09-16
+trading_days_elapsed: 61
 
 trades:
   total: 0
@@ -20,7 +20,16 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 112            # 110 through 9/14; +2 today (9/15 morning #111 + intraday #112)
+  guardrail_aborts: 114            # 112 through 9/15; +2 est (9/16 morning #113 + intraday #114)
+  # note (updated 2026-09-16): Day 61 elapsed (Day 59 of $0 streak). 114 GUARDRAIL ABORTS (EST).
+  # DRAFT COMPLIANCE UNKNOWN — no Stand Aside drafts found in Gmail for 9/16 (streak may be broken at Day 10).
+  # FOMC RATE HIKE DAY: Fed hiked +25bps (first hike in 3 years). Warsh: 1 more hike in 2026, hold 2027.
+  # Macro: Dow -1.21%; SPY -0.44% → $754.09; QQQ +0.03% → $704.75. Tech flat — "priced in" hike narrative.
+  #   META +0.46% ($670.24 → $673.33): Muse Day 6. Stand-aside — CORRECT (< +2% threshold).
+  #   AMD +1.72% ($504.20 → $512.89): Post-FOMC normal eval. Gate 5 FAIL (< +2%). Stand-aside — CORRECT.
+  #   AMD divergence pattern MODERATED: no PM-to-close > +2% today. Standard Gate 5 restored.
+  # Stand-aside: 64/117 = 54.70% (from 53.91%; +2 correct; +0.79 ppts). Daily score: 70.
+  # POST-FOMC REGIME NOW OPEN. Call Robinhood: 1-800-279-1969. Account ●●●●9602.
   # note (updated 2026-09-15): Day 60 elapsed (Day 58 of $0 streak). 112 GUARDRAIL ABORTS.
   # Two drafts confirmed — 10th consecutive compliant day. No-draft anomaly resolved.
   # Macro: FOMC eve — bifurcated (SPY -0.46% → $757.38; QQQ -0.65% → $704.59). Oil $107+/bbl (9th+ elevated session).
@@ -51,9 +60,17 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 53.91   # 62/115; META correct (+0.73%), AMD missed (+2.21%)
-  stand_aside_count: 115
-  stand_aside_correct: 62
+  stand_aside_correctness_pct: 54.70   # 64/117; META correct (+0.46%), AMD correct (+1.72%) — FOMC day
+  stand_aside_count: 117
+  stand_aside_correct: 64
+  # 2026-09-16: +2 candidates (FOMC DAY; +25bps hike as expected; tech flat QQQ +0.03%; Dow -1.21%):
+  #   META: close $673.33 = +0.46%. Scored "correct." Muse Day 6. Cash guardrail ($0, Day 59).
+  #         Close +0.46% in (-1% to +2%) correct band. Gate 5 unverified (no draft found).
+  #         Muse arc moderating (Day 6: +0.46% vs Day 1: +6.51%). Fresh catalyst needed for Day 7.
+  #   AMD: close $512.89 = +1.72%. Scored "correct." Post-FOMC normal eval reinstated.
+  #         Gate 5 FAIL (< +2%). Divergence pattern moderated — close did NOT exceed +2% today.
+  #         AMD recovering from $493.26 rout (9/14): now $512.89, +3.97% above rout low.
+  #   stand_aside: 64/117 = 54.70% (from 62/115 = 53.91%; +2 candidates, +2 correct; +0.79 ppts.)
   # 2026-09-15: +2 candidates (FOMC eve; bifurcated tape; META Muse Day 5; AMD FOMC block):
   #   META: close $670.49 = +0.73%. Scored "correct." Gate 5 FAIL (-0.47% PM < +2%). Muse Day 5.
   #         No confirmed fresh catalyst within 24h. FOMC eve protocol also fires (>90% hike prob).
@@ -125,9 +142,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 757.38             # EOD 2026-09-15; SPY -0.46% (FOMC eve; bifurcated tape: broad market down, AI names mixed)
-  spy_pct_change_since_start: +1.75   # (757.38 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -101.75  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 754.09             # EOD 2026-09-16; SPY -0.44% (FOMC hike day; Dow -1.21%, QQQ +0.03%, tech flat)
+  spy_pct_change_since_start: +1.31   # (754.09 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -101.31  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
