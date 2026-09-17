@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-09-16
-trading_days_elapsed: 61
+last_updated: 2026-09-17
+trading_days_elapsed: 62
 
 trades:
   total: 0
@@ -20,7 +20,20 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 114            # 112 through 9/15; +2 est (9/16 morning #113 + intraday #114)
+  guardrail_aborts: 116            # 115 through 9/17 morning (Abort #115) + intraday #116
+  # note (updated 2026-09-17): Day 62 elapsed (Day 60 of $0 streak). 116 GUARDRAIL ABORTS (EST).
+  # DRAFT COMPLIANCE: Day 1 of new streak. Two drafts confirmed — morning 08:42 ET, intraday 11:12 ET.
+  # POST-FOMC DAY 1: SPY +1.14% → $762.64; QQQ +1.72% → $716.87. Risk-on. Oil -0.99% to $104.78.
+  #   AMD +6.31% ($512.50 → $544.83): ALL GATES PASS. Gate 5 PASS (+3.55% PM). Chip gate STRONGLY POSITIVE
+  #     (AVGO +2.52% PM). Gate 4 PASS (Piper Sandler OW/$600 PT). VIX 17.20. Capital blocked — Abort #115.
+  #     LARGEST AMD SINGLE-DAY GAIN IN SYSTEM HISTORY. BIGGEST CAPITAL FAILURE. Stand-aside: MISSED.
+  #   META +1.40% ($673.31 → $682.70): Muse Day 7. Gate 5 FAIL (+1.26% PM < +2%). Stand-aside: CORRECT.
+  #     Muse arc Day 7 uptick: D6 +0.46% → D7 +1.40% — possible post-FOMC re-energization.
+  #   SMCI +9.49% ($36.85 → $40.345): NOT EVALUATED — process gap (4th occurrence). Must add to core watchlist.
+  #     AVGO chip gate was strongly positive; 9/16 journal recommended SMCI evaluation. Not acted upon.
+  # Stand-aside: 65/119 = 54.62% (from 64/117 = 54.70%; AMD missed [+1/+0], META correct [+1/+1]; -0.08 ppts.)
+  # Daily score: 40. AMD capital failure (-15), SMCI process gap (-10), META correct (+5), drafts OK (+5), macro correct (+5).
+  # CALL ROBINHOOD: 1-800-279-1969. Account ●●●●9602. AMD +6.31% TODAY UNDEPLOYED.
   # note (updated 2026-09-16): Day 61 elapsed (Day 59 of $0 streak). 114 GUARDRAIL ABORTS (EST).
   # DRAFT COMPLIANCE UNKNOWN — no Stand Aside drafts found in Gmail for 9/16 (streak may be broken at Day 10).
   # FOMC RATE HIKE DAY: Fed hiked +25bps (first hike in 3 years). Warsh: 1 more hike in 2026, hold 2027.
@@ -60,9 +73,25 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 54.70   # 64/117; META correct (+0.46%), AMD correct (+1.72%) — FOMC day
-  stand_aside_count: 117
-  stand_aside_correct: 64
+  stand_aside_correctness_pct: 54.62   # 65/119; AMD missed (+6.31% — capital failure), META correct (+1.40%) — Post-FOMC Day 1
+  stand_aside_count: 119
+  stand_aside_correct: 65
+  # 2026-09-17: +2 candidates (POST-FOMC DAY 1; SPY +1.14%; QQQ +1.72%; oil -0.99%; peak-rates regime):
+  #   AMD: close $544.83 = +6.31% ($512.50 → $544.83). Scored "MISSED." ALL GATES PASSED at 8:39 AM ET.
+  #         Gate 5 PASS (+3.55% PM $530.69). Chip gate STRONGLY POSITIVE (AVGO +2.52% PM). Gate 4 PASS
+  #         (Piper Sandler OW/$600 PT, David O'Connor, 'ramp-ups on track'). VIX 17.20. Oil -0.99% tailwind.
+  #         Post-FOMC protocol CLEAR. Every single gate cleared. Cash guardrail fires ($0, Day 60 — Abort #115).
+  #         LARGEST AMD DAILY RETURN IN SYSTEM HISTORY. HIGHEST-CONVICTION CAPITAL FAILURE IN SYSTEM HISTORY.
+  #         This is NOT a gate error. It is the most expensive manifestation of the capital anomaly to date.
+  #   META: close $682.70 = +1.40% ($673.31 → $682.70). Scored "correct." Muse Day 7.
+  #         Gate 5 FAIL (+1.26% PM < +2%). No confirmed fresh Muse catalyst within 24h. Terminal fail.
+  #         Close +1.40% validates: within (-1% to +2%) correct band. Notable: D7 (+1.40%) > D6 (+0.46%) —
+  #         possible post-FOMC re-energization of Muse arc. Watch D8 for ≥+2% PM AND fresh catalyst.
+  #   SMCI: close $40.345 = +9.49% ($36.85 → $40.345). NOT a formal stand-aside candidate today (not evaluated).
+  #         Process failure: 9/16 journal recommended SMCI evaluation if chip gate positive. AVGO +2.52% PM
+  #         (chip gate strongly positive); SMCI absent from morning watchlist. 4th SMCI process failure.
+  #         MANDATORY FIX: add SMCI to core watchlist permanently when chip gate ≥ -1% PM.
+  #   stand_aside: 65/119 = 54.62% (from 64/117 = 54.70%; +2 candidates, +1 correct; -0.08 ppts.)
   # 2026-09-16: +2 candidates (FOMC DAY; +25bps hike as expected; tech flat QQQ +0.03%; Dow -1.21%):
   #   META: close $673.33 = +0.46%. Scored "correct." Muse Day 6. Cash guardrail ($0, Day 59).
   #         Close +0.46% in (-1% to +2%) correct band. Gate 5 unverified (no draft found).
@@ -142,9 +171,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 754.09             # EOD 2026-09-16; SPY -0.44% (FOMC hike day; Dow -1.21%, QQQ +0.03%, tech flat)
-  spy_pct_change_since_start: +1.31   # (754.09 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -101.31  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 762.64             # EOD 2026-09-17; SPY +1.14% (Post-FOMC Day 1; QQQ +1.72%; risk-on; oil -0.99%)
+  spy_pct_change_since_start: +2.46   # (762.64 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -102.46  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
