@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-09-18
-trading_days_elapsed: 63
+last_updated: 2026-09-21
+trading_days_elapsed: 64
 
 trades:
   total: 0
@@ -20,7 +20,23 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 118            # 117 morning (9/18) + 118 intraday (9/18)
+  guardrail_aborts: 120            # 119 morning (9/21) + 120 intraday (9/21)
+  # note (updated 2026-09-21): Day 64 elapsed (Day 62 of $0 streak). 120 GUARDRAIL ABORTS (EST).
+  # POST-FOMC DAY 3 — WORST SINGLE-SESSION MISS IN SYSTEM HISTORY:
+  #   SPY +1.55% ($761.69 → $773.53); QQQ +2.77% ($721.45 → $741.45). Explosive risk-on.
+  #   AMD +9.92% ($559.82 → $615.36): Capital blocked (Abort #119). Gate 5 PASS probable (PM likely ≥+2%).
+  #     AVGO chip gate POSITIVE (+1.38%). AMD now +19.98% across 3 post-FOMC sessions ($512.89→$615.36).
+  #     No morning draft found — evaluation unverified. Capital failure, 3rd consecutive post-FOMC session.
+  #   META +11.33% ($665.75 → $741.13): Capital blocked. Fresh catalyst suspected (Muse arc RELAUNCH Day 9+).
+  #     9/18 arc declared exhausted (D8 -2.48%); +11.33% move implies weekend catalyst (quant adoption
+  #     data, enterprise news, or large analyst upgrade). Largest single-session META miss in system history.
+  #     No morning draft found — gate evaluation unverifiable.
+  #   SMCI +5.36% ($39.09 → $41.19): Capital blocked (core watchlist Day 2). AVGO chip gate POSITIVE.
+  #     Recovery from 9/18 reversal (-3.07%). Gate 5 PASS probable. AI backlog thesis ($60B GS) intact.
+  #   DRAFT COMPLIANCE FAILURE: No Stand Aside drafts found in Gmail for 9/21. Day 3 streak BROKEN (was Day 2).
+  #   Hypothetical total if $217.19 deployed (equal weight): +$19.16 = +8.82% portfolio in ONE session.
+  #   Daily score: 20 (lowest in system history). Stand-aside: 67/125 = 53.60% (−1.32 ppts; worst drop).
+  #   CALL ROBINHOOD: 1-800-279-1969. Account ●●●●9602. AMD $615.36 (+19.98% post-FOMC). $0 deployed.
   # note (updated 2026-09-18): Day 63 elapsed (Day 61 of $0 streak). 118 GUARDRAIL ABORTS (EST).
   # POST-FOMC DAY 2: SPY -0.13% → $761.64; QQQ +0.62% → $721.36. Tech/AI outperforms; broad market digests.
   #   AMD +2.70% ($545.09 → $559.80): Gate 5 FAIL (+0.002% PM — flat after +6.31% surge). AMD DIVERGENCE PATTERN
@@ -88,9 +104,24 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 54.92   # 67/122; Post-FOMC Day 2: AMD missed (+2.70% divergence), META avoided (-2.48%), SMCI avoided (-3.07%)
-  stand_aside_count: 122
+  stand_aside_correctness_pct: 53.60   # 67/125; Post-FOMC Day 3: AMD missed (+9.92%), META missed (+11.33%), SMCI missed (+5.36%) — all capital failures
+  stand_aside_count: 125
   stand_aside_correct: 67
+  # 2026-09-21: +3 candidates (POST-FOMC DAY 3; SPY +1.55% → $773.53; QQQ +2.77% → $741.45; MOST EXPLOSIVE SESSION IN SYSTEM HISTORY):
+  #   AMD: close $615.36 = +9.92% ($559.82 → $615.36). Scored "MISSED." Evaluation unknown (no morning draft).
+  #         AVGO chip gate POSITIVE (close +1.38%). Cash guardrail fires ($0, Day 62 — Abort #119).
+  #         AMD now +19.98% across 3 post-FOMC sessions ($512.89 → $615.36). Capital failure, 3rd consecutive.
+  #         Gate 5 PASS probable (close magnitude implies strong premarket). No gate error. Infrastructure failure.
+  #   META: close $741.13 = +11.33% ($665.75 → $741.13). Scored "MISSED." Evaluation unknown (no morning draft).
+  #         9/18 Muse arc declared exhausted (D8 -2.48%). +11.33% today implies Muse arc RELAUNCH (fresh catalyst).
+  #         Cash guardrail fires ($0, Day 62). Largest single-session META miss in system history (prior: D1 +6.51%).
+  #         Gate status unknown. Hypothetical +$11.33 on $100 notional. Capital failure.
+  #   SMCI: close $41.19 = +5.36% ($39.09 → $41.19). Scored "MISSED." Evaluation unknown (no morning draft).
+  #         Core watchlist Day 2 (corrected protocol active). AVGO chip gate POSITIVE. Cash guardrail fires ($0, Day 62).
+  #         Recovery from 9/18 reversal (-3.07%). Gate 5 PASS probable. Capital failure.
+  #   DRAFT COMPLIANCE FAILURE: No Stand Aside drafts found in Gmail for 9/21. Day 3 streak BROKEN (stayed at Day 2).
+  #   Hypothetical portfolio gain if $217.19 deployed equal-weight: ~+$19.16 = +8.82% in ONE session (system record).
+  #   stand_aside: 67/125 = 53.60% (from 67/122 = 54.92%; +3 candidates, +0 correct; −1.32 ppts — WORST single-day drop.)
   # 2026-09-18: +3 candidates (POST-FOMC DAY 2; SPY -0.13% → $761.64; QQQ +0.62% → $721.36; tech outperforms; digestion):
   #   AMD: close $559.80 = +2.70% ($545.09 → $559.80). Scored "missed." Gate 5 FAIL (+0.002% PM — flat after +6.31%).
   #         AVGO chip gate POSITIVE (+0.44% PM) → carve-out active. Gate 5 terminal fail at +0.002%.
@@ -201,9 +232,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 761.64             # EOD 2026-09-18; SPY -0.13% (Post-FOMC Day 2; QQQ +0.62%; tech outperforms; digestion)
-  spy_pct_change_since_start: +2.32   # (761.64 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -102.32  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 773.53             # EOD 2026-09-21; SPY +1.55% (Post-FOMC Day 3; QQQ +2.77%; explosive risk-on; AMD +9.92%, META +11.33%)
+  spy_pct_change_since_start: +3.92   # (773.53 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -103.92  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
