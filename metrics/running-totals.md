@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-09-21
-trading_days_elapsed: 64
+last_updated: 2026-09-22
+trading_days_elapsed: 65
 
 trades:
   total: 0
@@ -20,7 +20,21 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 120            # 119 morning (9/21) + 120 intraday (9/21)
+  guardrail_aborts: 122            # 121 morning (9/22) + 122 intraday (9/22)
+  # note (updated 2026-09-22): Day 65 elapsed (Day 63 of $0 streak). 122 GUARDRAIL ABORTS (EST).
+  # POST-FOMC DAY 4: SPY -0.01% → $773.40; QQQ +0.81% → $747.47 (FIRST NASDAQ RECORD SINCE JUNE). Chipmakers rally.
+  #   AMD +1.38% ($615.52 → $624.00): Gate 5 FAIL (-1.40% PM). Post-3-session exhaustion/digestion.
+  #     AVGO chip gate borderline (-0.18% PM; technically active >-1%). Cash guardrail fires ($0, Day 63 — Abort #121).
+  #     Close +1.38% = CORRECT stand-aside (within -1% to +2% band). First AMD correct in post-FOMC regime.
+  #     AMD now +21.67% across 4 post-FOMC sessions ($512.89 → $624.00). $0 deployed.
+  #   META -0.62% ($741.245 → $736.68): Gate 5 FAIL (-0.37% PM). Muse arc Day 2 consolidation.
+  #     Close -0.62% = CORRECT stand-aside. Day 2 profit-taking (prior arc Day 2 was -1.43%; pattern confirmed).
+  #     Cash guardrail fires ($0, Day 63 — Abort #121 morning).
+  #   AVGO chip gate: +0.54% close ($362.66 → $364.61). Chip gate active; no core candidate reached Gate 5.
+  #   DRAFT COMPLIANCE: ✅ RESTORED. Day 1 of new streak. Two drafts confirmed (morning 8:41 AM ET, intraday 11:12 AM ET).
+  #     Streak broken 9/21 (Day 3); restarted today. Target Day 10 by 10/5.
+  #   Stand-aside: 69/127 = 54.33% (+0.73 ppts from 53.60%; +2 candidates, +2 correct [AMD ✓, META ✓]).
+  #   Daily score: 75 (AMD correct +10, META correct +10, drafts Day 1 +5; base 50).
   # note (updated 2026-09-21): Day 64 elapsed (Day 62 of $0 streak). 120 GUARDRAIL ABORTS (EST).
   # POST-FOMC DAY 3 — WORST SINGLE-SESSION MISS IN SYSTEM HISTORY:
   #   SPY +1.55% ($761.69 → $773.53); QQQ +2.77% ($721.45 → $741.45). Explosive risk-on.
@@ -104,9 +118,19 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 53.60   # 67/125; Post-FOMC Day 3: AMD missed (+9.92%), META missed (+11.33%), SMCI missed (+5.36%) — all capital failures
-  stand_aside_count: 125
-  stand_aside_correct: 67
+  stand_aside_correctness_pct: 54.33   # 69/127; Post-FOMC Day 4: AMD correct (+1.38%), META correct (-0.62%)
+  stand_aside_count: 127
+  stand_aside_correct: 69
+  # 2026-09-22: +2 candidates (POST-FOMC DAY 4; SPY -0.01% → $773.40; QQQ +0.81% → $747.47; FIRST NASDAQ RECORD SINCE JUNE; chipmakers rally):
+  #   AMD: close $624.00 = +1.38% ($615.52 → $624.00). Scored "correct." Gate 5 FAIL (-1.40% PM).
+  #         AVGO chip gate borderline (-0.18% PM; technically active >-1%). Cash guardrail ($0, Day 63 — Abort #121).
+  #         Close +1.38% within (-1% to +2%) correct band. First AMD correct in post-FOMC 4-session run.
+  #         AMD now +21.67% across post-FOMC sessions ($512.89 → $624.00). $0 deployed entire run.
+  #   META: close $736.68 = -0.62% ($741.245 → $736.68). Scored "correct." Gate 5 FAIL (-0.37% PM).
+  #         Muse arc Day 2 consolidation. Day 2 profit-taking confirmed (prior arc Day 2: -1.43%; pattern holds).
+  #         Cash guardrail ($0, Day 63). Close -0.62% within correct band. Gate correctly applied.
+  #   DRAFT COMPLIANCE: ✅ Day 1 streak restart. Both drafts confirmed after 9/21 failure.
+  #   stand_aside: 69/127 = 54.33% (from 67/125 = 53.60%; +2 candidates, +2 correct; +0.73 ppts recovery.)
   # 2026-09-21: +3 candidates (POST-FOMC DAY 3; SPY +1.55% → $773.53; QQQ +2.77% → $741.45; MOST EXPLOSIVE SESSION IN SYSTEM HISTORY):
   #   AMD: close $615.36 = +9.92% ($559.82 → $615.36). Scored "MISSED." Evaluation unknown (no morning draft).
   #         AVGO chip gate POSITIVE (close +1.38%). Cash guardrail fires ($0, Day 62 — Abort #119).
@@ -232,9 +256,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 773.53             # EOD 2026-09-21; SPY +1.55% (Post-FOMC Day 3; QQQ +2.77%; explosive risk-on; AMD +9.92%, META +11.33%)
-  spy_pct_change_since_start: +3.92   # (773.53 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -103.92  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 773.40             # EOD 2026-09-22; SPY -0.01% (Post-FOMC Day 4; QQQ +0.81% NEW RECORD; chipmakers rally)
+  spy_pct_change_since_start: +3.90   # (773.40 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -103.90  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
