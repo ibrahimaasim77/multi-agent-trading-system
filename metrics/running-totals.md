@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-09-22
-trading_days_elapsed: 65
+last_updated: 2026-10-06
+trading_days_elapsed: 75
 
 trades:
   total: 0
@@ -20,7 +20,19 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 122            # 121 morning (9/22) + 122 intraday (9/22)
+  guardrail_aborts: 142            # est. 142 by 10/6 (122 through 9/22 + ~20 across 10-day gap 9/23–10/5)
+  # note (updated 2026-10-06): Day 75 elapsed (Day 73 of $0 streak). ~142 GUARDRAIL ABORTS (EST).
+  # ⚠️ 10-DAY ROUTINE GAP: No journals or Stand Aside drafts filed 9/23–10/5 (10 consecutive sessions).
+  # Post-mortem and morning routine failed to document evaluations. Cause unknown. Routine resumes today.
+  # Today (10/6): SPY +0.56% → $779.14; QQQ +0.45% → $759.61. Mildly risk-on. Chip sector led.
+  #   AMD +2.82% ($631.75 → $649.55): EVALUATION UNKNOWN — no morning draft. Close above Gate 5 +2% threshold.
+  #     AVGO chip gate STRONGLY POSITIVE (+3.70% → $375.92). Capital blocked (~Abort #143 est.).
+  #     Probable missed entry (Gate 5 likely PASS; Gate 4 catalyst status unknown). AMD now +26.65% from 9/16 close.
+  #   META -0.37% ($741.90 → $739.19): Below Gate 5 threshold. Would have been correct stand-aside.
+  #   SMCI +0.60% ($43.19 → $43.45): Below Gate 5 threshold. Would have been correct stand-aside.
+  #   No drafts found in Gmail since 9/22. Draft compliance: ❌ 10-day break. Streak Day 0. Restart required 10/7.
+  #   Daily score: 35. No formal stand-aside candidates (no draft). AMD probable unverified miss.
+  #   AMD cumulative post-FOMC (9/16 → 10/6): $512.89 → $649.55 = +26.65% across 14 sessions. $0 deployed.
   # note (updated 2026-09-22): Day 65 elapsed (Day 63 of $0 streak). 122 GUARDRAIL ABORTS (EST).
   # POST-FOMC DAY 4: SPY -0.01% → $773.40; QQQ +0.81% → $747.47 (FIRST NASDAQ RECORD SINCE JUNE). Chipmakers rally.
   #   AMD +1.38% ($615.52 → $624.00): Gate 5 FAIL (-1.40% PM). Post-3-session exhaustion/digestion.
@@ -256,9 +268,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 773.40             # EOD 2026-09-22; SPY -0.01% (Post-FOMC Day 4; QQQ +0.81% NEW RECORD; chipmakers rally)
-  spy_pct_change_since_start: +3.90   # (773.40 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -103.90  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 779.14             # EOD 2026-10-06; SPY +0.56% (mildly risk-on; AVGO chip sector +3.70%; AMD +2.82%)
+  spy_pct_change_since_start: +4.67   # (779.14 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -104.67  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
