@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-10-08
-trading_days_elapsed: 77
+last_updated: 2026-10-09
+trading_days_elapsed: 78
 
 trades:
   total: 0
@@ -20,7 +20,26 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 146            # est. 146 by 10/8 (144 through 10/7 + Abort #145 morning + Abort #146 intraday)
+  guardrail_aborts: 148            # est. 148 by 10/9 (146 through 10/8 + Abort #147 morning + Abort #148 intraday)
+  # note (updated 2026-10-09): Day 78 elapsed (Day 77 of $0 streak). 148 GUARDRAIL ABORTS (EST).
+  # BIFURCATED SESSION — compliance restart Day 3 confirmed. Two Stand Aside drafts in Gmail:
+  #   Morning: 12:41 UTC (~8:41 AM ET). Intraday: 15:20 UTC (~11:20 AM ET). Streak Day 3. Day 3 cleared (historical break point).
+  # SPY +0.59% → $778.53; QQQ +0.49% → $751.24. Mildly risk-on broad market; AI chips underperformed.
+  #   AMD -2.02% ($620.68 → $608.12): Gate 5 FAIL (+1.52% PM; 0.48 ppts short). AVGO chip gate POSITIVE (+1.61% PM).
+  #     Gate 4 FAIL: no fresh catalyst (Piper Sandler 9/17 = 22 days stale). Cash guardrail fires ($0, Day 77 — Abort #147).
+  #     Close -2.02% = AVOIDED (< -2%). AMD underperformed SPY by 2.61 ppts on green tape. Post-FOMC correction.
+  #     AMD post-FOMC cumulative (9/16 → 10/9): $512.89 → $608.12 = +18.57%. Peak $649.55 (10/6) → $608.12 = -6.38% correction.
+  #     Three consecutive avoided/correct AMD outcomes: 10/7 -0.55% ✓, 10/8 -3.89% ✓, 10/9 -2.02% ✓.
+  #   META -0.32% ($720.89 → $718.60): Gate 5 FAIL (+0.59% PM). No Muse catalyst.
+  #     Cash guardrail fires ($0, Day 77 — Abort #147). Close -0.32% = CORRECT. Slightly below $720 support.
+  #     Post-arc trajectory: 9/21 peak $741.13 → 10/9 $718.60 = -3.04%.
+  #   HUM +11.54% ($387.12 → $431.80): ≥15% PM abort threshold fires (estimated +14.6–15.4% PM). MISSED.
+  #     Partial fade (+15% PM → +11.54% close = ~3.5pt fade). Rule-correct but outcome = significant missed gain.
+  #   LYV -0.59% ($171.34 → $170.33): No catalyst. CORRECT. Full gap-and-fade from +9.38% PM. ✓
+  #   APP -1.11% ($280.12 → $277.02): No catalyst. CORRECT. +3.6% PM faded entirely. ✓
+  #   AVGO +0.41% ($360.14 → $361.63): Chip gate POSITIVE today (reversal). But AMD -2.02% on green tape = AMD-specific.
+  #   Daily score: 75. AMD avoided +10, META correct +10, drafts Day 3 +5; base 50.
+  #   Stand-aside: 77/136 = 56.62% (+0.89 ppts from 55.73%; +5 candidates today, +4 correct; 3rd consecutive new high).
   # note (updated 2026-10-08): Day 77 elapsed (Day 75 of $0 streak). 146 GUARDRAIL ABORTS (EST).
   # RISK-OFF / CHIP SELLOFF — compliance restart Day 2 confirmed. Two Stand Aside drafts in Gmail:
   #   Morning: 12:41 UTC (~8:41 AM ET). Intraday: 15:17 UTC (~11:17 AM ET). Streak Day 2.
@@ -162,9 +181,26 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 55.73   # 73/131; 2026-10-08: AMD avoided (-3.89%), META correct (-0.07%)
-  stand_aside_count: 131
-  stand_aside_correct: 73
+  stand_aside_correctness_pct: 56.62   # 77/136; 2026-10-09: AMD avoided (-2.02%), META correct (-0.32%), LYV correct (-0.59%), APP correct (-1.11%), HUM missed (+11.54%)
+  stand_aside_count: 136
+  stand_aside_correct: 77
+  # 2026-10-09: +5 candidates (BIFURCATED: SPY +0.59% → $778.53; QQQ +0.49% → $751.24; AI chips lagged; AMD -2.02%):
+  #   AMD: close $608.12 = -2.02% ($620.68 → $608.12). Scored "AVOIDED." Gate 5 FAIL (+1.52% PM; 0.48 ppts below +2%).
+  #         AVGO chip gate POSITIVE (+1.61% PM — gate clears; first POSITIVE after 2 consecutive NEGATIVE sessions).
+  #         Gate 4 FAIL: Piper Sandler 9/17 = 22 days stale; fresh catalyst required. Cash guardrail fires (Abort #147).
+  #         Close -2.02% = AVOIDED (< -2%). AMD underperformed SPY by 2.61 ppts on green tape. 3rd consecutive avoided/correct.
+  #         AMD post-FOMC correction: $649.55 (10/6 peak) → $608.12 (10/9) = -6.38% from peak. Cumulative: +18.57% from 9/16.
+  #   META: close $718.60 = -0.32% ($720.89 → $718.60). Scored "correct." Gate 5 FAIL (+0.59% PM; 1.41 ppts short).
+  #         No fresh Muse catalyst. Cash guardrail fires ($0, Day 77). Slightly below $720 support. Post-arc decay -3.04%.
+  #   HUM:  close $431.80 = +11.54% ($387.12 → $431.80). Scored "MISSED." ≥15% PM abort rule fires (~+14.6–15.4% PM).
+  #         S&P 500 member. Partial fade (+15%→+11.54%). Rule correctly applied; outcome = material missed gain (+11.54%).
+  #         Flag: review ≥15% abort threshold calibration vs. observed gap-and-fade base rates.
+  #   LYV:  close $170.33 = -0.59% ($171.34 → $170.33). Scored "correct." No named catalyst. +9.38% PM → -0.59% close.
+  #         Full gap-and-fade validates no-catalyst rejection. ✓
+  #   APP:  close $277.02 = -1.11% ($280.12 → $277.02). Scored "correct." No specific catalyst. +3.6% PM faded. ✓
+  #   DRAFT COMPLIANCE: ✅ Day 3 restart. Two drafts confirmed (morning 8:41 AM ET, intraday ~11:20 AM ET).
+  #   stand_aside: 77/136 = 56.62% (from 73/131 = 55.73%; +5 candidates, +4 correct; +0.89 ppts; new all-time high, 3rd consecutive).
+  #   Daily score: 75. AMD avoided +10, META correct +10, drafts Day 3 +5; base 50.
   # 2026-10-08: +2 candidates (CHIP SELLOFF; SPY -0.43% → $773.88; QQQ -1.34% → $747.57; AVGO -4.34%; AMD -3.89%):
   #   AMD: close $620.73 = -3.89% ($645.86 → $620.73). Scored "AVOIDED." Gate 5 FAIL (-1.37% PM).
   #         AVGO chip gate NEGATIVE (-1.63% PM, $370.37 vs $376.51) — chip gate fires, no carve-out.
@@ -324,9 +360,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 773.88             # EOD 2026-10-08; SPY -0.43% (chip-sector-led selloff; QQQ -1.34%)
-  spy_pct_change_since_start: +3.97   # (773.88 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -103.97  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 778.53             # EOD 2026-10-09; SPY +0.59% (broad risk-on recovery; AI chips lagged)
+  spy_pct_change_since_start: +4.59   # (778.53 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -104.59  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
