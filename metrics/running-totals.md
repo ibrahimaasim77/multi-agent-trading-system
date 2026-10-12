@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-10-09
-trading_days_elapsed: 78
+last_updated: 2026-10-12
+trading_days_elapsed: 79
 
 trades:
   total: 0
@@ -20,7 +20,23 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 148            # est. 148 by 10/9 (146 through 10/8 + Abort #147 morning + Abort #148 intraday)
+  guardrail_aborts: 150            # confirmed 150 by 10/12 (148 through 10/9 + Abort #149 morning + Abort #150 intraday 10/12)
+  # note (updated 2026-10-12): Day 79 elapsed (Day 78 of $0 streak). 150 GUARDRAIL ABORTS CONFIRMED.
+  # COLUMBUS DAY — BIFURCATED: SPY -0.06% → $778.07; QQQ -0.70% → $746.02. AI chip risk-off; AI platform risk-on.
+  #   AMD -2.29% ($608.10 → $594.15): Gate 5 FAIL (-1.10% PM). AVGO chip gate POSITIVE (-0.71% PM, above -1% threshold).
+  #     Gate 4 FAIL: Piper Sandler 9/17 = 25 days stale. Cash guardrail fires ($0, Day 78 — Abort #149 morning, Abort #150 intraday).
+  #     Close -2.29% = AVOIDED. 4th consecutive avoided/correct AMD outcome from 10/6 peak.
+  #     AMD post-FOMC correction: $649.55 (10/6 peak) → $594.15 (10/12) = -8.53% from peak. Cumulative: +15.84% from 9/16.
+  #   META +3.40% ($718.67 → $743.11): Gate 5 FAIL (+1.30% PM; 0.70 ppts below +2% threshold). Gate 4 FAIL (no Muse catalyst).
+  #     Cash guardrail fires ($0, Day 78 — Abort #149). Close +3.40% = MISSED (protocol-correct; no deduction).
+  #     META recovered above 9/21 Muse relaunch peak ($741.13) to close at $743.11 (+0.27% above peak). Full arc recovery.
+  #   LITE -9.80% ($1103.355 → $995.22): Opportunistic; CEO (optical sold out through 2029); PM ~$936+ (+6%+ from gap-down).
+  #     Cash guardrail fires ($0, Day 78 — Abort #149). Formally AVOIDED (close vs prior close: -9.80%). BUT:
+  #     hypothetical entry at ~$936 premarket → close $995.22 = ~+6.3% gain from entry. Practical MISSED gain.
+  #   Draft compliance: ✅ Day 4 restart. Two drafts confirmed (morning r8590578875306410041; intraday r-7338258268321065617).
+  #   Daily score: 75. AMD avoided +10, META missed (protocol-correct) 0, LITE avoided (formally) +10, drafts Day 4 +5; base 50.
+  #   Stand-aside: 79/139 = 56.83% (from 77/136 = 56.62%; +3 candidates: AMD avoided [+1/+1], META missed [+1/+0], LITE avoided [+1/+1]; +0.21 ppts; new all-time high 5th consecutive).
+  #   CALL ROBINHOOD: 1-800-279-1969. Account ●●●●9602. Day 79 of anomaly. 150 confirmed aborts. AMD +15.84% post-FOMC. $0 deployed.
   # note (updated 2026-10-09): Day 78 elapsed (Day 77 of $0 streak). 148 GUARDRAIL ABORTS (EST).
   # BIFURCATED SESSION — compliance restart Day 3 confirmed. Two Stand Aside drafts in Gmail:
   #   Morning: 12:41 UTC (~8:41 AM ET). Intraday: 15:20 UTC (~11:20 AM ET). Streak Day 3. Day 3 cleared (historical break point).
@@ -181,9 +197,29 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 56.62   # 77/136; 2026-10-09: AMD avoided (-2.02%), META correct (-0.32%), LYV correct (-0.59%), APP correct (-1.11%), HUM missed (+11.54%)
-  stand_aside_count: 136
-  stand_aside_correct: 77
+  stand_aside_correctness_pct: 56.83   # 79/139; 2026-10-12: AMD avoided (-2.29%), META missed (protocol-correct, +3.40%), LITE avoided formally (-9.80% vs prior close; ~+6.3% from entry)
+  stand_aside_count: 139
+  stand_aside_correct: 79
+  # 2026-10-12: +3 candidates (COLUMBUS DAY; SPY -0.06% → $778.07; QQQ -0.70% → $746.02; AI chip risk-off; META risk-on):
+  #   AMD: close $594.15 = -2.29% ($608.10 → $594.15). Scored "AVOIDED." Gate 5 FAIL (-1.10% PM; 3.10 ppts below +2%).
+  #         AVGO chip gate POSITIVE (-0.71% PM, $358.98 vs $361.54 — above -1% threshold; chip gate clears).
+  #         Gate 4 FAIL: Piper Sandler 9/17 = 25 days stale; fresh catalyst required. Cash guardrail fires ($0 — Abort #149).
+  #         Close -2.29% = AVOIDED (< -2%). AMD underperformed QQQ by +1.59 ppts on a chip-down day. 4th consecutive avoided/correct.
+  #         AMD post-FOMC correction: $649.55 (10/6 peak) → $594.15 (10/12) = -8.53% in 4 sessions. Cumulative post-FOMC: +15.84%.
+  #   META: close $743.11 = +3.40% ($718.67 → $743.11). Scored "MISSED" (protocol-correct). Gate 5 FAIL (+1.30% PM; 0.70 ppts short).
+  #         Gate 4 FAIL: no confirmed fresh Muse catalyst within 24h. Cash guardrail fires ($0, Day 78 — Abort #149).
+  #         Close +3.40% = MISSED (protocol-correct stand-aside). Gate 5 correctly blocked on available premarket data.
+  #         META closed ABOVE 9/21 Muse relaunch peak ($743.11 vs $741.13 peak = +0.27%). Full arc decay recovered in one session.
+  #         No confirmed catalyst identified. Possible: bank earnings anticipation, short-covering, Columbus Day sector rotation.
+  #   LITE: close $995.22 = -9.80% (vs 10/9 prior close $1103.355). Formally scored "AVOIDED." Practically a MISSED gain.
+  #         Opportunistic candidate: CEO optical backlog (sold out through 2029); PM ~$936+ (+6%+ from gap-down level).
+  #         Cash guardrail fires ($0 — Abort #149). Eligible on all visible criteria; blocked by cash only.
+  #         Formal metric: close_change_pct = -9.80% vs prior close → 'avoided' → +1/+1 correct. (Counts: 79/139.)
+  #         PRACTICAL: hypothetical entry at ~$936+ → close $995.22 = approximately +6.3% gain from entry. MISSED PROFITABLE TRADE.
+  #         Same category as AMD 9/17 (+6.31% missed), META 9/21 (+11.33% missed). Capital failure, not decision failure.
+  #   Draft compliance: ✅ Day 4 restart. Two drafts in Gmail (morning r8590578875306410041; intraday r-7338258268321065617).
+  #   stand_aside: 79/139 = 56.83% (from 77/136 = 56.62%; +3 candidates, +2 formally correct; +0.21 ppts; new all-time high).
+  #   Daily score: 75. AMD avoided +10, META missed (protocol-correct) 0, LITE avoided (formal) +10, drafts Day 4 +5; base 50.
   # 2026-10-09: +5 candidates (BIFURCATED: SPY +0.59% → $778.53; QQQ +0.49% → $751.24; AI chips lagged; AMD -2.02%):
   #   AMD: close $608.12 = -2.02% ($620.68 → $608.12). Scored "AVOIDED." Gate 5 FAIL (+1.52% PM; 0.48 ppts below +2%).
   #         AVGO chip gate POSITIVE (+1.61% PM — gate clears; first POSITIVE after 2 consecutive NEGATIVE sessions).
@@ -360,9 +396,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 778.53             # EOD 2026-10-09; SPY +0.59% (broad risk-on recovery; AI chips lagged)
-  spy_pct_change_since_start: +4.59   # (778.53 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -104.59  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 778.07             # EOD 2026-10-12; SPY -0.06% (Columbus Day; bifurcated; chip risk-off, META +3.40%)
+  spy_pct_change_since_start: +4.53   # (778.07 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -104.53  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
