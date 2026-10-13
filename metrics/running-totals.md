@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-10-12
-trading_days_elapsed: 79
+last_updated: 2026-10-13
+trading_days_elapsed: 80
 
 trades:
   total: 0
@@ -20,7 +20,30 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 150            # confirmed 150 by 10/12 (148 through 10/9 + Abort #149 morning + Abort #150 intraday 10/12)
+  guardrail_aborts: 152            # confirmed 152 by 10/13 (150 through 10/12 + Abort #151 morning + Abort #152 intraday 10/13)
+  # note (updated 2026-10-13): Day 81 elapsed (Day 79 of $0 streak). 152 GUARDRAIL ABORTS CONFIRMED.
+  # BANK EARNINGS DAY: GS beat (+12% rev), UNH beat → both surged PM → complete gap-and-fade to BELOW prior close. AI names REVERSED.
+  # SPY -0.01% → $778.04; QQQ -0.32% → $743.63. Bank-risk-off, AI-risk-on bifurcation.
+  #   GS -0.23% ($893.95 → $891.91): ALL GATES PASS (S&P 500 ✓, PM +3.46% ✓, earnings beat catalyst ✓).
+  #     BLOCKED: cash guardrail ($0.00 — Abort #151 morning). Hypothetical entry ~$924.80 PM → close $891.91 = ~-3.56% from entry.
+  #     Cash guardrail accidentally avoided a losing trade. Close -0.23% vs prior close = CORRECT (formal metric).
+  #   UNH -0.22% ($378.52 → $377.71): ALL GATES PASS (S&P 500 ✓, PM +3.91% ✓, earnings beat catalyst ✓).
+  #     BLOCKED: cash guardrail ($0.00 — Abort #151 morning). Hypothetical entry ~$393.31 PM → close $377.71 = ~-3.97% from entry.
+  #     Cash guardrail accidentally avoided a second losing trade. Close -0.22% vs prior close = CORRECT (formal metric).
+  #   AMD +1.90% ($594.24 → $605.52): Gate 5 FAIL (-1.94% PM). AVGO chip gate NEGATIVE (-1.43% PM, below -1% threshold).
+  #     Gate 4 FAIL: Piper Sandler 9/17 = 26 days stale. Cash guardrail fires ($0, Day 79 — Abort #151).
+  #     Close +1.90% = CORRECT (within -1% to +2% band; 0.10 ppts below missed threshold). AMD divergence: -1.94% PM → +1.90% close (+3.84% intraday).
+  #     AMD correction from 10/6 peak: $649.55 → $605.52 = -6.78% in 5 sessions. Bounce today; possible correction bottom.
+  #     Post-FOMC cumulative (9/16→10/13): $512.89 → $605.52 = +18.04%.
+  #   META +2.63% ($742.96 → $762.47): Gate 5 FAIL (-1.34% PM). Gate 4 FAIL (no Muse catalyst). Cash guardrail fires ($0 — Abort #151).
+  #     Close +2.63% = MISSED (protocol-correct; -1.34% PM → +2.63% close = +3.97% intraday reversal).
+  #     2nd consecutive session: META closed >+2% despite sub-threshold PM (10/12: +1.30% PM → +3.40%; 10/13: -1.34% PM → +2.63%).
+  #     META divergence pattern emerging (analogous to AMD pattern). META now $762.47 = +2.88% above 9/21 Muse relaunch peak ($741.13).
+  #   Draft compliance: ✅ Day 5 — MILESTONE: FIRST FULL COMPLIANCE WEEK (10/7=D1, 10/8=D2, 10/9=D3, 10/12=D4, 10/13=D5).
+  #     Morning draft 12:43 UTC (~8:43 AM ET); intraday draft 15:18 UTC (~11:18 AM ET).
+  #   Daily score: 75. GS correct +5, UNH correct +5, AMD correct +10, META missed (protocol-correct) 0, Day 5 drafts +5; base 50.
+  #   Stand-aside: 82/143 = 57.34% (from 79/139 = 56.83%; +4 candidates: GS ✓, UNH ✓, AMD ✓, META ✗; +3/+4; +0.51 ppts; new all-time high, 5th consecutive).
+  #   CALL ROBINHOOD: 1-800-279-1969. Account ●●●●9602. Day 80 of anomaly. 152 confirmed aborts. AMD +18.04% post-FOMC. $0 deployed.
   # note (updated 2026-10-12): Day 79 elapsed (Day 78 of $0 streak). 150 GUARDRAIL ABORTS CONFIRMED.
   # COLUMBUS DAY — BIFURCATED: SPY -0.06% → $778.07; QQQ -0.70% → $746.02. AI chip risk-off; AI platform risk-on.
   #   AMD -2.29% ($608.10 → $594.15): Gate 5 FAIL (-1.10% PM). AVGO chip gate POSITIVE (-0.71% PM, above -1% threshold).
@@ -197,9 +220,9 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 56.83   # 79/139; 2026-10-12: AMD avoided (-2.29%), META missed (protocol-correct, +3.40%), LITE avoided formally (-9.80% vs prior close; ~+6.3% from entry)
-  stand_aside_count: 139
-  stand_aside_correct: 79
+  stand_aside_correctness_pct: 57.34   # 82/143; 2026-10-13: GS correct (-0.23%), UNH correct (-0.22%), AMD correct (+1.90%), META missed (protocol-correct, +2.63%)
+  stand_aside_count: 143
+  stand_aside_correct: 82
   # 2026-10-12: +3 candidates (COLUMBUS DAY; SPY -0.06% → $778.07; QQQ -0.70% → $746.02; AI chip risk-off; META risk-on):
   #   AMD: close $594.15 = -2.29% ($608.10 → $594.15). Scored "AVOIDED." Gate 5 FAIL (-1.10% PM; 3.10 ppts below +2%).
   #         AVGO chip gate POSITIVE (-0.71% PM, $358.98 vs $361.54 — above -1% threshold; chip gate clears).
@@ -396,9 +419,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 778.07             # EOD 2026-10-12; SPY -0.06% (Columbus Day; bifurcated; chip risk-off, META +3.40%)
-  spy_pct_change_since_start: +4.53   # (778.07 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -104.53  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 778.04             # EOD 2026-10-13; SPY -0.01% (bank earnings day; GS/UNH gap-and-fade; AI names reversed higher)
+  spy_pct_change_since_start: +4.52   # (778.04 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -104.52  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
