@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-10-14
-trading_days_elapsed: 81
+last_updated: 2026-10-15
+trading_days_elapsed: 82
 
 trades:
   total: 0
@@ -20,7 +20,23 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 154            # confirmed 154 by 10/14 (152 through 10/13 + Abort #153 morning + Abort #154 intraday 10/14)
+  guardrail_aborts: 156            # confirmed 156 by 10/15 (154 through 10/14 + Abort #155 morning + Abort #156 intraday 10/15)
+  # note (updated 2026-10-15): Day 83 elapsed (Day 81 of $0 streak). 156 GUARDRAIL ABORTS CONFIRMED.
+  # MIXED SESSION: risk-off open → partial recovery. ASML Q3 earnings disappointment (-1.79% PM) — chip equipment recovery catalyst FAILS.
+  # SPY +0.28% → $771.74; QQQ -0.12% → $728.04; IWM +1.36% → $275.06. Chips weak; small caps/value strong (rotation signal).
+  #   AMD -1.47% ($570.82 → $562.42): Gate 5 FAIL (-3.50% PM). AVGO chip gate FIRES (-2.08% PM — DOUBLE threshold, strongest signal of cycle).
+  #     Gate 4 FAIL: Piper Sandler 9/17 = 28 days stale. Cash guardrail fires ($0, Day 81 — Abort #155 morning + Abort #156 intraday).
+  #     Close -1.47% = CORRECT (mild decline; AMD recovered +2.07% intraday from PM lows but closed negative).
+  #     AMD correction from 10/6 peak: $649.55 → $562.42 = -$87.13 / -13.42% in 9 sessions.
+  #     Post-FOMC cumulative (9/16→10/15): $512.89 → $562.42 = +9.65% (down from +26.65% peak; -17 ppts of post-FOMC run surrendered).
+  #   META -0.14% ($737.54 → $736.48): Gate 5 FAIL (-1.22% PM). Gate 4 FAIL (no Muse catalyst). Cash guardrail fires ($0 — Abort #155).
+  #     Close -0.14% = CORRECT (essentially flat; gates validated; META decoupling from chip weakness continues).
+  #     META vs 9/21 Muse peak: $736.48 vs $741.13 = -0.63% below peak.
+  #   AVGO chip gate: -2.08% PM → -0.59% close. Strongest chip gate signal of cycle. Partial intraday recovery (pattern: may precede continuation decline 10/16).
+  #   Daily score: 75. AMD correct +10, META correct +10, Day 7 compliance milestone +5; base 50.
+  #   Stand-aside: 86/147 = 58.50% (from 84/145 = 57.93%; +2 candidates: AMD correct [+1/+1], META correct [+1/+1]; +0.57 ppts; new ATH, 7th consecutive).
+  #   DRAFT COMPLIANCE: ✅ Day 7 — second consecutive full compliance week. Streak: 10/7=D1 through 10/15=D7. On track for Day 10 by 10/21.
+  #   CALL ROBINHOOD: 1-800-279-1969. Account ●●●●9602. Day 82 of anomaly. 156 confirmed aborts. AMD +9.65% post-FOMC (-17 ppts from peak). $0 deployed.
   # note (updated 2026-10-14): Day 82 elapsed (Day 80 of $0 streak). 154 GUARDRAIL ABORTS CONFIRMED.
   # RISK-OFF: Hot CPI (3.7% vs 3.6% exp) + semiconductor equipment sector 6-session selloff (AMAT -7.2%). BAC -1.5% PM.
   # SPY -1.08% → $769.63; QQQ -1.98% → $728.84. Worst single session since 10/8.
@@ -237,9 +253,9 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 57.93   # 84/145; 2026-10-14: AMD avoided (-5.74%), META avoided (-3.21%)
-  stand_aside_count: 145
-  stand_aside_correct: 84
+  stand_aside_correctness_pct: 58.50   # 86/147; 2026-10-15: AMD correct (-1.47%), META correct (-0.14%)
+  stand_aside_count: 147
+  stand_aside_correct: 86
   # 2026-10-12: +3 candidates (COLUMBUS DAY; SPY -0.06% → $778.07; QQQ -0.70% → $746.02; AI chip risk-off; META risk-on):
   #   AMD: close $594.15 = -2.29% ($608.10 → $594.15). Scored "AVOIDED." Gate 5 FAIL (-1.10% PM; 3.10 ppts below +2%).
   #         AVGO chip gate POSITIVE (-0.71% PM, $358.98 vs $361.54 — above -1% threshold; chip gate clears).
@@ -436,9 +452,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 769.63             # EOD 2026-10-14; SPY -1.08% (hot CPI 3.7% vs 3.6%; chip sector selloff; risk-off)
-  spy_pct_change_since_start: +3.39   # (769.63 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -103.39  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 771.74             # EOD 2026-10-15; SPY +0.28% (ASML earnings disappointing; chips weak; IWM +1.36%; rotation to small caps/value)
+  spy_pct_change_since_start: +3.68   # (771.74 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -103.68  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
