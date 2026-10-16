@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-10-15
-trading_days_elapsed: 82
+last_updated: 2026-10-16
+trading_days_elapsed: 83
 
 trades:
   total: 0
@@ -20,7 +20,23 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 156            # confirmed 156 by 10/15 (154 through 10/14 + Abort #155 morning + Abort #156 intraday 10/15)
+  guardrail_aborts: 158            # confirmed 158 by 10/16 (156 through 10/15 + Abort #157 morning + Abort #158 intraday 10/16)
+  # note (updated 2026-10-16): Day 84 elapsed (Day 83 of $0 streak). 158 GUARDRAIL ABORTS CONFIRMED.
+  # BROAD RISK-OFF: SPY -1.10% → $763.295; QQQ -2.49% → $709.86; IWM -1.67% → $270.48. Rotation thesis from 10/15 FAILED (IWM also negative).
+  # AVGO CHIP GATE: HISTORIC SEVERITY — AVGO -4.51% ($328.81 vs $344.33 prev close). Most extreme chip gate signal in system history (4.51× threshold).
+  #   AVGO reversal→collapse pattern (10/15 partial recovery → 10/16 collapse) confirmed for 3rd time. 100% pattern accuracy.
+  #   AMD -5.96% ($528.76 vs $562.23): Gate 5 FAIL (deeply negative PM implied by -5.96% close). AVGO chip gate fires at historic levels.
+  #     Gate 4 FAIL: Piper Sandler OW/$600 PT (9/17) = 29 days stale. Cash guardrail fires ($0 — Abort #157 morning + Abort #158 intraday).
+  #     Close -5.96% = AVOIDED (< -2%). Second AMD session ≥-5% this week (10/14: -5.74%). Most severe consecutive AMD selloff weeks since 9/14.
+  #     AMD correction from 10/6 peak: $649.55 → $528.76 = -18.59% in 9 sessions (8 of 9 negative). Post-FOMC cumulative: $512.89 → $528.76 = +3.09%.
+  #     ROUND-TRIP ALERT: AMD is only $15.87 / -2.91% above the 9/16 FOMC close ($512.89). Entire +26.65% post-FOMC run near full erasure.
+  #   META -3.72% ($736.72 → $709.34): Gate 5 FAIL. Gate 4 FAIL. Cash guardrail fires ($0 — Abort #157).
+  #     Close -3.72% = AVOIDED. META now $31.79 / -4.29% below 9/21 Muse relaunch peak ($741.13).
+  #     From 10/13 local high ($762.47): -$53.13 / -6.97% in 3 sessions (10/14: -3.21%, 10/15: -0.14%, 10/16: -3.72%).
+  #   DRAFT COMPLIANCE: ⚠️ Day 8 UNCONFIRMED — three Gmail searches returned empty for today. Streak may break at Day 7.
+  #   Daily score: 70. AMD avoided +10, META avoided +10, compliance unconfirmed (no bonus); base 50.
+  #   Stand-aside: 88/149 = 59.06% (from 86/147 = 58.50%; +2 candidates: AMD avoided [+1/+1], META avoided [+1/+1]; +0.56 ppts; new ATH, 8th consecutive).
+  #   CALL ROBINHOOD: 1-800-279-1969. Account ●●●●9602. Day 84 of anomaly. 158 confirmed aborts. AMD +3.09% post-FOMC (near round-trip). $0 deployed.
   # note (updated 2026-10-15): Day 83 elapsed (Day 81 of $0 streak). 156 GUARDRAIL ABORTS CONFIRMED.
   # MIXED SESSION: risk-off open → partial recovery. ASML Q3 earnings disappointment (-1.79% PM) — chip equipment recovery catalyst FAILS.
   # SPY +0.28% → $771.74; QQQ -0.12% → $728.04; IWM +1.36% → $275.06. Chips weak; small caps/value strong (rotation signal).
@@ -253,9 +269,21 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 58.50   # 86/147; 2026-10-15: AMD correct (-1.47%), META correct (-0.14%)
-  stand_aside_count: 147
-  stand_aside_correct: 86
+  stand_aside_correctness_pct: 59.06   # 88/149; 2026-10-16: AMD avoided (-5.96%), META avoided (-3.72%)
+  stand_aside_count: 149
+  stand_aside_correct: 88
+  # 2026-10-16: +2 candidates (BROAD RISK-OFF; SPY -1.10% → $763.295; QQQ -2.49% → $709.86; IWM -1.67%; AVGO chip gate HISTORIC SEVERITY):
+  #   AMD: close $528.76 = -5.96% ($562.23 → $528.76). Scored "AVOIDED." AVGO chip gate FIRES at historic levels: AVGO -4.51% close (4.51× threshold).
+  #         Most extreme chip gate signal in system history. Gate 5 FAIL (deeply negative PM implied by -5.96% close).
+  #         Gate 4 FAIL: Piper Sandler 9/17 = 29 days stale. Cash guardrail fires ($0, Day 83 — Abort #157 morning + Abort #158 intraday).
+  #         Close -5.96% = AVOIDED. AMD correction from 10/6 peak: $649.55 → $528.76 = -18.59% in 9 sessions (8 of 9 negative).
+  #         Post-FOMC cumulative: $512.89 → $528.76 = +3.09%. ROUND-TRIP ALERT: only $15.87 / -2.91% above the 9/16 FOMC close ($512.89).
+  #   META: close $709.34 = -3.72% ($736.72 → $709.34). Scored "AVOIDED." Gate 5 FAIL. Gate 4 FAIL (no fresh Muse catalyst within 24h).
+  #         Cash guardrail fires ($0, Day 83 — Abort #157). Close -3.72% = AVOIDED.
+  #         META now $31.79 / -4.29% below 9/21 Muse relaunch peak ($741.13). 3-session decline from 10/13 local high: -6.97%.
+  #   DRAFT COMPLIANCE: ⚠️ Day 8 UNCONFIRMED — three Gmail searches returned empty for 10/16. Streak may break at Day 7 (10/7=D1 through 10/15=D7).
+  #   stand_aside: 88/149 = 59.06% (from 86/147 = 58.50%; +2 candidates, +2 correct; +0.56 ppts; new ATH, 8th consecutive session at ATH).
+  #   Daily score: 70. AMD avoided +10, META avoided +10, compliance unconfirmed (no bonus); base 50.
   # 2026-10-12: +3 candidates (COLUMBUS DAY; SPY -0.06% → $778.07; QQQ -0.70% → $746.02; AI chip risk-off; META risk-on):
   #   AMD: close $594.15 = -2.29% ($608.10 → $594.15). Scored "AVOIDED." Gate 5 FAIL (-1.10% PM; 3.10 ppts below +2%).
   #         AVGO chip gate POSITIVE (-0.71% PM, $358.98 vs $361.54 — above -1% threshold; chip gate clears).
@@ -452,9 +480,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 771.74             # EOD 2026-10-15; SPY +0.28% (ASML earnings disappointing; chips weak; IWM +1.36%; rotation to small caps/value)
-  spy_pct_change_since_start: +3.68   # (771.74 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -103.68  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 763.295            # EOD 2026-10-16; SPY -1.10% (broad risk-off; AVGO -4.51% chip gate at historic levels; AMD -5.96%; QQQ -2.49%; IWM -1.67%)
+  spy_pct_change_since_start: +2.54  # (763.295 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -102.54  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
