@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-10-16
-trading_days_elapsed: 83
+last_updated: 2026-10-19
+trading_days_elapsed: 84
 
 trades:
   total: 0
@@ -20,7 +20,27 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 158            # confirmed 158 by 10/16 (156 through 10/15 + Abort #157 morning + Abort #158 intraday 10/16)
+  guardrail_aborts: 160            # confirmed 160 by 10/19 (158 through 10/16 + Abort #159 morning + Abort #160 intraday 10/19)
+  # note (updated 2026-10-19): Day 85 elapsed (Day 84 of $0 streak). 160 GUARDRAIL ABORTS CONFIRMED.
+  # MILD RISK-ON BOUNCE after historic AVGO chip gate week (10/14–10/16: hot CPI, AMAT rout, AVGO -4.51%).
+  # SPY +0.43% → $766.54; QQQ +1.20% → $718.32; AMD +1.70% → $537.76; AVGO +1.79% → $334.64 (CHIP GATE POSITIVE — first POSITIVE gate in 3 sessions since 10/13).
+  #   AMD: close $537.76 = +1.70% ($528.75 → $537.76). Gate 5 FAIL (close +1.70% implies PM below +2% threshold; $539.34 req. from prev close).
+  #         AVGO chip gate POSITIVE (+1.79% close — above -1% threshold; gate clears; first POSITIVE chip gate session since 10/13).
+  #         Gate 4 FAIL: Piper Sandler OW/$600 PT (9/17) = 32 days stale — TERMINAL BLOCK. Fresh catalyst mandatory regardless of Gates 5 or chip.
+  #         Cash guardrail fires ($0, Day 84 — Abort #159 morning + Abort #160 intraday).
+  #         Close +1.70% = CORRECT (within -1% to +2% band; 0.30 ppts below missed threshold of +2.00%).
+  #         AMD correction from 10/6 peak: $649.55 → $537.76 = -$111.79 / -17.22% (bounced from -18.59% trough on 10/16).
+  #         Post-FOMC cumulative: $512.89 → $537.76 = +$24.87 / +4.84% (rebuilt from 10/16 round-trip alert of +3.09%).
+  #         AVGO reversal watch: +1.79% today is larger than all 3 prior pre-collapse reversal days (+0.12%, +0.76%, -0.59%). Ambiguous signal.
+  #         Watch 10/20 AVGO PM with HIGHEST URGENCY — either genuine stabilization or larger dead-cat bounce setting up further decline.
+  #   META: close $704.95 = -0.62% ($709.33 → $704.95). Gate 5 FAIL. Gate 4 FAIL (no Muse/AI catalyst within 24h).
+  #         Cash guardrail fires ($0, Day 84 — Abort #159 morning). Close -0.62% = CORRECT (in band; META underperforms on chip bounce day).
+  #         META at $704.95 — $36.18 / -4.88% below 9/21 Muse relaunch peak ($741.13). Pre-earnings period opening (~10/29).
+  #   DRAFT COMPLIANCE: ⚠️ Day 9 or Day 1 UNCONFIRMED — two Gmail searches returned empty for 10/19. Second consecutive unconfirmed day (10/16 also empty).
+  #   Daily score: 70. AMD correct +10, META correct +10, compliance unconfirmed (no bonus); base 50.
+  #   Stand-aside: 90/151 = 59.60% (from 88/149 = 59.06%; +2 candidates: AMD correct [+1/+1], META correct [+1/+1]; +0.54 ppts; new ATH).
+  #   Gate 4 staleness is the primary AMD blocker: 32 days stale. TSMC earnings ~10/20–10/21 may unlock if confirms AI accelerator demand.
+  #   AMD earnings est. ~10/28. Entire pre-earnings window at risk. CALL ROBINHOOD: 1-800-279-1969. Account ●●●●9602. 160 aborts. ESCALATE.
   # note (updated 2026-10-16): Day 84 elapsed (Day 83 of $0 streak). 158 GUARDRAIL ABORTS CONFIRMED.
   # BROAD RISK-OFF: SPY -1.10% → $763.295; QQQ -2.49% → $709.86; IWM -1.67% → $270.48. Rotation thesis from 10/15 FAILED (IWM also negative).
   # AVGO CHIP GATE: HISTORIC SEVERITY — AVGO -4.51% ($328.81 vs $344.33 prev close). Most extreme chip gate signal in system history (4.51× threshold).
@@ -269,9 +289,18 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 59.06   # 88/149; 2026-10-16: AMD avoided (-5.96%), META avoided (-3.72%)
-  stand_aside_count: 149
-  stand_aside_correct: 88
+  stand_aside_correctness_pct: 59.60   # 90/151; 2026-10-19: AMD correct (+1.70%), META correct (-0.62%)
+  stand_aside_count: 151
+  stand_aside_correct: 90
+  # 2026-10-19: +2 candidates (MILD RISK-ON BOUNCE; SPY +0.43% → $766.54; QQQ +1.20% → $718.32; AVGO chip gate POSITIVE +1.79%):
+  #   AMD: close $537.76 = +1.70% ($528.75 → $537.76). Scored "correct." Gate 5 FAIL. Gate 4 FAIL (32 days stale — TERMINAL BLOCK). Chip gate POSITIVE.
+  #         Cash guardrail fires ($0, Day 84 — Abort #159 morning + Abort #160 intraday). Close +1.70% in band (0.30 ppts from missed threshold).
+  #         AMD correction: $649.55 (10/6 peak) → $537.76 = -17.22%. Post-FOMC: $512.89 → $537.76 = +4.84%.
+  #   META: close $704.95 = -0.62% ($709.33 → $704.95). Scored "correct." Gate 5 FAIL. Gate 4 FAIL. Cash guardrail fires ($0, Day 84).
+  #         Close -0.62% = correct. META underperformed on chip bounce day. Pre-earnings period: ~10/29 earnings est.
+  #   DRAFT COMPLIANCE: ⚠️ Day 9 or Day 1 UNCONFIRMED — two Gmail searches empty. Second consecutive unconfirmed day.
+  #   stand_aside: 90/151 = 59.60% (from 88/149 = 59.06%; +2 candidates, +2 correct; +0.54 ppts; new ATH, 9th consecutive rate improvement session).
+  #   Daily score: 70. AMD correct +10, META correct +10, compliance unconfirmed (no bonus); base 50.
   # 2026-10-16: +2 candidates (BROAD RISK-OFF; SPY -1.10% → $763.295; QQQ -2.49% → $709.86; IWM -1.67%; AVGO chip gate HISTORIC SEVERITY):
   #   AMD: close $528.76 = -5.96% ($562.23 → $528.76). Scored "AVOIDED." AVGO chip gate FIRES at historic levels: AVGO -4.51% close (4.51× threshold).
   #         Most extreme chip gate signal in system history. Gate 5 FAIL (deeply negative PM implied by -5.96% close).
@@ -480,9 +509,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 763.295            # EOD 2026-10-16; SPY -1.10% (broad risk-off; AVGO -4.51% chip gate at historic levels; AMD -5.96%; QQQ -2.49%; IWM -1.67%)
-  spy_pct_change_since_start: +2.54  # (763.295 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -102.54  # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 766.54             # EOD 2026-10-19; SPY +0.43% (mild risk-on bounce; AVGO chip gate POSITIVE +1.79%; AMD +1.70%; QQQ +1.20%; IWM +0.31%)
+  spy_pct_change_since_start: +2.98  # (766.54 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -102.98  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
