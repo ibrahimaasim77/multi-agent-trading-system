@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-10-26
-trading_days_elapsed: 89
+last_updated: 2026-10-27
+trading_days_elapsed: 90
 
 trades:
   total: 0
@@ -20,7 +20,23 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 169            # estimated 169 by 10/26 (166 through 10/22 + Abort #167 morning 10/23 + Abort #168 morning 10/26 + Abort #169 intraday 10/26)
+  guardrail_aborts: 171            # estimated 171 by 10/27 (169 through 10/26 + Abort #170 morning 10/27 + Abort #171 intraday 10/27)
+  # note (updated 2026-10-27): Day 91 elapsed (Day 90 of $0 streak). 171 GUARDRAIL ABORTS ESTIMATED. AMD FOMC EVE + T-5 PRE-EARNINGS EXPLOSIVE SESSION: +5.49% ($560.45). Gate 5 missed by $1.48/0.27ppts — closest in system history. AVGO +4.04% (strongest chip gate close in system history). AMD earnings T-5. FOMC decision tomorrow (hold expected).
+  # SPY +0.57% → $769.72; QQQ +1.27% → $721.24; AMD +5.49% → $560.45; META -1.66% → $620.12; AVGO +4.04% → $342.46; IWM +1.15% → $280.17; NVDA +0.89% → $217.92.
+  #   AMD: close $560.45 = +5.49% from $531.28 (Robinhood prev close). AVGO chip gate STRONGLY CLEARS (PM +3.21% = $339.75 vs $329.17 prev — best PM chip gate in system history; threshold ≥-1% = $325.88; clears by 4.22 ppts).
+  #         Gate 5 FAILS: PM +1.72% = $540.43 vs threshold $541.91 (+2% from $531.28) — FAILS BY $1.48 / 0.27 PPTS (CLOSEST GATE 5 MISS IN SYSTEM HISTORY).
+  #         Gate 4 CLEARS: Bernstein maintained Buy/$650 PT on 10/26 — within 24h window at 8:48 AM ET evaluation.
+  #         Cash guardrail fires ($0, Day 90 — Abort #170 morning + Abort #171 intraday). Close +5.49% = MISSED (>+2%).
+  #         AMD correction from 10/6 peak: $649.55 → $560.45 = -$89.10 / -13.72% (improved from -21.82% on 10/22 correction low).
+  #         3-session recovery from 10/22 low ($507.77): +$52.68 / +10.37% (10/23: +1.78%, 10/26: +2.80%, 10/27: +5.49%).
+  #         Post-FOMC cumulative: $512.89 → $560.45 = +$47.56 / +9.27%. AMD earnings est. November 3, 2026 — T-5 today.
+  #         GATE 5 DESIGN NOTE: $1.48 miss (0.27 ppts) in T-5 pre-earnings + FOMC eve + strongest chip gate in history + Gate 4 CLEAR. AMD ran +5.49%. Gate correctly applied; design warrants calibration review for concentrated conditions.
+  #   META: close $620.12 = -1.66% from $630.56. Gate 5 FAIL (PM -0.57%; threshold $643.17 — fails by 2.57 ppts). Gate 4 FAIL (earnings consumed; no fresh catalyst).
+  #         Cash guardrail fires ($0, Day 90 — Abort #170). Close -1.66% = CORRECT (in band). Post-earnings sell-the-news Day 4. Cumulative: $698.43 → $620.12 = -$78.31 / -11.21%.
+  #         META at $620.12 = $45.63 below pre-Muse-relaunch close 9/18 ($665.75); $121.01 / -16.33% below Muse peak 9/21 ($741.13).
+  #   DRAFT COMPLIANCE: ✅ CONFIRMED — two drafts found in Gmail: morning r-5678261455196034373 (~8:48 AM ET) + intraday r5718060700712504542 (~11:42 AM ET). Day 16 probable streak. Compliance bonus +5.
+  #   Daily score: 65. AMD MISSED (>+2%) = 0; META correct (-1.66%) = +10; compliance confirmed = +5; base 50.
+  #   Stand-aside: 97/161 = 60.25% (from 96/159 = 60.38%; +2 candidates: AMD MISSED [+1/+0], META correct [+1/+1]; -0.13 ppts; ATH 60.51% from 10/22 holds).
   # note (updated 2026-10-26): Day 90 elapsed (Day 89 of $0 streak). 169 GUARDRAIL ABORTS ESTIMATED. AMD pre-earnings recovery: +2.84% ($531.47). AMD earnings T-6. FOMC week begins.
   # FOMC WEEK DAY 1 — RISK-ON: SPY +0.70% → $765.29; QQQ +1.10% → $712.12; AMD +2.84% → $531.47; META -1.89% → $630.47; AVGO +2.37% → $329.29; IWM +0.45% → $276.98.
   #   AMD: close $531.47 = +2.84% ($516.79 → $531.47). Chip gate CLEARS (+2.37% close, $329.29 from $321.68 — gate threshold ≥-1% = $318.46; strongly clears).
@@ -363,9 +379,22 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 60.38   # 96/159; 2026-10-26: AMD MISSED (+2.84%), META CORRECT (-1.89%); ATH eroded from 60.51% (10/22); rate holds above 60% for 4th consecutive confirmed session
-  stand_aside_count: 159
-  stand_aside_correct: 96
+  stand_aside_correctness_pct: 60.25   # 97/161; 2026-10-27: AMD MISSED (+5.49%), META CORRECT (-1.66%); ATH 60.51% (10/22) holds; rate above 60% for 5th consecutive confirmed session
+  stand_aside_count: 161
+  stand_aside_correct: 97
+  # 2026-10-27: +2 candidates (FOMC EVE — RISK-ON EXPLOSIVE; SPY +0.57% → $769.72; QQQ +1.27% → $721.24; AVGO chip gate STRONGEST IN HISTORY +4.04% close / +3.21% PM; AMD T-5 PRE-EARNINGS):
+  #   AMD: close $560.45 = +5.49% ($531.28 → $560.45). Scored "MISSED" (> +2%). Gate 5 FAILS: PM +1.72% = $540.43 vs threshold $541.91 (+2%) — FAILS BY $1.48 / 0.27 PPTS (CLOSEST GATE 5 MISS IN SYSTEM HISTORY).
+  #         AVGO chip gate STRONGLY CLEARS (PM +3.21% = $339.75 — BEST PM CHIP GATE IN SYSTEM HISTORY; threshold ≥-1% = $325.88; clears by 4.22 ppts).
+  #         Gate 4 CLEARS: Bernstein maintained Buy/$650 PT on 10/26 — within 24h window. Gate 5 = sole block (by $1.48).
+  #         Cash guardrail fires ($0, Day 90 — Abort #170 morning + Abort #171 intraday). Close +5.49% = MISSED.
+  #         AMD correction from 10/6 peak: $649.55 → $560.45 = -$89.10 / -13.72%. Post-FOMC: $512.89 → $560.45 = +$47.56 / +9.27%. AMD T-5 to est. Nov 3 earnings.
+  #         3-session recovery from 10/22 low: $507.77 → $560.45 = +$52.68 / +10.37%. FOMC eve pre-positioning drove explosive move.
+  #   META: close $620.12 = -1.66% ($630.56 → $620.12). Scored "correct." Gate 5 FAIL (PM -0.57%; threshold $643.17 — fails by 2.57 ppts). Gate 4 FAIL (earnings consumed).
+  #         Cash guardrail fires ($0, Day 90 — Abort #170). Close -1.66% = CORRECT. Post-earnings sell-the-news Day 4. Cumulative 4-session: $698.43 → $620.12 = -$78.31 / -11.21%.
+  #         META at $620.12: $45.63 below pre-Muse close 9/18 ($665.75); $121.01 / -16.33% below Muse peak 9/21 ($741.13).
+  #   DRAFT COMPLIANCE: ✅ CONFIRMED — morning r-5678261455196034373 (~8:48 AM ET) + intraday r5718060700712504542 (~11:42 AM ET). Day 16 probable streak. Compliance bonus +5.
+  #   stand_aside: 97/161 = 60.25% (from 96/159 = 60.38%; +2 candidates: AMD MISSED [+1/+0], META correct [+1/+1]; -0.13 ppts; ATH 60.51% from 10/22 holds).
+  #   Daily score: 65. AMD MISSED = 0; META correct = +10; compliance confirmed = +5; base 50.
   # 2026-10-26: +2 candidates (FOMC WEEK DAY 1 — RISK-ON; SPY +0.70% → $765.29; QQQ +1.10% → $712.12; AVGO chip gate CLEARS +2.37%; AMD pre-earnings recovery T-6):
   #   AMD: close $531.47 = +2.84% ($516.79 → $531.47). Chip gate CLEARS (+2.37%). Gate 5 PROBABLE PASS. Gate 4: Susquehanna $550→$620 (10/21) 5 days stale — LIKELY FAIL.
   #         Cash guardrail fires ($0, Day 89 — Abort #168 morning + Abort #169 intraday). Close +2.84% = MISSED. AMD correction: $649.55 → $531.47 = -18.18%. Post-FOMC: +3.62%. T-6.
@@ -613,8 +642,8 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 765.29             # EOD 2026-10-26; SPY +0.70% (FOMC week risk-on; AMD +2.84% MISSED; META -1.89% CORRECT; AVGO +2.37% chip gate CLEARS; QQQ +1.10%)
-  spy_pct_change_since_start: +2.81  # (765.29 - 744.37) / 744.37 * 100
+  spy_close_today: 769.72             # EOD 2026-10-27; SPY +0.57% (FOMC eve risk-on; AMD +5.49% MISSED Gate 5 by $1.48; META -1.66% CORRECT; AVGO +4.04% chip gate strongest in system history; QQQ +1.27%)
+  spy_pct_change_since_start: +3.41  # (769.72 - 744.37) / 744.37 * 100
   system_alpha_vs_spy_pct: -102.81  # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
