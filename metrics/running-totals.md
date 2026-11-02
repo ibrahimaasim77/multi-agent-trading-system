@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-10-30
-trading_days_elapsed: 93
+last_updated: 2026-11-02
+trading_days_elapsed: 94
 
 trades:
   total: 0
@@ -20,7 +20,16 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 177            # estimated 177 by 10/30 (175 through 10/29 + Abort #176 morning 10/30 + Abort #177 intraday 10/30)
+  guardrail_aborts: 179            # 179 through 11/2 (177 through 10/30 + Abort #178 morning 11/2 + Abort #179 intraday 11/2)
+  # note (updated 2026-11-02): Day 95 elapsed (Day 94 of $0 streak). 179 GUARDRAIL ABORTS. AMD T-1 PRE-EARNINGS CATASTROPHIC REVERSAL. AMD ENTERED EARNINGS (-28.14% FROM PEAK). NEW STAND-ASIDE ATH 61.68%.
+  # AMD T-1 REVERSAL (PM +2.15% → CLOSE -7.54%): SPY -0.48% → $752.12; QQQ -1.35% → $681.13; AMD -7.54% → $466.74 (NEW CORRECTION LOW); META -1.37% → $606.54; AVGO -1.12% → $322.41; IWM -0.06% → $279.17; NVDA -1.19% → $202.20.
+  #   AMD: PM $515.67 (+2.15% from $504.80 prev close). Gate 5 BARELY CLEARS at evaluation (threshold $515.30; clears by $0.37 / 0.07 ppts — CLOSEST GATE 5 PASS IN SYSTEM HISTORY). AVGO chip gate CLEARS at evaluation (+1.05% PM; threshold ≥-1% = ≥$322.82; clears by 2.05 ppts). Gate 4 PROBABLE/UNCONFIRMED (Susquehanna PT $650, Jefferies $650 — pub date within 24h unverified). Cash guardrail fires ($0, Day 94 — Abort #178 morning + Abort #179 intraday). AMD REVERSAL: PM +2.15% ($515.67) → CLOSE -7.54% ($466.74). Entry-to-close (hypothetical): -9.33% from $515.67. CATASTROPHIC T-1 COLLAPSE. NEW ALL-TIME SYSTEM CORRECTION LOW.
+  #         AMD correction from 10/6 peak: $649.55 → $466.74 = -$182.81 / -28.14% (NEW CORRECTION LOW; exceeds 10/30 low of -22.22% by 5.92 ppts). Post-FOMC: $512.89 → $466.74 = -$46.15 / -9.00% (9% BELOW FOMC CLOSE). T-1 collapse: $504.80 → $466.74. AMD AH: $470.05 (+0.71%). AMD enters 11/3 earnings at $466.74 (AH $470.05) — deepest correction level in system history. Gate 5 for 11/4 post-earnings: ≥$466.74 × 1.02 = ≥$476.07.
+  #         AMD T-1 swing: LARGEST INTRADAY AMD SWING IN SYSTEM HISTORY (+2.15% PM → -7.54% close = 9.69 ppts intraday reversal). COMPOUND EVENT RISK: AMD earnings (est. 11/3 after close) + US midterm elections (11/3). CALL ROBINHOOD: 1-800-279-1969. Account ●●●●9602. Day 94 of $0 anomaly. 179 aborts. AMD earnings TONIGHT. WINDOW: 11/4 morning if beat + account restored.
+  #   META: close $606.54 = -1.37% ($614.99 → $606.54). Gate 5 FAILS (PM -0.17%; threshold $627.29; fails by 2.17 ppts). Gate 4 FAILS (earnings consumed; no fresh catalyst). Post-earnings sell-the-news Day 9. Cumulative: $698.43 → $606.54 = -$91.89 / -13.16%. META AH: $607.96 (+0.23%). $600 support approaching.
+  #   DRAFT COMPLIANCE: ✅ CONFIRMED — morning r1612083483599076982 (~8:54 AM ET, "Stand Aside 11/2 Day 94 + AMD T-1 Gates Theoretically Clear (Abort #178 morning)") + intraday r-8549873031897945677 (~11:38 AM ET). Day 19 confirmed streak. Compliance bonus +5.
+  #   Daily score: 75. AMD avoided (-7.54%) = +10; META correct (-1.37%) = +10; compliance confirmed (Day 19) = +5; base 50.
+  #   Stand-aside: 103/167 = 61.68% — NEW ALL-TIME HIGH (from 101/165 = 61.21%; +2 candidates: AMD AVOIDED [+1/+1], META correct [+1/+1]; +0.47 ppts; beats ATH of 61.21% from 10/30; THIRD CONSECUTIVE SESSION ATH).
   # note (updated 2026-10-30): Day 94 elapsed (Day 93 of $0 streak). 177 GUARDRAIL ABORTS ESTIMATED. ALPHABET Q3 MISS SECOND-WAVE SELLOFF. AMD T-2 PRE-EARNINGS. AMD NEW CORRECTION LOW ($505.18 < $507.77 from 10/22). NEW STAND-ASIDE ATH 61.21%.
   # SEVERE RISK-OFF (ALPHABET Q3 MISS SECOND WAVE): SPY -1.77% → $755.70; QQQ -3.47% → $690.53; AMD -10.81% → $505.18 (NEW CORRECTION LOW); META -1.53% → $614.98; AVGO -5.45% → $326.18 (LARGEST CHIP GATE CLOSE IN SYSTEM HISTORY); IWM -1.64% → $279.36; NVDA -4.14% → $204.81.
   #   AMD: close $505.18 = -10.81% ($566.42 → $505.18). WORST SINGLE-SESSION AMD DECLINE IN SYSTEM HISTORY. NEW CORRECTION LOW (below 10/22 low of $507.77 by -$2.59).
@@ -417,9 +426,9 @@ financial:
 
 decision_quality:
   win_rate_pct: null           # set after first trade
-  stand_aside_correctness_pct: 61.21   # 101/165; 2026-10-30 NEW ATH: AMD AVOIDED (-10.81% — NEW CORRECTION LOW), META CORRECT (-1.53%); beats prior ATH 60.74% (10/29); +0.47 ppts; second consecutive session ATH
-  stand_aside_count: 165
-  stand_aside_correct: 101
+  stand_aside_correctness_pct: 61.68   # 103/167; 2026-11-02 NEW ATH: AMD AVOIDED (-7.54% — T-1 CATASTROPHIC REVERSAL, NEW CORRECTION LOW $466.74), META CORRECT (-1.37%); beats prior ATH 61.21% (10/30); +0.47 ppts; THIRD consecutive session ATH
+  stand_aside_count: 167
+  stand_aside_correct: 103
   # 2026-10-30: +2 candidates (SEVERE RISK-OFF — ALPHABET Q3 MISS SECOND WAVE; SPY -1.77% → $755.70; QQQ -3.47% → $690.53; AVGO chip gate FIRES -5.45% close / -4.28% PM — LARGEST CHIP GATE CLOSE IN SYSTEM HISTORY; AMD T-2 PRE-EARNINGS — NEW CORRECTION LOW):
   #   AMD: close $505.18 = -10.81% ($566.42 → $505.18). Scored "AVOIDED" (<-2%). WORST SINGLE-SESSION AMD DECLINE IN SYSTEM HISTORY. NEW CORRECTION LOW (< 10/22 low $507.77 by -$2.59).
   #         AVGO chip gate FIRES (PM -4.28% = $330.23 vs $345.00; threshold ≥-1% = $341.55; fires by 3.28 ppts — 5th major chip gate event; matches 10/22 PM magnitude; close -5.45% is NEW SYSTEM HIGH FOR CHIP GATE SEVERITY).
