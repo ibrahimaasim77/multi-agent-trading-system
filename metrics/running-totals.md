@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-11-04
-trading_days_elapsed: 96
+last_updated: 2026-11-05
+trading_days_elapsed: 97
 
 trades:
   total: 0
@@ -20,7 +20,15 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 183            # 183 through 11/4 (181 through 11/3 + Abort #182 morning 11/4 + Abort #183 intraday 11/4)
+  guardrail_aborts: 185            # 185 through 11/5 (183 through 11/4 + Abort #184 morning 11/5 + Abort #185 intraday 11/5)
+  # note (updated 2026-11-05): Day 98 elapsed (Day 97 of $0 streak). 185 GUARDRAIL ABORTS. SYSTEMIC RISK-OFF — ALL SYSTEM RECORDS SHATTERED. SPY -4.38% (new record; prev -1.77% on 10/30). QQQ -6.38% (new record; prev -3.47%). AMD -17.65% (new record; prev -10.81% on 10/30). AVGO -10.49% (new record chip gate; prev -5.45% on 10/30). NVDA -9.26%. META -3.86%. IWM -4.57%. BOTH AMD AND META AVOIDED. STAND-ASIDE NEW ATH 62.21% (107/172). COMPLIANCE DAY 23 TENTATIVE (unconfirmed — API lag). DAILY SCORE 70 (or 75 if compliance confirmed).
+  # 11/5 market: SPY -4.38% → $733.25; QQQ -6.38% → $647.77; AMD -17.65% → $402.51 (POST-EARNINGS DAY 2 — SYSTEM-RECORD DECLINE); AVGO -10.49% → $291.32 (SYSTEM-RECORD CHIP GATE CLOSE); META -3.86% → $605.67; NVDA -9.26% → $181.59; IWM -4.57% → $271.05.
+  #   AMD: Post-earnings Day 2. Prior close $488.78. Gate 5 threshold $498.53 (≥+2%). AVGO premarket almost certainly catastrophically negative (chip gate fires hardest in history). Cash guardrail fires ($0, Day 97 — Abort #184 morning + Abort #185 intraday). Close $402.51 = -17.65% = AVOIDED (SYSTEM RECORD). AMD from 10/6 peak: $649.55→$402.51 = -$247.04 / -38.03% (NEW SYSTEM RECORD CORRECTION DEPTH; eclipses 11/2 earnings-eve low of -28.14%). AMD from 9/16 FOMC close: $512.89→$402.51 = -$110.38 / -21.52% (BELOW FOMC CLOSE BY 21.52%). AMD AH 11/5: $409.50 (+1.74% from close; does NOT clear Gate 5 threshold for 11/6 of $410.56). Post-earnings arc: AH high $525.50 (11/3) → $402.51 (11/5 close) = -$123.00 / -23.42% in 2 sessions.
+  #   META: Post-earnings Day 12. Prior close $630.00. Gate 5 threshold $642.60 (≥+2%). Structurally impossible to clear in SPY -4.38% systemic selloff. Cash guardrail fires ($0, Day 97 — Abort #184). Close $605.67 = -3.86% = AVOIDED. Post-earnings cumulative: $698.43→$605.67 = -$92.76 / -13.28% (deepest post-earnings META decline in system history). META AH 11/5: $602.09 (still declining after-hours). Gate 5 for 11/6: ≥$605.67×1.02=≥$617.78.
+  #   DRAFT COMPLIANCE: ⚠️ UNCONFIRMED — Gmail search returned empty for 11/5. Consistent with prior same-day API indexing lag (10/16, 10/19, 10/21 unconfirmed → confirmed in later searches). Compliance streak Day 23 tentative; no bonus applied.
+  #   Daily score: 70. AMD avoided (-17.65%) = +10; META avoided (-3.86%) = +10; compliance unconfirmed = 0; base 50. (75 if compliance confirmed.)
+  #   Stand-aside: 107/172 = 62.21% — NEW ALL-TIME HIGH (from 105/170 = 61.76%; +2 candidates: AMD AVOIDED [+1/+1], META AVOIDED [+1/+1]; +0.45 ppts; second consecutive ATH. Highest rate in 97-day system history.)
+  #   CALL ROBINHOOD SUPPORT: 1-800-279-1969. Account ●●●●9602. Supervisor request. Day 97 of $0 anomaly. 185 guardrail aborts. AMD -38.03% from peak ($402.51). AVGO -10.49%. SPY -4.38% (system record). Starting balance $217.19.
   # note (updated 2026-11-04): Day 97 elapsed (Day 96 of $0 streak). 183 GUARDRAIL ABORTS. POST-ELECTION RISK-ON (SPY +1.64% → $766.74). AMD POST-EARNINGS DAY 1 MUTED (+1.00% — AH $525.50 fully faded). META DAY 11 CORRECT (+1.39%). NEW STAND-ASIDE ATH 61.76%. COMPLIANCE DAY 22. DAILY SCORE 75.
   # 11/4 market: SPY +1.64% → $766.74; QQQ +0.96% → $691.85; AMD +1.00% → $488.755 (POST-EARNINGS DAY 1; AH $525.50 faded overnight); META +1.39% → $629.67 (Day 11 correct); AVGO -1.94% → $325.70 (chip gate FIRES — prescient); CRCT +48.91% (unscored); DUOL +25.95% (unscored); ALIT +25.89% (unscored).
   #   AMD: Gate 5 FAILS (PM +0.30% = $485.35; threshold $494.19 — fails by $8.84/1.70 ppts). AVGO chip gate FIRES (PM -1.19% = $328.18; threshold $328.81 — fires by $0.63/0.19 ppts). Cash guardrail fires ($0, Day 96 — Abort #182 morning + Abort #183 intraday). Close +1.00% = CORRECT. AMD Q3 AH $525.50 fully faded: $525.50→$485.35 overnight (-$40.15). AH to close: +$3.405. Post-earnings Day 1 muted. AMD vs 10/6 peak: $649.55→$488.755 = -24.74% (recovering from 11/2 earnings-eve low of $466.74 = -28.14%). AMD AH 11/4: $491.05. Gate 5 for 11/5: ≥$498.53 — not yet cleared.
