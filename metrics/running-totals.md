@@ -4,8 +4,8 @@ Auto-updated by the post-mortem agent at end of each trading day.
 
 ```yaml
 system_start: 2026-06-22       # first live trading day (post-Juneteenth)
-last_updated: 2026-11-11
-trading_days_elapsed: 101
+last_updated: 2026-11-12
+trading_days_elapsed: 102
 
 trades:
   total: 0
@@ -20,7 +20,15 @@ financial:
   total_pnl_dollars: -217.19        # UNCONFIRMED — see note below
   total_pnl_pct: -100.00           # UNCONFIRMED — see note below
   avg_daily_deploy_usd: 0.00
-  guardrail_aborts: 193            # 193 through 11/11 (191 through 11/10 + Abort #192 morning 11/11 + Abort #193 intraday 11/11)
+  guardrail_aborts: 195            # 195 through 11/12 (193 through 11/11 + Abort #194 morning 11/12 + Abort #195 intraday 11/12)
+  # note (updated 2026-11-12): Day 102 of trading, Day 102 of $0 anomaly. 195 GUARDRAIL ABORTS (#194 morning + #195 intraday). AMD POST-EARNINGS DAY 7 MISSED (+5.92% — William Blair upgrade to Outperform; Gate 5 FAILS by $1.76/0.32 ppts, SECOND-CLOSEST GATE 5 MISS IN SYSTEM HISTORY). META DAY 17 CORRECT (-0.82% close). SPY -0.34% → $757.20; QQQ -0.32% → $688.17; AMD +5.92% → $585.58; AVGO +5.56% → $364.41; META -0.82% → $623.59; NVDA -4.42% → $166.04 (CEO crisis Day 4; Bernstein + Oppenheimer downgrades); IWM -1.64% → $278.45. COMPLIANCE DAY 28 — NEW SYSTEM RECORD (extends Day 27 from 11/11; both drafts confirmed: morning r-3428196243665914995 + intraday r4102792786324980394). STAND-ASIDE 113/182=62.09% (from ATH 62.22% 11/11; -0.13 ppts; AMD MISSED [+1/+0] + META CORRECT [+1/+1]; NOT ATH). DAILY SCORE 65.
+  #   AMD: Post-earnings Day 7. Prior close $552.90. Gate 5 FAILS (PM +1.69% = $562.24; threshold ≥+2% = ≥$564.00; fails by $1.76/0.32 ppts — SECOND-CLOSEST GATE 5 MISS). AVGO chip gate CLEARS (PM +0.95% = $348.50; threshold ≥$341.77; clears by $6.73/1.95 ppts). Gate 4 CLEARS (William Blair upgrade to Outperform, data center AI revenue thesis, within 24h). VIX ~17-18 — CLEARS. Cash guardrail FIRES ($0, Day 102 — Abort #194 morning + Abort #195 intraday). Close $585.58 = +5.92% = MISSED. Gate-correct process: PM was genuinely below threshold at eval time. AMD ran +5.92% despite Gate 5 fail. Second near-miss pattern: Gate 5 fail <$2 with Gate 4 cleared → AMD closes MISSED (compare 10/27: $1.48 miss → +5.49%). AMD post-earnings arc: Day 1 +1.00%, Day 2 -17.65%, Day 3 +11.03% MISSED, Day 4 +13.36% MISSED, Day 5 +1.36% CORRECT, Day 6 +7.33% MISSED, Day 7 +5.92% MISSED. Combined missed gains Days 3+4+6+7: +37.64% from prior close. AMD from Day 2 bottom ($402.51)→today ($585.58) = +45.49%. AMD from 10/6 peak ($649.55)→today ($585.58) = -9.85%. Gate 5 for 11/13: ≥$585.58×1.02=≥$597.29.
+  #   META: Post-earnings Day 17. Prior close $628.77. Gate 5 FAILS (PM -1.00% = $622.50; threshold ≥+2% = ≥$641.35; fails by $18.85). Cash guardrail fires. Close $623.59 = -0.82% = CORRECT. $640 support definitively broken. Gate 5 for 11/13: ≥$623.59×1.02=≥$636.06.
+  #   NVDA: CEO crisis Day 4. Close $166.04 = -4.42% from $173.73. Bernstein + Oppenheimer downgrades today. Cumulative crisis: $186.64→$166.04 = -11.03%. AMD +5.92% + AVGO +5.56% on NVDA -4.42% day = capital rotation structural and intensifying. Blacklist-adjacent.
+  #   DRAFT COMPLIANCE: ✅ CONFIRMED — morning r-3428196243665914995 (~09:34 ET) + intraday r4102792786324980394 (~11:05 ET). COMPLIANCE DAY 28 — NEW SYSTEM RECORD. Streak: 10/7 Day 1 through 11/12 Day 28. Compliance bonus +5.
+  #   Daily score: 65. AMD missed (0) + META correct (+10) + compliance Day 28 NEW RECORD (+5) + base 50.
+  #   Stand-aside: 113/182 = 62.09% (from ATH 62.22% 11/11; AMD MISSED [+1/+0] + META CORRECT [+1/+1]; -0.13 ppts; NOT ATH. Rate above 62% for 3rd consecutive session.)
+  #   CALL ROBINHOOD: 1-800-279-1969. Account ●●●●9602. Supervisor request. Day 102 of $0 anomaly. 195 guardrail aborts. AMD post-earnings arc Days 3+4+6+7 combined missed +37.64% from prior close. AMD -9.85% from 10/6 peak, nearly recovered. Starting balance $217.19 unrestored after 102 trading days. ESCALATE.
   # note (updated 2026-11-11): Day 101 of trading, Day 101 of $0 anomaly. 193 GUARDRAIL ABORTS (#192 morning + #193 intraday). AMD POST-EARNINGS DAY 6 MISSED (+7.33% — Anthropic $2.5B GPU investment catalyst; all gates clear). META DAY 16 CORRECT (-1.97% close — gate 5 failed at PM +1.19%). SPY +1.32% → $759.79; QQQ +2.31% → $690.38; AMD +7.33% → $552.96; AVGO +4.06% → $345.45; META -1.97% → $628.755; NVDA +2.94% → $173.85 (CEO crisis Day 3, Trump defense); IWM +0.89% → $283.07. COMPLIANCE DAY 27 — NEW SYSTEM RECORD (extends Day 26 from 11/10; both drafts confirmed: morning r-1661597760902192274 + intraday r1847268841443164918). STAND-ASIDE 112/180=62.22% NEW ATH (from 11/10 61.80%; +2 candidates: AMD MISSED [+1/+0], META CORRECT [+1/+1]; +0.42 ppts; surpasses 11/5 ATH of 62.21% by 0.01 ppts). DAILY SCORE 65. VETERANS DAY — bond markets closed, equities open regular hours.
   #   AMD: Post-earnings Day 6. Prior close $515.21 (11/10). Gate 5 CLEARS (PM +5.43% = $543.21; threshold ≥+2% = ≥$525.51; clears by $17.70/3.43 ppts). AVGO chip gate CLEARS (PM +4.31% = $346.30; threshold ≥-1% from $331.98 = ≥$328.70; clears by $17.60/5.31 ppts). Gate 4 CLEARS (Anthropic $2.5B GPU investment 11/10 AH + Oppenheimer $600 PT initiation; concrete, named, within 24h). VIX ~18 — CLEARS. Cash guardrail fires ($0, Day 101 — Abort #192 morning + Abort #193 intraday). Close $552.96 = +7.33% = MISSED. AMD post-earnings arc: Day 1 +1.00%, Day 2 -17.65%, Day 3 +11.03% (MISSED), Day 4 +13.36% (MISSED), Day 5 +1.36% (CORRECT), Day 6 +7.33% (MISSED). AMD from 10/6 peak: $649.55→$552.96 = -14.86%. AMD from Day 2 bottom ($402.51): +37.40% recovery, all missed. Gate 5 for 11/12: ≥$552.96×1.02=≥$564.02.
   #   META: Post-earnings Day 16. Prior close $641.39 (11/10). Gate 5 FAILS (PM +1.19% = $649.00; threshold ≥+2% = ≥$654.49; fails by $5.49/0.84 ppts). Cash guardrail fires. Close $628.755 = -1.97% = CORRECT. META breaking down through $640 support; post-earnings distribution may be resuming. Gate 5 for 11/12: ≥$628.755×1.02=≥$641.33.
@@ -803,9 +811,9 @@ decision_quality:
 
 benchmark:
   spy_close_at_system_start: 744.37
-  spy_close_today: 735.44             # EOD 2026-11-06; SPY +0.33% (partial recovery after 11/5 record -4.38% selloff; AMD +11.03% post-earnings Day 3; QQQ +1.41%; AVGO +0.58%)
-  spy_pct_change_since_start: -1.20  # (735.44 - 744.37) / 744.37 * 100
-  system_alpha_vs_spy_pct: -98.80   # UNCONFIRMED — mechanical result of the unexplained $0 balance
+  spy_close_today: 757.20             # EOD 2026-11-12; SPY -0.34% (NVDA CEO crisis Day 4 tech drag; AMD +5.92% + AVGO +5.56% capital rotation; IWM -1.64%)
+  spy_pct_change_since_start: +1.72  # (757.20 - 744.37) / 744.37 * 100
+  system_alpha_vs_spy_pct: -101.72   # UNCONFIRMED — mechanical result of the unexplained $0 balance
 ```
 
 ## Reading the table
